@@ -18,7 +18,7 @@ const SolutionsSlider = () => {
       setCurrentIndex((prev) => (prev + 1) % solutions.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [solutions.length]);
 
   return (
     <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black">
