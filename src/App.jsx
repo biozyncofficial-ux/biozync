@@ -86,12 +86,7 @@ function App() {
 
       {/* Footer */}
       <footer className="footer-gradient mt-20 py-12 px-6">
-        <div className="max-w-7xl mx-auto">
-          {/* Tailwind Test Block */}
-          <div className="tailwind-test text-white text-2xl p-6 rounded-lg mb-8 text-center font-bold">
-            Tailwind Test Block - Custom Gradient Applied
-          </div>
-          
+        <div className="max-w-7xl mx-auto">          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             {/* Footer Logo */}
             <div className="text-center md:text-left">
