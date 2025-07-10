@@ -1,7 +1,60 @@
 import React, { useState, useEffect } from 'react';
-// import bgVideo from '../assets/Web Video.mp4';
+
 const bgVideo = "https://res.cloudinary.com/dwk7tj6jb/video/upload/dbm3thp2dzkxptkoitit.mp4";
-import SolutionsSlider from './SolutionsSlider';
+
+// Mock SolutionsSlider component
+const SolutionsSlider = () => {
+  const solutions = [
+    { title: "Renewable Energy", description: "Solar, wind, and hydroelectric power solutions" },
+    { title: "Carbon Capture", description: "Advanced technologies to remove CO2 from atmosphere" },
+    { title: "Ecosystem Restoration", description: "Healing damaged ecosystems and biodiversity" },
+    { title: "Sustainable Agriculture", description: "Regenerative farming practices for food security" }
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % solutions.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">Solutions</span>
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Innovative approaches to tackle climate change and build a sustainable future
+          </p>
+        </div>
+        
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-teal-500/10 to-emerald-500/10 backdrop-blur-sm border border-teal-500/20">
+          <div className="p-8 md:p-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {solutions.map((solution, index) => (
+                <div
+                  key={index}
+                  className={`p-6 rounded-xl transition-all duration-500 transform ${
+                    index === currentIndex
+                      ? 'bg-gradient-to-br from-teal-500/20 to-emerald-500/20 scale-105 shadow-lg shadow-teal-500/25'
+                      : 'bg-gray-800/50 hover:bg-gray-700/50'
+                  }`}
+                >
+                  <h3 className="text-xl font-semibold text-white mb-3">{solution.title}</h3>
+                  <p className="text-gray-300 text-sm">{solution.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 function HomePage() {
   const [collapseCountdown, setCollapseCountdown] = useState('');
@@ -36,72 +89,202 @@ function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollToContact = () => {
+    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <>
-      <section className="hero-section">
-        <div className="hero-content">
-          <div className="hero-left">
-            <h1><span className="green">Healing the past</span>, crafting new paths</h1>
-            <p>On a mission towards a sustainable planet.</p>
-            <button onClick={() => document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' })}>
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src={bgVideo} type="video/mp4" />
+        </video>
+        
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80 z-10"></div>
+        
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
+                Healing the past
+              </span>
+              <br />
+              <span className="text-white">crafting new paths</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
+              On a mission towards a sustainable planet.
+            </p>
+            <button 
+              onClick={scrollToContact}
+              className="px-8 py-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold rounded-full text-lg hover:from-teal-600 hover:to-emerald-600 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-teal-500/25 hover:shadow-xl hover:shadow-teal-500/40"
+            >
               Join the Journey
             </button>
           </div>
-          <video autoPlay loop muted className="bg-video">
-            <source src={bgVideo} type="video/mp4" />
-          </video>
         </div>
       </section>
 
-      <section className="climate-clock">
-        <h2>Climate Countdown</h2>
-        <p>2030 and 2050 goals to safeguard the planet.</p>
-        <div className="clock-container">
-          <div className="clock-left">
-            <h2>Time left to prevent irreversible climate collapse.</h2>
-            <p>A deadline known as the point of no return.</p>
-            <div className="countdown">{collapseCountdown}</div>
+      {/* Climate Clock Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              Climate <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">Countdown</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              2030 and 2050 goals to safeguard the planet.
+            </p>
           </div>
 
-          <div className="clock-right">
-            <h2>Our mission: Net Zero by 2050</h2>
-            <p>Our journey towards a net-zero planet.</p>
-            <div className="countdown">{netZeroCountdown}</div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Collapse Countdown */}
+            <div className="bg-gradient-to-br from-red-500/10 to-orange-500/10 backdrop-blur-sm border border-red-500/20 rounded-2xl p-8 md:p-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Time left to prevent irreversible climate collapse.
+              </h3>
+              <p className="text-gray-300 mb-8 text-lg">
+                A deadline known as the point of no return.
+              </p>
+              <div className="bg-black/50 rounded-xl p-6 border border-red-500/30">
+                <div className="text-2xl md:text-3xl lg:text-4xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400 text-center">
+                  {collapseCountdown}
+                </div>
+              </div>
+            </div>
+
+            {/* Net Zero Countdown */}
+            <div className="bg-gradient-to-br from-teal-500/10 to-emerald-500/10 backdrop-blur-sm border border-teal-500/20 rounded-2xl p-8 md:p-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Our mission: Net Zero by 2050
+              </h3>
+              <p className="text-gray-300 mb-8 text-lg">
+                Our journey towards a net-zero planet.
+              </p>
+              <div className="bg-black/50 rounded-xl p-6 border border-teal-500/30">
+                <div className="text-2xl md:text-3xl lg:text-4xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 text-center">
+                  {netZeroCountdown}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Solutions Slider */}
       <SolutionsSlider />
 
-      <section className="contact-section" id="contact-form">
-        <div className="contact-left">
-          <h2>Ready to build a regenerative world?</h2>
-          <form>
-            <input type="text" placeholder="Name" required />
-            <input type="email" placeholder="Email" required />
-            <select>
-              <option value="">Select Role</option>
-              <option value="student">Student</option>
-              <option value="ngo">NGO</option>
-              <option value="researcher">Researcher</option>
-              <option value="funder">Funder</option>
-              <option value="enthusiast">Enthusiast</option>
-            </select>
-            <textarea placeholder="Your message..."></textarea>
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-        <div className="contact-right">
-          <p>Email: contact@biozync.org</p>
-          <p>Phone: +91 98765 43210</p>
-          <div className="socials">
-            <a href="https://linkedin.com">LinkedIn</a>
-            <a href="https://instagram.com">Instagram</a>
-            <a href="https://twitter.com">Twitter</a>
+      {/* Contact Section */}
+      <section id="contact-form" className="py-20 bg-gradient-to-br from-black via-gray-900 to-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <div className="bg-gradient-to-br from-teal-500/10 to-emerald-500/10 backdrop-blur-sm border border-teal-500/20 rounded-2xl p-8 md:p-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+                Ready to build a <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">regenerative world?</span>
+              </h2>
+              <div className="space-y-6">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  required
+                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required
+                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
+                />
+                <select className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300">
+                  <option value="">Select Role</option>
+                  <option value="student">Student</option>
+                  <option value="ngo">NGO</option>
+                  <option value="researcher">Researcher</option>
+                  <option value="funder">Funder</option>
+                  <option value="enthusiast">Enthusiast</option>
+                </select>
+                <textarea
+                  placeholder="Your message..."
+                  rows="4"
+                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300 resize-vertical"
+                ></textarea>
+                <button
+                  type="button"
+                  onClick={() => alert('Form submitted! (Demo only)')}
+                  className="w-full px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold rounded-lg hover:from-teal-600 hover:to-emerald-600 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-teal-500/25 hover:shadow-xl hover:shadow-teal-500/40"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="flex flex-col justify-center">
+              <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-600/20 rounded-2xl p-8 md:p-12">
+                <h3 className="text-2xl font-bold text-white mb-8">Get in Touch</h3>
+                <div className="space-y-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-emerald-500 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold">@</span>
+                    </div>
+                    <div>
+                      <p className="text-gray-300">Email</p>
+                      <p className="text-white font-medium">contact@biozync.org</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-emerald-500 rounded-full flex items-center justify-center">
+                      <span className="text-white font-bold">📞</span>
+                    </div>
+                    <div>
+                      <p className="text-gray-300">Phone</p>
+                      <p className="text-white font-medium">+91 98765 43210</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="mt-8 pt-8 border-t border-gray-600/30">
+                  <p className="text-gray-300 mb-4">Follow Us</p>
+                  <div className="flex space-x-4">
+                    <a
+                      href="https://linkedin.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
+                    >
+                      LinkedIn
+                    </a>
+                    <a
+                      href="https://instagram.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors duration-300"
+                    >
+                      Instagram
+                    </a>
+                    <a
+                      href="https://twitter.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300"
+                    >
+                      Twitter
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
