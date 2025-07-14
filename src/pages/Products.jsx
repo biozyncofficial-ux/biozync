@@ -16,19 +16,6 @@ export default function Products() {
 
   const products = [
     {
-      id: 'earthzync',
-      icon: '🧱',
-      title: 'EarthZync Bricks',
-      description: 'Revolutionary eco-engineered building blocks crafted from 100% recycled materials. Features advanced thermal regulation technology that reduces heat absorption by 40% while maintaining superior structural integrity for sustainable construction.',
-      features: [
-        '40% better thermal insulation',
-        'Made from 100% recycled waste',
-        'Carbon-negative manufacturing',
-        '50-year durability guarantee'
-      ],
-      link: '/products/earthzync'
-    },
-    {
       id: 'c4SuperTree',
       icon: '🌲',
       title: 'C4 Super Trees',

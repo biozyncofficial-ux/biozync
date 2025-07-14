@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 const bgVideo = "https://res.cloudinary.com/dwk7tj6jb/video/upload/dbm3thp2dzkxptkoitit.mp4";
+import PolygonStatsGrid from './PolygonStatsGrid';
+
 
 // Mock SolutionsSlider component
 const SolutionsSlider = () => {
@@ -58,7 +60,7 @@ const SolutionsSlider = () => {
 
 function HomePage() {
   const [collapseCountdown, setCollapseCountdown] = useState('');
-  const [netZeroCountdown, setNetZeroCountdown] = useState('');
+  const [, setNetZeroCountdown] = useState('');
 
   useEffect(() => {
     const collapseDeadline = new Date("2030-01-01T00:00:00Z").getTime();
@@ -130,53 +132,8 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Climate Clock Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Climate <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">Countdown</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              2030 and 2050 goals to safeguard the planet.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Collapse Countdown */}
-            <div className="bg-gradient-to-br from-red-500/10 to-orange-500/10 backdrop-blur-sm border border-red-500/20 rounded-2xl p-8 md:p-12">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Time left to prevent irreversible climate collapse.
-              </h3>
-              <p className="text-gray-300 mb-8 text-lg">
-                A deadline known as the point of no return.
-              </p>
-              <div className="bg-black/50 rounded-xl p-6 border border-red-500/30">
-                <div className="text-2xl md:text-3xl lg:text-4xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400 text-center">
-                  {collapseCountdown}
-                </div>
-              </div>
-            </div>
-
-            {/* Net Zero Countdown */}
-            <div className="bg-gradient-to-br from-teal-500/10 to-emerald-500/10 backdrop-blur-sm border border-teal-500/20 rounded-2xl p-8 md:p-12">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                Our mission: Net Zero by 2050
-              </h3>
-              <p className="text-gray-300 mb-8 text-lg">
-                Our journey towards a net-zero planet.
-              </p>
-              <div className="bg-black/50 rounded-xl p-6 border border-teal-500/30">
-                <div className="text-2xl md:text-3xl lg:text-4xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 text-center">
-                  {netZeroCountdown}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+   <PolygonStatsGrid collapseCountdown={collapseCountdown} />
+             
       {/* Solutions Slider */}
       <SolutionsSlider />
 

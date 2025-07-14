@@ -511,46 +511,6 @@ function AboutBioZync () {
           </div>
         </div>
       </section>
-
-      {/* Journey Timeline */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
-              Our Journey
-            </h2>
-            <p className="text-xl text-gray-300">Key milestones in our mission</p>
-          </div>
-          
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></div>
-            
-            <div className="space-y-12">
-              {milestones.map((milestone, i) => {
-                const Icon = milestone.icon;
-                return (
-                  <div key={i} className={`relative flex items-center ${i % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                    <div className={`w-full max-w-md ${i % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                      <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                        <div className="flex items-center mb-3">
-                          <div className={`inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r ${milestone.color} mr-3`}>
-                            <Icon className="text-white" size={20} />
-                          </div>
-                          <span className="text-sm font-semibold text-purple-300">{milestone.date}</span>
-                        </div>
-                        <h3 className="text-xl font-semibold mb-2 text-white">{milestone.title}</h3>
-                        <p className="text-gray-300">{milestone.description}</p>
-                      </div>
-                    </div>
-                    
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-slate-900"></div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
 {/* Journey Timeline */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
@@ -743,5 +703,4 @@ function AboutBioZync () {
     </div>
   );
 }
-
 export default AboutBioZync;

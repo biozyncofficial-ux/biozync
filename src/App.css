@@ -40,3 +40,17 @@
 .read-the-docs {
   color: #888;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.clip-polygon {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+}
+
+@media (max-width: 768px) {
+  .clip-polygon {
+    clip-path: none;
+    border-radius: 1rem;
+  }
+}
