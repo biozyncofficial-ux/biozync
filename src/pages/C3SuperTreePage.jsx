@@ -21,7 +21,7 @@ function C3TreePage() {
       waterUsage: treeCount * 500, // liters/year estimate
       equivalentCars: Math.round(normalCO2 / 4600)
     };
-  }, [treeCount]);
+  }, [TREE_CONSTANTS.NORMAL_CO2_PER_TREE, TREE_CONSTANTS.NORMAL_O2_PER_TREE, treeCount]);
 
   const formatNumber = (num) => {
     if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;

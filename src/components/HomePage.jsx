@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import PolygonStatsGrid from './PolygonStatsGrid';
+import WhyUsSection from './WhyUsSection';
+import MissionVision from "../components/MissionVision";
 
 const bgVideo = "https://res.cloudinary.com/dwk7tj6jb/video/upload/dbm3thp2dzkxptkoitit.mp4";
-import PolygonStatsGrid from './PolygonStatsGrid';
 
-
-// Mock SolutionsSlider component
+// ✅ Solutions Slider Component
 const SolutionsSlider = () => {
   const solutions = [
     { title: "Renewable Energy", description: "Solar, wind, and hydroelectric power solutions" },
@@ -60,7 +61,7 @@ const SolutionsSlider = () => {
 
 function HomePage() {
   const [collapseCountdown, setCollapseCountdown] = useState('');
-  const [, setNetZeroCountdown] = useState('');
+  const [netZeroCountdown, setNetZeroCountdown] = useState('');
 
   useEffect(() => {
     const collapseDeadline = new Date("2030-01-01T00:00:00Z").getTime();
@@ -97,47 +98,58 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* ✅ Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-start overflow-hidden">
         <video 
           autoPlay 
           loop 
           muted 
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src={bgVideo} type="video/mp4" />
         </video>
         
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80 z-10"></div>
         
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
+        {/* Content */}
+        <div className="relative z-20 max-w-7xl w-full px-6 sm:px-10 lg:px-20">
+          <div className="max-w-4xl">
+            <h1 className="text-left text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
                 Healing the past
               </span>
               <br />
               <span className="text-white">crafting new paths</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
-              On a mission towards a sustainable planet.
+            <p className="text-left text-xl md:text-2xl text-gray-300 mb-8">
+              Mission Towards a Sustainable Earth
             </p>
             <button 
               onClick={scrollToContact}
               className="px-8 py-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold rounded-full text-lg hover:from-teal-600 hover:to-emerald-600 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-teal-500/25 hover:shadow-xl hover:shadow-teal-500/40"
             >
-              Join the Journey
+              Get Update
             </button>
           </div>
         </div>
       </section>
-   <PolygonStatsGrid collapseCountdown={collapseCountdown} />
+
+      {/* ✅ Stats Grid */}
+      <PolygonStatsGrid collapseCountdown={collapseCountdown} netZeroCountdown={netZeroCountdown} />
              
-      {/* Solutions Slider */}
+      {/* ✅ Solutions Slider */}
       <SolutionsSlider />
 
-      {/* Contact Section */}
+      {/* ✅ Why Us Section */}
+      <WhyUsSection />
+      
+      {/* ✅ Mission and Vision Section */}
+      <MissionVision />
+
+      {/* ✅ Contact Section */}
       <section id="contact-form" className="py-20 bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -146,20 +158,25 @@ function HomePage() {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
                 Ready to build a <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">regenerative world?</span>
               </h2>
-              <div className="space-y-6">
+              <form action="https://sheetdb.io/api/v1/YOUR_API_ID" method="POST" className="space-y-6">
                 <input
                   type="text"
+                  name="data[name]"
                   placeholder="Name"
                   required
                   className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
                 />
                 <input
                   type="email"
+                  name="data[email]"
                   placeholder="Email"
                   required
                   className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
                 />
-                <select className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300">
+                <select 
+                  name="data[role]" 
+                  className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
+                >
                   <option value="">Select Role</option>
                   <option value="student">Student</option>
                   <option value="ngo">NGO</option>
@@ -168,18 +185,18 @@ function HomePage() {
                   <option value="enthusiast">Enthusiast</option>
                 </select>
                 <textarea
+                  name="data[message]"
                   placeholder="Your message..."
                   rows="4"
                   className="w-full px-4 py-3 bg-black/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300 resize-vertical"
                 ></textarea>
                 <button
-                  type="button"
-                  onClick={() => alert('Form submitted! (Demo only)')}
+                  type="submit"
                   className="w-full px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold rounded-lg hover:from-teal-600 hover:to-emerald-600 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-teal-500/25 hover:shadow-xl hover:shadow-teal-500/40"
                 >
                   Submit
                 </button>
-              </div>
+              </form>
             </div>
 
             {/* Contact Info */}
@@ -210,30 +227,12 @@ function HomePage() {
                 <div className="mt-8 pt-8 border-t border-gray-600/30">
                   <p className="text-gray-300 mb-4">Follow Us</p>
                   <div className="flex space-x-4">
-                    <a
-                      href="https://linkedin.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
-                    >
-                      LinkedIn
-                    </a>
-                    <a
-                      href="https://instagram.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors duration-300"
-                    >
-                      Instagram
-                    </a>
-                    <a
-                      href="https://twitter.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                    >
-                      Twitter
-                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300">LinkedIn</a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                      className="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors duration-300">Instagram</a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+                      className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300">Twitter</a>
                   </div>
                 </div>
               </div>

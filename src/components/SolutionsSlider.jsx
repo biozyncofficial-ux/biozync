@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SolutionsSlider.css';
-import earthZyncImg from '../assets/earthzync.png';
+import c3TreeImg from '../assets/c3supertree.png'; // Add the correct image for C3 Super Tree
 import c4TreeImg from '../assets/c4supertree.png';
 
 function SolutionsSlider() {
@@ -9,14 +9,14 @@ function SolutionsSlider() {
 
   const products = [
     {
-      name: 'EarthZync Bricks',
-      tagline: 'Where bricks have a purpose.',
-      image: earthZyncImg,
-      route: '/products/earthzync',
+      name: 'C3 Super Trees',
+      tagline: 'Smart trees that waste less and capture more.',
+      image: c3TreeImg,
+      route: '/products/c3SuperTree',
     },
     {
       name: 'C4 Super Trees',
-      tagline: 'Trees with power.',
+      tagline: 'The future of photosynthesis.',
       image: c4TreeImg,
       route: '/products/c4SuperTree',
     },
