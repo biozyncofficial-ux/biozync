@@ -16,15 +16,30 @@ export default function Products() {
 
   const products = [
     {
+      id: 'c3SuperTree',
+      icon: '🌳',
+      title: 'C3 Super Trees',
+      description:
+        'Smart trees designed for near-term climate impact by recycling photorespiration byproducts into sugars. C3 Super Trees offer improved CO₂ absorption and faster growth without compromising ecological balance.',
+      features: [
+        'Up to 30% more CO₂ absorption',
+        'Improved sugar recycling for growth',
+        'Field-pilot ready by 2026',
+        'Low genetic risk, high ecological safety'
+      ],
+      link: '/products/c3SuperTree'
+    },
+    {
       id: 'c4SuperTree',
       icon: '🌲',
       title: 'C4 Super Trees',
-      description: 'Next-generation bioengineered trees utilizing advanced C4 photosynthesis pathways. These remarkable organisms absorb 200% more CO₂ while producing 150% more oxygen than traditional trees, accelerating ecosystem restoration and air purification.',
+      description:
+        'Next-generation bioengineered trees utilizing advanced C4 photosynthesis pathways. These remarkable organisms absorb 200% more CO₂ while producing 150% more oxygen than traditional trees, accelerating ecosystem restoration and air purification.',
       features: [
-        '2× CO₂ absorption capacity',
-        '1.5× oxygen production rate',
-        'Rapid growth in harsh climates',
-        'Enhanced biodiversity support'
+        '3× CO₂ absorption capacity',
+        '70% faster biomass growth',
+        'Thrives in heat & drought',
+        'Ultra-resilient for harsh climates'
       ],
       link: '/products/c4SuperTree'
     }
@@ -232,7 +247,7 @@ export default function Products() {
                     boxShadow: '0 4px 20px rgba(0, 192, 149, 0.3)'
                   }}
                 >
-                  {product.id === 'earthzync' ? 'Explore EarthZync' : 'Discover C4 Trees'}
+                  {product.id === 'c3SuperTree' ? 'Explore C3 Trees' : 'Discover C4 Trees'}
                   <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>
               </div>
