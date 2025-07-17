@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Send } from "lucide-react";
+import { Send, Linkedin, Instagram, Twitter, Github } from "lucide-react";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,7 +58,7 @@ export default function ContactForm() {
         </div>
       )}
 
-      {/* Form */}
+      {/* Contact Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Name */}
@@ -156,6 +156,39 @@ export default function ContactForm() {
           </div>
         </button>
       </form>
+
+      {/* Social Media Links */}
+      <div className="mt-10 text-center">
+        <h3 className="text-2xl font-semibold text-teal-300 mb-4">
+          Connect with us
+        </h3>
+        <div className="flex justify-center gap-6">
+          <a
+            href="https://linkedin.com/company/sample"
+            className="flex items-center gap-2 text-gray-300 hover:text-teal-300 transition-colors"
+          >
+            <Linkedin className="w-6 h-6" /> LinkedIn
+          </a>
+          <a
+            href="https://instagram.com/sample"
+            className="flex items-center gap-2 text-gray-300 hover:text-teal-300 transition-colors"
+          >
+            <Instagram className="w-6 h-6" /> Instagram
+          </a>
+          <a
+            href="https://twitter.com/sample"
+            className="flex items-center gap-2 text-gray-300 hover:text-teal-300 transition-colors"
+          >
+            <Twitter className="w-6 h-6" /> Twitter
+          </a>
+          <a
+            href="https://github.com/sample"
+            className="flex items-center gap-2 text-gray-300 hover:text-teal-300 transition-colors"
+          >
+            <Github className="w-6 h-6" /> GitHub
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
