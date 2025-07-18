@@ -1,3 +1,7 @@
+//products.jsx
+//src/pages/Products.jsx
+// BioZync Products Page
+// This page showcases BioZync's innovative products with a focus on sustainability and eco-technology
 import React, { useState, useEffect } from 'react';
 
 export default function Products() {
