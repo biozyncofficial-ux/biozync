@@ -6,16 +6,16 @@ const TechnologiesSection = () => {
     {
       title: "Genetically Enhanced Trees",
       description:
-        "Bio-engineered species designed for high CO₂ absorption, rapid growth, and improved resilience to climate stress.",
+        "We develop advanced tree species optimized for fast growth, high CO₂ absorption, and resilience to climate stress, accelerating reforestation and carbon capture.",
       icon: TreePine,
       gradient: "from-green-500/20 to-emerald-500/20",
       border: "border-green-400/30",
       iconColor: "text-green-400",
     },
     {
-      title: "MRV (Monitoring, Reporting & Verification)",
+      title: "MRV System",
       description:
-        "Real-time MRV with geotagging and AI-driven satellite analytics ensures transparency and trust in carbon offset claims.",
+        "Our system uses geotagged field data and manual verification to provide real-time monitoring, ensuring transparency and accountability in carbon offset projects.",
       icon: Satellite,
       gradient: "from-blue-500/20 to-indigo-500/20",
       border: "border-blue-400/30",
@@ -24,16 +24,16 @@ const TechnologiesSection = () => {
     {
       title: "BioIntelligent Systems",
       description:
-        "Integrating biotechnology with IoT sensors for predictive ecosystem management and precision restoration.",
+        "By combining biotechnology with ecological modeling and field diagnostics, we enable predictive ecosystem restoration and smarter land management.",
       icon: Cpu,
       gradient: "from-purple-500/20 to-pink-500/20",
       border: "border-purple-400/30",
       iconColor: "text-purple-400",
     },
     {
-      title: "Data-driven Carbon Registry",
+      title: "Carbon Credit Registry",
       description:
-        "Blockchain-based carbon credit registry that enables auditable, traceable, and secure transactions for green finance.",
+        "A centralized, secure platform for generating, managing, and verifying traceable carbon credits, streamlining access to green finance and carbon markets.",
       icon: Database,
       gradient: "from-yellow-500/20 to-orange-500/20",
       border: "border-yellow-400/30",
@@ -47,10 +47,10 @@ const TechnologiesSection = () => {
         {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
-            Technologies We Use
+            Our Technology
           </h2>
           <p className="text-lg text-gray-400">
-            Cutting-edge science and tech powering our bio-regeneration systems
+            Pioneering innovations that power large-scale ecological restoration and carbon capture.
           </p>
         </div>
 

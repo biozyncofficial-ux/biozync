@@ -23,12 +23,12 @@ const HeroSection = ({ isVideoPlaying, setIsVideoPlaying }) => {
           <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
             About{' '}
             <span className="bg-gradient-to-r from-teal-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              BioZync
+              Biozync
             </span>
           </h1>
 
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-            BioZync is a climate biotech company pioneering a radical approach to environmental restoration.
+            Biozync is a climate biotech company pioneering a radical approach to environmental restoration.
             We're not just fighting climate change — we're solving it at the source by reimagining nature itself.
           </p>
 

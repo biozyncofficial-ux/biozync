@@ -3,28 +3,20 @@ import React from "react";
 const FeaturedProjects = () => {
   const projects = [
     {
+      title: "C3 SuperTree",
+      description:
+        "Smart trees that waste less and capture more — optimized for near-term deployment by recycling photorespiration byproducts into sugars.",
+      image: "/assets/projects/c3supertree.jpg",
+      progress: 60,
+      link: "/c3-supertree",
+    },
+    {
       title: "C4 SuperTree",
       description:
-        "A genetically enhanced tree species designed for ultra-fast CO₂ absorption and soil restoration.",
+        "A long-term R&D moonshot to bring C4 photosynthesis to trees for maximum carbon removal efficiency and resilience in harsh climates.",
       image: "/assets/projects/c4supertree.jpg",
       progress: 80,
       link: "/c4-supertree",
-    },
-    {
-      title: "BioCarbon Credit",
-      description:
-        "A blockchain-integrated carbon credit solution enabling transparent and traceable green finance.",
-      image: "/assets/projects/biocarbon.jpg",
-      progress: 65,
-      link: "/biocarbon-credit",
-    },
-    {
-      title: "Soil Revival Pods",
-      description:
-        "Bio-engineered pods to restore degraded soil and promote native biodiversity growth.",
-      image: "/assets/projects/soilpods.jpg",
-      progress: 50,
-      link: "/soil-revival-pods",
     },
   ];
 
@@ -42,20 +34,17 @@ const FeaturedProjects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-center">
           {projects.map((project, index) => (
             <div
               key={index}
               className="bg-gradient-to-br from-white/10 to-white/5 rounded-2xl overflow-hidden shadow-xl border border-white/10 hover:border-green-400/50 hover:scale-105 transform transition duration-300"
             >
-              {/* Image */}
               <img
                 src={project.image}
                 alt={project.title}
                 className="w-full h-48 object-cover"
               />
-
-              {/* Content */}
               <div className="p-6">
                 <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
                 <p className="text-gray-300 mb-4">{project.description}</p>
@@ -74,7 +63,6 @@ const FeaturedProjects = () => {
                   </div>
                 </div>
 
-                {/* Button */}
                 <a
                   href={project.link}
                   className="inline-block bg-green-500 hover:bg-green-600 text-black font-semibold py-2 px-4 rounded-full transition"
