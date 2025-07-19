@@ -1,407 +1,416 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Leaf, Zap, Droplets, Thermometer, TreePine, BarChart3, Target, Microscope, MapPin, Calendar, CheckCircle2, Clock, ArrowUp, Globe } from 'lucide-react';
 
-function C4SuperTreePage() {
-  const [treeCount, setTreeCount] = useState(1000);
+const C4SuperTrees = () => {
+  const [activeTab, setActiveTab] = useState('overview');
+  const [animatedNumbers, setAnimatedNumbers] = useState({
+    co2: 0,
+    water: 0,
+    growth: 0
+  });
 
-  // Constants for tree environmental impact
-  const TREE_CONSTANTS = {
-    NORMAL_CO2_PER_TREE: 21, // kg/year
-    NORMAL_O2_PER_TREE: 118, // kg/year
-    C4_MULTIPLIER: 2.5, // More realistic multiplier for C4 efficiency
-    GROWTH_RATE_MULTIPLIER: 1.8, // C4 trees grow faster
-    WATER_EFFICIENCY: 3 // C4 trees use water more efficiently
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimatedNumbers({
+        co2: 185,
+        water: 50,
+        growth: 70
+      });
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
 
-  // Calculate environmental impact with useMemo for performance
-  const environmentalImpact = useMemo(() => {
-    const normalCO2 = treeCount * TREE_CONSTANTS.NORMAL_CO2_PER_TREE;
-    const normalO2 = treeCount * TREE_CONSTANTS.NORMAL_O2_PER_TREE;
-    const c4CO2 = normalCO2 * TREE_CONSTANTS.C4_MULTIPLIER;
-    const c4O2 = normalO2 * TREE_CONSTANTS.C4_MULTIPLIER;
-    
-    // Additional calculations
-    const co2Difference = c4CO2 - normalCO2;
-    const o2Difference = c4O2 - normalO2;
-    const waterSaved = treeCount * 500 * (TREE_CONSTANTS.WATER_EFFICIENCY - 1); // liters/year
-    const equivalentCars = Math.round(co2Difference / 4600); // Average car emits 4.6 tons CO2/year
-    
-    return {
-      normal: { co2: normalCO2, o2: normalO2 },
-      c4: { co2: c4CO2, o2: c4O2 },
-      difference: { co2: co2Difference, o2: o2Difference },
-      waterSaved,
-      equivalentCars
-    };
-  }, [TREE_CONSTANTS.C4_MULTIPLIER, TREE_CONSTANTS.NORMAL_CO2_PER_TREE, TREE_CONSTANTS.NORMAL_O2_PER_TREE, TREE_CONSTANTS.WATER_EFFICIENCY, treeCount]);
-
-  const formatNumber = (num) => {
-    if (num >= 1000000) {
-      return `${(num / 1000000).toFixed(1)}M`;
-    } else if (num >= 1000) {
-      return `${(num / 1000).toFixed(1)}k`;
-    }
-    return num.toLocaleString();
-  };
-
-  const getTreeCountDescription = () => {
-    if (treeCount < 100) return "Small grove";
-    if (treeCount < 1000) return "Community forest";
-    if (treeCount < 5000) return "Small forest";
-    if (treeCount < 10000) return "Large forest";
-    return "Massive reforestation project";
-  };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 text-teal-50">
-      <style jsx>{`
-        :root {
-          --primary-teal: #00C095;
-          --secondary-teal: #00E6B0;
-          --accent-teal: #00A085;
-          --dark-teal: #008B75;
-          --light-teal: #4DDBBA;
-          --text-primary: #E6FFFA;
-          --text-secondary: #B3F5E6;
-          --text-accent: #80EDD1;
-          --bg-primary: #000000;
-          --bg-secondary: #0a0a0a;
-          --bg-tertiary: #111111;
-          --glass-bg: rgba(0, 0, 0, 0.7);
-          --glass-border: rgba(0, 192, 149, 0.15);
-          --shadow-glow: 0 0 30px rgba(0, 192, 149, 0.4);
-          --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.3);
-          --shadow-hover: 0 12px 48px rgba(0, 192, 149, 0.25);
-          --shadow-intense: 0 0 60px rgba(0, 192, 149, 0.3);
-          --gradient-primary: linear-gradient(135deg, #00C095 0%, #00E6B0 100%);
-          --gradient-secondary: linear-gradient(135deg, #00A085 0%, #00C095 100%);
-          --gradient-accent: linear-gradient(135deg, #00C095 0%, #4DDBBA 100%);
-          --gradient-bg: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #111111 100%);
-          --gradient-hero: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(10,10,10,0.6) 100%);
-          --gradient-card: linear-gradient(135deg, rgba(0, 192, 149, 0.1) 0%, rgba(0, 230, 176, 0.05) 100%);
-        }
-        
-        .glass-card {
-          background: var(--glass-bg);
-          border: 1px solid var(--glass-border);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          box-shadow: var(--shadow-soft);
-        }
-        
-        .glass-card:hover {
-          box-shadow: var(--shadow-hover);
-        }
-        
-        .glow-effect {
-          box-shadow: var(--shadow-glow);
-        }
-        
-        .gradient-primary {
-          background: var(--gradient-primary);
-        }
-        
-        .gradient-card {
-          background: var(--gradient-card);
-        }
-        
-        .slider-track {
-          background: linear-gradient(to right, var(--dark-teal), var(--primary-teal), var(--secondary-teal));
-        }
-        
-        .slider-thumb {
-          background: var(--gradient-primary);
-          box-shadow: var(--shadow-glow);
-        }
-        
-        input[type="range"] {
-          -webkit-appearance: none;
-          appearance: none;
-          height: 8px;
-          background: linear-gradient(to right, var(--dark-teal), var(--primary-teal), var(--secondary-teal));
-          border-radius: 5px;
-          outline: none;
-          opacity: 0.7;
-          transition: opacity 0.2s;
-        }
-        
-        input[type="range"]:hover {
-          opacity: 1;
-        }
-        
-        input[type="range"]::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          width: 20px;
-          height: 20px;
-          background: var(--gradient-primary);
-          border-radius: 50%;
-          cursor: pointer;
-          box-shadow: var(--shadow-glow);
-        }
-        
-        input[type="range"]::-moz-range-thumb {
-          width: 20px;
-          height: 20px;
-          background: var(--gradient-primary);
-          border-radius: 50%;
-          cursor: pointer;
-          border: none;
-          box-shadow: var(--shadow-glow);
-        }
-      `}</style>
-
-      <header className="relative px-6 py-12 text-center">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent mb-8 glow-effect">
-            🌲 C4 Super Trees
-          </h1>
-          <div className="mb-8 rounded-2xl overflow-hidden shadow-2xl">
-            <img 
-              src="./assets/c4su.jpg" 
-              alt="C4 Super Trees in a lush forest environment" 
-              className="w-full h-64 md:h-96 object-cover"
-            />
-          </div>
-          <p className="text-xl md:text-2xl text-teal-100 max-w-4xl mx-auto leading-relaxed">
-            Revolutionary <strong className="text-emerald-400">C4 Super Trees</strong> engineered with advanced C4 photosynthesis pathways 
-            for unprecedented carbon capture efficiency and accelerated oxygen production. These trees represent 
-            the future of sustainable reforestation and climate restoration.
-          </p>
-        </div>
-      </header>
-
-      <section className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
-            🔬 Scientific Advantages
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300">
-              <h3 className="text-2xl font-bold text-emerald-400 mb-4">🌿 Enhanced Photosynthesis</h3>
-              <p className="text-teal-100 leading-relaxed">
-                C4 pathway concentrates CO₂ around the enzyme that fixes carbon, dramatically increasing efficiency especially in hot, dry conditions.
-              </p>
-            </div>
-            
-            <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300">
-              <h3 className="text-2xl font-bold text-emerald-400 mb-4">💧 Water Efficiency</h3>
-              <p className="text-teal-100 leading-relaxed">
-                Uses {TREE_CONSTANTS.WATER_EFFICIENCY}× less water per unit of CO₂ captured compared to traditional C3 trees.
-              </p>
-            </div>
-            
-            <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300">
-              <h3 className="text-2xl font-bold text-emerald-400 mb-4">🌡️ Climate Resilience</h3>
-              <p className="text-teal-100 leading-relaxed">
-                Thrives in high temperatures and low water conditions where normal trees struggle.
-              </p>
-            </div>
-            
-            <div className="glass-card rounded-2xl p-8 hover:scale-105 transition-all duration-300">
-              <h3 className="text-2xl font-bold text-emerald-400 mb-4">⚡ Rapid Growth</h3>
-              <p className="text-teal-100 leading-relaxed">
-                Grows {TREE_CONSTANTS.GROWTH_RATE_MULTIPLIER}× faster than conventional trees, reaching maturity sooner.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
-            📊 Performance Comparison
-          </h2>
-          <div className="glass-card rounded-2xl p-8 overflow-x-auto">
-            <table className="w-full text-left">
-              <thead>
-                <tr className="border-b border-teal-600">
-                  <th className="py-4 px-6 text-emerald-400 font-bold text-lg">Metric</th>
-                  <th className="py-4 px-6 text-emerald-400 font-bold text-lg">Normal Trees</th>
-                  <th className="py-4 px-6 text-emerald-400 font-bold text-lg">C4 Super Trees</th>
-                  <th className="py-4 px-6 text-emerald-400 font-bold text-lg">Improvement</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-teal-700 hover:bg-teal-900/20 transition-colors">
-                  <td className="py-4 px-6 text-teal-100 font-semibold">CO₂ Absorption (per tree/year)</td>
-                  <td className="py-4 px-6 text-teal-200">{TREE_CONSTANTS.NORMAL_CO2_PER_TREE} kg</td>
-                  <td className="py-4 px-6 text-emerald-400 font-bold">{(TREE_CONSTANTS.NORMAL_CO2_PER_TREE * TREE_CONSTANTS.C4_MULTIPLIER).toFixed(1)} kg</td>
-                  <td className="py-4 px-6 text-emerald-400 font-bold">+{((TREE_CONSTANTS.C4_MULTIPLIER - 1) * 100).toFixed(0)}%</td>
-                </tr>
-                <tr className="border-b border-teal-700 hover:bg-teal-900/20 transition-colors">
-                  <td className="py-4 px-6 text-teal-100 font-semibold">O₂ Production (per tree/year)</td>
-                  <td className="py-4 px-6 text-teal-200">{TREE_CONSTANTS.NORMAL_O2_PER_TREE} kg</td>
-                  <td className="py-4 px-6 text-emerald-400 font-bold">{(TREE_CONSTANTS.NORMAL_O2_PER_TREE * TREE_CONSTANTS.C4_MULTIPLIER).toFixed(1)} kg</td>
-                  <td className="py-4 px-6 text-emerald-400 font-bold">+{((TREE_CONSTANTS.C4_MULTIPLIER - 1) * 100).toFixed(0)}%</td>
-                </tr>
-                <tr className="hover:bg-teal-900/20 transition-colors">
-                  <td className="py-4 px-6 text-teal-100 font-semibold">Water Usage Efficiency</td>
-                  <td className="py-4 px-6 text-teal-200">Standard</td>
-                  <td className="py-4 px-6 text-emerald-400 font-bold">{TREE_CONSTANTS.WATER_EFFICIENCY}× more efficient</td>
-                  <td className="py-4 px-6 text-emerald-400 font-bold">-{(((TREE_CONSTANTS.WATER_EFFICIENCY - 1) / TREE_CONSTANTS.WATER_EFFICIENCY) * 100).toFixed(0)}% water needed</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
-            🧮 Environmental Impact Calculator
-          </h2>
-          <div className="glass-card rounded-2xl p-8">
-            <div className="mb-12">
-              <label htmlFor="treeRange" className="block text-xl font-bold text-emerald-400 mb-4">
-                <strong>Number of Trees:</strong> {treeCount.toLocaleString()} 
-                <span className="text-teal-300 ml-2">({getTreeCountDescription()})</span>
-              </label>
-              <input
-                type="range"
-                id="treeRange"
-                min="1"
-                max="10001"
-                step="3"
-                value={treeCount}
-                onChange={(e) => setTreeCount(parseInt(e.target.value))}
-                className="w-full h-2 mb-4"
-              />
-              <div className="flex justify-between text-sm text-teal-400">
-                <span>1</span>
-                <span>2,500</span>
-                <span>5,000</span>
-                <span>7,500</span>
-                <span>10,000</span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="glass-card rounded-2xl p-6 border-2 border-teal-600 hover:scale-105 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-teal-400 mb-6">🌳 Normal Trees (Annual Impact)</h3>
-                <div className="space-y-4">
-                  <div className="text-center">
-                    <span className="block text-3xl font-bold text-teal-300">{formatNumber(environmentalImpact.normal.co2)}</span>
-                    <span className="text-teal-200">kg CO2 absorbed</span>
-                  </div>
-                  <div className="text-center">
-                    <span className="block text-3xl font-bold text-teal-300">{formatNumber(environmentalImpact.normal.o2)}</span>
-                    <span className="text-teal-200">kg O2 produced</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="glass-card rounded-2xl p-6 border-2 border-emerald-500 hover:scale-105 transition-all duration-300 glow-effect">
-                <h3 className="text-2xl font-bold text-emerald-400 mb-6">🌲 C4 Super Trees (Annual Impact)</h3>
-                <div className="space-y-4">
-                  <div className="text-center">
-                    <span className="block text-3xl font-bold text-emerald-300">{formatNumber(environmentalImpact.c4.co2)}</span>
-                    <span className="text-emerald-200">kg CO2 absorbed</span>
-                  </div>
-                  <div className="text-center">
-                    <span className="block text-3xl font-bold text-emerald-300">{formatNumber(environmentalImpact.c4.o2)}</span>
-                    <span className="text-emerald-200">kg O2 produced</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="glass-card rounded-2xl p-6 border-2 border-yellow-500 hover:scale-105 transition-all duration-300">
-                <h3 className="text-2xl font-bold text-yellow-400 mb-6">📈 Additional Benefits</h3>
-                <div className="space-y-3">
-                  <div className="text-center">
-                    <span className="block text-2xl font-bold text-yellow-300">+{formatNumber(environmentalImpact.difference.co2)}</span>
-                    <span className="text-yellow-200 text-sm">kg extra CO2 captured</span>
-                  </div>
-                  <div className="text-center">
-                    <span className="block text-2xl font-bold text-yellow-300">+{formatNumber(environmentalImpact.difference.o2)}</span>
-                    <span className="text-yellow-200 text-sm">kg extra O2 produced</span>
-                  </div>
-                  <div className="text-center">
-                    <span className="block text-2xl font-bold text-yellow-300">{formatNumber(environmentalImpact.waterSaved)}</span>
-                    <span className="text-yellow-200 text-sm">liters water saved</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="glass-card rounded-2xl p-8 text-center gradient-card">
-              <h4 className="text-2xl font-bold text-emerald-400 mb-4">🌍 Real-World Context</h4>
-              <p className="text-xl text-teal-100 mb-4">
-                The extra CO2 captured by C4 Super Trees is equivalent to taking{' '}
-                <strong className="text-emerald-400 text-2xl">{environmentalImpact.equivalentCars.toLocaleString()} cars</strong> off the road for a year!
-              </p>
-              {treeCount >= 1000 && (
-                <p className="text-xl text-teal-100">
-                  This forest would produce enough oxygen for approximately{' '}
-                  <strong className="text-emerald-400 text-2xl">{Math.round(environmentalImpact.c4.o2 / 550).toLocaleString()} people</strong> annually.
-                </p>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-12">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-teal-400 to-emerald-400 bg-clip-text text-transparent">
-            🎯 Applications
-          </h2>
-          <div className="glass-card rounded-2xl p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-900/20 transition-colors">
-                <div className="text-2xl">🏙️</div>
-                <div>
-                  <strong className="text-emerald-400 text-lg">Urban Reforestation:</strong>
-                  <p className="text-teal-100 mt-2">Rapid green infrastructure development in cities</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-900/20 transition-colors">
-                <div className="text-2xl">📊</div>
-                <div>
-                  <strong className="text-emerald-400 text-lg">Carbon Offset Projects:</strong>
-                  <p className="text-teal-100 mt-2">Accelerated carbon sequestration for climate goals</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-900/20 transition-colors">
-                <div className="text-2xl">🏜️</div>
-                <div>
-                  <strong className="text-emerald-400 text-lg">Arid Land Restoration:</strong>
-                  <p className="text-teal-100 mt-2">Reforestation in challenging, dry environments</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-900/20 transition-colors">
-                <div className="text-2xl">🏭</div>
-                <div>
-                  <strong className="text-emerald-400 text-lg">Industrial Carbon Capture:</strong>
-                  <p className="text-teal-100 mt-2">Large-scale atmospheric CO2 reduction</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4 p-4 rounded-lg hover:bg-teal-900/20 transition-colors col-span-full">
-                <div className="text-2xl">🌿</div>
-                <div>
-                  <strong className="text-emerald-400 text-lg">Ecosystem Restoration:</strong>
-                  <p className="text-teal-100 mt-2">Fast-track recovery of degraded landscapes</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="px-6 py-12">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="glass-card rounded-2xl p-12 glow-effect">
-            <h3 className="text-3xl font-bold text-emerald-400 mb-6">Ready to Transform Your Environment?</h3>
-            <p className="text-xl text-teal-100 mb-8">Join the future of sustainable reforestation with C4 Super Trees.</p>
-            <button className="gradient-primary text-black font-bold text-xl px-12 py-4 rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
-              Get Started Today
-            </button>
-          </div>
-        </div>
-      </footer>
+  const PerformanceTable = () => (
+    <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-teal-900/20 via-black/40 to-teal-800/20 backdrop-blur-sm border border-teal-400/20">
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead className="bg-gradient-to-r from-teal-600/30 to-teal-500/30">
+            <tr>
+              <th className="px-6 py-4 text-left text-sm font-bold text-teal-100 uppercase tracking-wider">Metric</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-teal-100 uppercase tracking-wider">Normal Tree</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-teal-100 uppercase tracking-wider">C4 Super Tree</th>
+              <th className="px-6 py-4 text-left text-sm font-bold text-teal-100 uppercase tracking-wider">Targeted Gains</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-teal-400/10">
+            <tr className="hover:bg-teal-900/10 transition-all duration-300">
+              <td className="px-6 py-4 text-teal-100 font-medium">CO₂ Absorbed</td>
+              <td className="px-6 py-4 text-teal-200">22 kg</td>
+              <td className="px-6 py-4 text-teal-300 font-bold">60+ kg</td>
+              <td className="px-6 py-4 text-teal-400 font-bold">+185%</td>
+            </tr>
+            <tr className="hover:bg-teal-900/10 transition-all duration-300">
+              <td className="px-6 py-4 text-teal-100 font-medium">Water Use Efficiency</td>
+              <td className="px-6 py-4 text-teal-200">Standard</td>
+              <td className="px-6 py-4 text-teal-300 font-bold">2×</td>
+              <td className="px-6 py-4 text-teal-400 font-bold">-50% water usage</td>
+            </tr>
+            <tr className="hover:bg-teal-900/10 transition-all duration-300">
+              <td className="px-6 py-4 text-teal-100 font-medium">Growth Speed</td>
+              <td className="px-6 py-4 text-teal-200">Baseline</td>
+              <td className="px-6 py-4 text-teal-300 font-bold">+70% faster</td>
+              <td className="px-6 py-4 text-teal-400 font-bold">Faster canopy</td>
+            </tr>
+            <tr className="hover:bg-teal-900/10 transition-all duration-300">
+              <td className="px-6 py-4 text-teal-100 font-medium">Drought Resilience</td>
+              <td className="px-6 py-4 text-teal-200">Medium</td>
+              <td className="px-6 py-4 text-teal-300 font-bold">High</td>
+              <td className="px-6 py-4 text-teal-400 font-bold">Heat & arid-proof</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
-}
 
-export default C4SuperTreePage;
+  const RoadmapItem = ({ phase, title, timeframe, status, description }) => (
+    <div className="relative flex items-start space-x-4 p-6 rounded-xl bg-gradient-to-br from-teal-900/20 via-black/40 to-teal-800/20 backdrop-blur-sm border border-teal-400/20 hover:border-teal-400/40 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/20">
+      <div className="flex-shrink-0">
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
+          status === 'completed' ? 'bg-teal-500 text-black' : 
+          status === 'in-progress' ? 'bg-teal-400 text-black' : 
+          'bg-teal-800 text-teal-200'
+        }`}>
+          {status === 'completed' ? <CheckCircle2 size={16} /> : 
+           status === 'in-progress' ? <Clock size={16} /> : phase}
+        </div>
+      </div>
+      <div className="flex-1">
+        <div className="flex items-center justify-between mb-2">
+          <h4 className="text-lg font-bold text-teal-100">{title}</h4>
+          <span className="text-sm text-teal-300 bg-teal-900/30 px-3 py-1 rounded-full">{timeframe}</span>
+        </div>
+        <p className="text-teal-200 text-sm">{description}</p>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-900/20 via-black to-teal-800/20"></div>
+        <div className="relative max-w-7xl mx-auto px-6 py-16">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-teal-900/30 rounded-full border border-teal-400/30 mb-6">
+              <Leaf className="w-5 h-5 text-teal-400" />
+              <span className="text-teal-300 font-medium">PAGE 2</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-teal-400 to-teal-200 bg-clip-text text-transparent">
+                C4 SUPER TREES
+              </span>
+            </h1>
+            <p className="text-xl md:text-2xl text-teal-200 mb-4">
+              The Future of Trees – Powered by C4 Photosynthesis
+            </p>
+            <p className="text-lg text-teal-300 max-w-2xl mx-auto">
+              Long-term R&D for maximum carbon removal efficiency
+            </p>
+          </div>
+
+          {/* Key Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-gradient-to-br from-teal-900/30 via-black/40 to-teal-800/30 backdrop-blur-sm rounded-2xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/20">
+              <div className="flex items-center space-x-3 mb-3">
+                <ArrowUp className="w-8 h-8 text-teal-400" />
+                <span className="text-3xl font-bold text-teal-400">3×</span>
+              </div>
+              <h3 className="text-lg font-semibold text-teal-100 mb-2">More CO₂ Captured</h3>
+              <p className="text-teal-200 text-sm">Per tree compared to standard trees</p>
+            </div>
+            <div className="bg-gradient-to-br from-teal-900/30 via-black/40 to-teal-800/30 backdrop-blur-sm rounded-2xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/20">
+              <div className="flex items-center space-x-3 mb-3">
+                <Droplets className="w-8 h-8 text-teal-400" />
+                <span className="text-3xl font-bold text-teal-400">2×</span>
+              </div>
+              <h3 className="text-lg font-semibold text-teal-100 mb-2">Water Efficient</h3>
+              <p className="text-teal-200 text-sm">Less water needed for growth</p>
+            </div>
+            <div className="bg-gradient-to-br from-teal-900/30 via-black/40 to-teal-800/30 backdrop-blur-sm rounded-2xl p-6 border border-teal-400/20 hover:border-teal-400/40 transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/20">
+              <div className="flex items-center space-x-3 mb-3">
+                <Thermometer className="w-8 h-8 text-teal-400" />
+                <span className="text-3xl font-bold text-teal-400">+70%</span>
+              </div>
+              <h3 className="text-lg font-semibold text-teal-100 mb-2">Faster Growth</h3>
+              <p className="text-teal-200 text-sm">Rapid biomass accumulation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        {/* Navigation Tabs */}
+        <div className="flex flex-wrap gap-4 mb-8">
+          {[
+            { id: 'overview', label: 'Overview', icon: TreePine },
+            { id: 'performance', label: 'Performance', icon: BarChart3 },
+            { id: 'impact', label: 'Impact', icon: Globe },
+            { id: 'roadmap', label: 'Roadmap', icon: Calendar },
+            { id: 'science', label: 'Science', icon: Microscope }
+          ].map(({ id, label, icon: Icon }) => (
+            <button
+              key={id}
+              onClick={() => setActiveTab(id)}
+              className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                activeTab === id
+                  ? 'bg-teal-500 text-black shadow-lg shadow-teal-500/30'
+                  : 'bg-teal-900/30 text-teal-200 hover:bg-teal-800/40 hover:text-teal-100 border border-teal-400/20'
+              }`}
+            >
+              <Icon size={20} />
+              <span>{label}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Tab Content */}
+        <div className="space-y-8">
+          {activeTab === 'overview' && (
+            <div className="space-y-8">
+              <div className="bg-gradient-to-br from-teal-900/30 via-black/40 to-teal-800/30 backdrop-blur-sm rounded-2xl p-8 border border-teal-400/20">
+                <h2 className="text-3xl font-bold text-teal-100 mb-6">What Are C4 Super Trees?</h2>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div>
+                    <p className="text-teal-200 mb-6 leading-relaxed">
+                      C4 Super Trees are engineered to perform single-cell C4 photosynthesis, inspired by the desert plant <em>Bienertia</em>, 
+                      which naturally concentrates CO₂ inside a single cell — lowering photorespiration.
+                    </p>
+                    <p className="text-teal-200 mb-6 leading-relaxed">
+                      Our goal is to transform standard C3 trees into C4-like trees, making them:
+                    </p>
+                    <ul className="space-y-3 text-teal-200">
+                      <li className="flex items-start space-x-3">
+                        <Zap className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                        <span>Hyper-efficient at carbon fixation</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <Thermometer className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                        <span>Ultra-resilient in high-heat, dry environments</span>
+                      </li>
+                      <li className="flex items-start space-x-3">
+                        <Globe className="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0" />
+                        <span>Game-changers for climate restoration</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="bg-gradient-to-br from-teal-800/20 to-teal-900/20 rounded-xl p-6 border border-teal-400/20">
+                    <h3 className="text-xl font-bold text-teal-100 mb-4">Expected Benefits</h3>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-teal-200">CO₂ Capture</span>
+                        <span className="text-teal-400 font-bold">3× more per tree</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-teal-200">Water Efficiency</span>
+                        <span className="text-teal-400 font-bold">Up to 2× more</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-teal-200">Heat Resistance</span>
+                        <span className="text-teal-400 font-bold">Extreme conditions</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-teal-200">Biomass Growth</span>
+                        <span className="text-teal-400 font-bold">2× faster</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-8 text-center">
+                  <p className="text-teal-300 font-medium italic">
+                    A moonshot for reforestation — with massive long-term potential.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'performance' && (
+            <div className="space-y-8">
+              <h2 className="text-3xl font-bold text-teal-100 mb-6">Target Performance (per tree/year)</h2>
+              <PerformanceTable />
+            </div>
+          )}
+
+          {activeTab === 'impact' && (
+            <div className="space-y-8">
+              <h2 className="text-3xl font-bold text-teal-100 mb-6">Environmental Impact Calculator</h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="bg-gradient-to-br from-teal-900/30 via-black/40 to-teal-800/30 backdrop-blur-sm rounded-2xl p-8 border border-teal-400/20">
+                  <h3 className="text-xl font-bold text-teal-100 mb-4">Normal Trees (Annual Impact)</h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between">
+                      <span className="text-teal-200">CO₂ absorbed</span>
+                      <span className="text-teal-400 font-bold">22 kg</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-teal-200">CO₂ sequestered</span>
+                      <span className="text-teal-400 font-bold">~18 kg</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-gradient-to-br from-teal-800/30 via-black/40 to-teal-700/30 backdrop-blur-sm rounded-2xl p-8 border border-teal-400/30">
+                  <h3 className="text-xl font-bold text-teal-100 mb-4">C4 Super Trees (Annual Impact)</h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between">
+                      <span className="text-teal-200">CO₂ absorbed</span>
+                      <span className="text-teal-300 font-bold">60+ kg</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-teal-200">CO₂ sequestered</span>
+                      <span className="text-teal-300 font-bold">~54 kg</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-teal-900/30 via-black/40 to-teal-800/30 backdrop-blur-sm rounded-2xl p-8 border border-teal-400/20">
+                <h3 className="text-2xl font-bold text-teal-100 mb-6">Additional Benefits</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-teal-400 mb-2">+38 kg</div>
+                    <div className="text-teal-200">Extra CO₂ absorbed</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-teal-400 mb-2">+36 kg</div>
+                    <div className="text-teal-200">Extra CO₂ sequestered</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-teal-400 mb-2">150+ L</div>
+                    <div className="text-teal-200">Water saved per year</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-teal-900/30 via-black/40 to-teal-800/30 backdrop-blur-sm rounded-2xl p-8 border border-teal-400/20">
+                <h3 className="text-2xl font-bold text-teal-100 mb-6">Real-World Context</h3>
+                <div className="space-y-4 text-teal-200">
+                  <p className="text-lg">
+                    The extra CO₂ captured by each C4 Super Tree is equivalent to:
+                  </p>
+                  <div className="bg-teal-900/20 rounded-xl p-4 border border-teal-400/20">
+                    <p className="text-teal-300 font-medium">
+                      🚗 Taking 1 car off the road for a year
+                    </p>
+                  </div>
+                  <p className="text-lg">
+                    Over 20 years, one C4 tree locks in <span className="font-bold text-teal-300">~1.2 tons of CO₂</span> — 
+                    <span className="font-bold text-teal-400"> 3× more than a normal tree</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'roadmap' && (
+            <div className="space-y-8">
+              <h2 className="text-3xl font-bold text-teal-100 mb-6">Development Roadmap – From Concept to Field Innovation</h2>
+              <div className="space-y-6">
+                <RoadmapItem
+                  phase="1"
+                  title="Problem Validation & Research"
+                  timeframe="Completed – Apr–Jul 2025"
+                  status="completed"
+                  description="Researched global C3 inefficiencies and validated potential of C4 gene conversion."
+                />
+                <RoadmapItem
+                  phase="2"
+                  title="Bienertia Gene Strategy & Feasibility"
+                  timeframe="In Progress – Aug–Oct 2025"
+                  status="in-progress"
+                  description="Mapped key gene components for single-cell C4 function."
+                />
+                <RoadmapItem
+                  phase="3"
+                  title="GMO Regulatory Strategy"
+                  timeframe="In Progress – Nov 2025–Feb 2026"
+                  status="in-progress"
+                  description="Designing containment, biosafety protocols, and compliance models."
+                />
+                <RoadmapItem
+                  phase="4"
+                  title="Synthetic Pathway Engineering"
+                  timeframe="Future – Mar–Sep 2026"
+                  status="future"
+                  description="Gene stacking and initial lab implementation in model plants."
+                />
+                <RoadmapItem
+                  phase="5"
+                  title="Greenhouse Trials & CO₂ Efficiency Tests"
+                  timeframe="Future – Late 2026–2027"
+                  status="future"
+                  description="Growth trials in high-temperature controlled environments."
+                />
+                <RoadmapItem
+                  phase="6"
+                  title="Open Field Trials"
+                  timeframe="Future – 2028"
+                  status="future"
+                  description="Launching in selected arid zones for real-world testing."
+                />
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'science' && (
+            <div className="space-y-8">
+              <div className="bg-gradient-to-br from-teal-900/30 via-black/40 to-teal-800/30 backdrop-blur-sm rounded-2xl p-8 border border-teal-400/20">
+                <h2 className="text-3xl font-bold text-teal-100 mb-6">The Science Behind It</h2>
+                <div className="space-y-6">
+                  <p className="text-teal-200 text-lg leading-relaxed">
+                    <em>Bienertia</em> species naturally evolved to do what no typical tree can: perform C4 photosynthesis in a single cell. 
+                    By borrowing this rare adaptation, we aim to engineer trees that can overcome the limitations of C3 metabolism — 
+                    achieving maximum photosynthetic output with minimal water.
+                  </p>
+                  
+                  <div className="bg-gradient-to-br from-teal-800/20 to-teal-900/20 rounded-xl p-6 border border-teal-400/20">
+                    <h3 className="text-xl font-bold text-teal-100 mb-4">Applications</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="flex items-center space-x-3">
+                        <Target className="w-5 h-5 text-teal-400" />
+                        <span className="text-teal-200">Hyper-efficient carbon sinks</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <MapPin className="w-5 h-5 text-teal-400" />
+                        <span className="text-teal-200">Dryland and desert afforestation</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <BarChart3 className="w-5 h-5 text-teal-400" />
+                        <span className="text-teal-200">Scalable carbon offset plantations</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <TreePine className="w-5 h-5 text-teal-400" />
+                        <span className="text-teal-200">Climate-smart forestry</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <Globe className="w-5 h-5 text-teal-400" />
+                        <span className="text-teal-200">Industrial buffer zones</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="bg-gradient-to-r from-teal-900/30 to-teal-800/30 border-t border-teal-400/20">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="text-center">
+            <p className="text-2xl font-bold text-teal-100 mb-2">
+              Long-term. High-impact. Science-driven.
+            </p>
+            <p className="text-teal-200">
+              C4 Super Trees are our boldest vision for reengineering the planet's lungs and fighting climate change at scale.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default C4SuperTrees;

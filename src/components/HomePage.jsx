@@ -114,30 +114,28 @@ function HomePage() {
         
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80 z-10"></div>
-        
         {/* Content */}
-        <div className="relative z-20 max-w-7xl w-full px-6 sm:px-10 lg:px-20">
-          <div className="max-w-4xl">
-            <h1 className="text-left text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
-                Healing the past
-              </span>
-              <br />
-              <span className="text-white">crafting new paths</span>
-            </h1>
-            <p className="text-left text-xl md:text-2xl text-gray-300 mb-8">
-              Mission Towards a Sustainable Earth
-            </p>
-            <button 
-              onClick={scrollToContact}
-              className="px-8 py-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold rounded-full text-lg hover:from-teal-600 hover:to-emerald-600 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-teal-500/25 hover:shadow-xl hover:shadow-teal-500/40"
-            >
-              Get Update
-            </button>
-          </div>
-        </div>
+<div className="relative z-20 max-w-7xl w-full px-4 sm:px-8 lg:px-16">
+  <div className="max-w-3xl">
+    <h1 className="text-left text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-snug">
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
+        Healing the past
+      </span>
+      <br />
+      <span className="text-white">crafting new paths</span>
+    </h1>
+    <p className="text-left text-lg md:text-xl text-gray-300 mb-6">
+      Mission Towards a Sustainable Earth
+    </p>
+    <button
+      onClick={scrollToContact}
+      className="px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold rounded-full text-base hover:from-teal-600 hover:to-emerald-600 transform hover:scale-105 transition-all duration-300 shadow-md shadow-teal-500/25 hover:shadow-lg hover:shadow-teal-500/40"
+    >
+      Get Update
+    </button>
+  </div>
+</div>
       </section>
-
       {/* ✅ Stats Grid */}
       <PolygonStatsGrid collapseCountdown={collapseCountdown} netZeroCountdown={netZeroCountdown} />
              

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -6,6 +6,7 @@ import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import C4SuperTreePage from "./pages/C4SuperTreePage";
 import C3SuperTreePage from "./pages/C3SuperTreePage";
+import Contact from "./pages/Contact";
 
 import GetTree from "./pages/GetTree";
 import Leaderboard from "./pages/Leaderboard";
@@ -13,19 +14,26 @@ import YourDashboard from "./pages/YourDashboard";
 import CooperateDashboard from "./pages/CooperateDashboard";
 
 function App() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [, setProductsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll events
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setScrolled(scrollPosition > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const closeDropdowns = () => {
-    setDropdownOpen(false);
-    setProductsOpen(false);
     setMobileMenuOpen(false);
   };
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
-    setDropdownOpen(false);
   };
 
   return (
@@ -39,6 +47,21 @@ function App() {
           );
           backdrop-filter: blur(10px);
           border-bottom: 1px solid rgba(0, 192, 149, 0.15);
+        }
+        .navbar-scrolled {
+          background: linear-gradient(
+            135deg,
+            rgba(0, 192, 149, 0.2) 0%,
+            rgba(0, 230, 176, 0.1) 100%
+          );
+          backdrop-filter: blur(15px);
+          border-bottom: 1px solid rgba(0, 192, 149, 0.2);
+          transform: translateY(0);
+          transition: all 0.3s ease-in-out;
+        }
+        .navbar-hidden {
+          transform: translateY(-100%);
+          transition: all 0.3s ease-in-out;
         }
         .nav-link {
           color: #b3f5e6;
@@ -96,14 +119,14 @@ function App() {
           transform: rotate(45deg) translate(-6px, -6px);
         }
         @media (max-width: 768px) {
-          .navbar-gradient {
+          .navbar-gradient, .navbar-scrolled {
             backdrop-filter: blur(8px);
           }
         }
       `}</style>
 
-      {/* Navigation */}
-      <nav className="navbar-gradient sticky top-0 z-50 px-4 sm:px-6 py-3 sm:py-4 md:py-6">
+      {/* Navigation - Non-sticky initially */}
+      <nav className="navbar-gradient px-4 sm:px-6 py-3 sm:py-4 md:py-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between h-16 sm:h-18 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3" onClick={closeDropdowns}>
@@ -131,58 +154,21 @@ function App() {
               About
             </Link>
 
-            {/* Products Button */}
-            <div>
-              <Link
-                to="/products"
-                className="nav-link font-medium hover:scale-105 transition-all duration-300"
-                onClick={closeDropdowns}
-              >
-                Products
-              </Link>
-            </div>
+            <Link
+              to="/products"
+              className="nav-link font-medium hover:scale-105 transition-all duration-300"
+              onClick={closeDropdowns}
+            >
+              Products
+            </Link>
 
-            {/* Restore With Us Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="nav-link font-medium hover:scale-105 transition-all duration-300"
-              >
-                Restore With Us
-              </button>
-              {dropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 bg-white text-black rounded-md shadow-lg w-56 z-50">
-                  <Link
-                    to="/get-tree"
-                    className="block px-4 py-2 hover:bg-gray-200 text-sm"
-                    onClick={closeDropdowns}
-                  >
-                    Get Tree (Login)
-                  </Link>
-                  <Link
-                    to="/leaderboard"
-                    className="block px-4 py-2 hover:bg-gray-200 text-sm"
-                    onClick={closeDropdowns}
-                  >
-                    Leaderboard
-                  </Link>
-                  <Link
-                    to="/your-dashboard"
-                    className="block px-4 py-2 hover:bg-gray-200 text-sm"
-                    onClick={closeDropdowns}
-                  >
-                    Your Dashboard
-                  </Link>
-                  <Link
-                    to="/cooperate-dashboard"
-                    className="block px-4 py-2 hover:bg-gray-200 text-sm"
-                    onClick={closeDropdowns}
-                  >
-                    Cooperate Dashboard
-                  </Link>
-                </div>
-              )}
-            </div>
+            <Link
+              to="/contact"
+              className="nav-link font-medium hover:scale-105 transition-all duration-300"
+              onClick={closeDropdowns}
+            >
+              Contact
+            </Link>
           </div>
 
           {/* Mobile Hamburger Menu */}
@@ -200,7 +186,7 @@ function App() {
 
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 mobile-menu-gradient border-b border-gray-800">
+          <div className="md:hidden absolute top-full left-0 right-0 mobile-menu-gradient border-b border-gray-800 z-50">
             <div className="flex flex-col space-y-4 px-4 py-6">
               <Link
                 to="/"
@@ -223,47 +209,113 @@ function App() {
               >
                 Products
               </Link>
-              
-              {/* Mobile Restore With Us Section */}
-              <div className="border-b border-gray-800 pb-4">
-                <div className="nav-link font-medium text-lg py-2 mb-2">
-                  Restore With Us
-                </div>
-                <div className="pl-4 space-y-2">
-                  <Link
-                    to="/get-tree"
-                    className="block nav-link text-base py-1 hover:scale-105 transition-all duration-300"
-                    onClick={closeDropdowns}
-                  >
-                    Get Tree (Login)
-                  </Link>
-                  <Link
-                    to="/leaderboard"
-                    className="block nav-link text-base py-1 hover:scale-105 transition-all duration-300"
-                    onClick={closeDropdowns}
-                  >
-                    Leaderboard
-                  </Link>
-                  <Link
-                    to="/your-dashboard"
-                    className="block nav-link text-base py-1 hover:scale-105 transition-all duration-300"
-                    onClick={closeDropdowns}
-                  >
-                    Your Dashboard
-                  </Link>
-                  <Link
-                    to="/cooperate-dashboard"
-                    className="block nav-link text-base py-1 hover:scale-105 transition-all duration-300"
-                    onClick={closeDropdowns}
-                  >
-                    Cooperate Dashboard
-                  </Link>
-                </div>
-              </div>
+              <Link
+                to="/contact"
+                className="nav-link font-medium text-lg py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
+                onClick={closeDropdowns}
+              >
+                Contact
+              </Link>
             </div>
           </div>
         )}
       </nav>
+
+      {/* Floating Navbar on Scroll */}
+      {scrolled && (
+        <nav className="navbar-scrolled fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-2 sm:py-3">
+          <div className="max-w-7xl mx-auto flex items-center justify-between h-12 sm:h-14">
+            {/* Logo - Smaller */}
+            <Link to="/" className="flex items-center space-x-2" onClick={closeDropdowns}>
+              <img
+                src="/logo.png"
+                alt="BioZync Logo"
+                className="h-8 w-auto sm:h-10"
+              />
+            </Link>
+
+            {/* Desktop Nav Links - Smaller */}
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-6 text-sm sm:text-base">
+              <Link
+                to="/"
+                className="nav-link font-medium hover:scale-105 transition-all duration-300"
+                onClick={closeDropdowns}
+              >
+                Home
+              </Link>
+              <Link
+                to="/about"
+                className="nav-link font-medium hover:scale-105 transition-all duration-300"
+                onClick={closeDropdowns}
+              >
+                About
+              </Link>
+              <Link
+                to="/products"
+                className="nav-link font-medium hover:scale-105 transition-all duration-300"
+                onClick={closeDropdowns}
+              >
+                Products
+              </Link>
+              <Link
+                to="/contact"
+                className="nav-link font-medium hover:scale-105 transition-all duration-300"
+                onClick={closeDropdowns}
+              >
+                Contact
+              </Link>
+            </div>
+
+            {/* Mobile Hamburger Menu - Smaller */}
+            <button
+              className={`md:hidden flex flex-col justify-center items-center w-6 h-6 ${
+                mobileMenuOpen ? "hamburger-active" : ""
+              }`}
+              onClick={toggleMobileMenu}
+            >
+              <div className="hamburger-line" style={{width: '20px', height: '2px'}}></div>
+              <div className="hamburger-line" style={{width: '20px', height: '2px'}}></div>
+              <div className="hamburger-line" style={{width: '20px', height: '2px'}}></div>
+            </button>
+          </div>
+
+          {/* Mobile Menu Dropdown for Floating Navbar */}
+          {mobileMenuOpen && (
+            <div className="md:hidden absolute top-full left-0 right-0 mobile-menu-gradient border-b border-gray-800">
+              <div className="flex flex-col space-y-3 px-4 py-4">
+                <Link
+                  to="/"
+                  className="nav-link font-medium text-base py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
+                  onClick={closeDropdowns}
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/about"
+                  className="nav-link font-medium text-base py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
+                  onClick={closeDropdowns}
+                >
+                  About
+                </Link>
+                <Link
+                  to="/products"
+                  className="nav-link font-medium text-base py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
+                  onClick={closeDropdowns}
+                >
+                  Products
+                </Link>
+                <Link
+                  to="/contact"
+                  className="nav-link font-medium text-base py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
+                  onClick={closeDropdowns}
+                >
+                  Contact
+                </Link>
+              </div>
+            </div>
+          )}
+        </nav>
+      )}
 
       {/* Main Content */}
       <main className="flex-1">
@@ -277,6 +329,7 @@ function App() {
             element={<C3SuperTreePage />}
           />
           <Route path="/products/c4SuperTree" element={<C4SuperTreePage />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/get-tree" element={<GetTree />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/your-dashboard" element={<YourDashboard />} />
@@ -314,10 +367,10 @@ function App() {
                 Products
               </Link>
               <Link
-                to="/get-tree"
+                to="/contact"
                 className="footer-link hover:scale-105 transform transition-all duration-300 text-xs sm:text-sm md:text-base text-center sm:text-left"
               >
-                Join the Movement
+                Contact
               </Link>
             </div>
 
