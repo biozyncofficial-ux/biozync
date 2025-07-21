@@ -181,12 +181,6 @@ export default function ContactForm() {
           >
             <Twitter className="w-6 h-6" /> Twitter
           </a>
-          <a
-            href="https://github.com/sample"
-            className="flex items-center gap-2 text-gray-300 hover:text-teal-300 transition-colors"
-          >
-            <Github className="w-6 h-6" /> GitHub
-          </a>
         </div>
       </div>
     </div>

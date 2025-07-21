@@ -47,6 +47,7 @@ function App() {
           );
           backdrop-filter: blur(10px);
           border-bottom: 1px solid rgba(0, 192, 149, 0.15);
+          transition: all 0.3s ease-in-out;
         }
         .navbar-scrolled {
           background: linear-gradient(
@@ -56,12 +57,14 @@ function App() {
           );
           backdrop-filter: blur(15px);
           border-bottom: 1px solid rgba(0, 192, 149, 0.2);
+          position: fixed !important;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 50;
           transform: translateY(0);
           transition: all 0.3s ease-in-out;
-        }
-        .navbar-hidden {
-          transform: translateY(-100%);
-          transition: all 0.3s ease-in-out;
+          padding: 8px 16px !important;
         }
         .nav-link {
           color: #b3f5e6;
@@ -109,36 +112,58 @@ function App() {
           margin: 4px 0;
           transition: 0.3s;
         }
-        .hamburger-active .hamburger-line:nth-child(1) {
+        .hamburger-line-small {
+          width: 20px;
+          height: 2px;
+          background: #b3f5e6;
+          margin: 3px 0;
+          transition: 0.3s;
+        }
+        .hamburger-active .hamburger-line:nth-child(1),
+        .hamburger-active .hamburger-line-small:nth-child(1) {
           transform: rotate(-45deg) translate(-6px, 6px);
         }
-        .hamburger-active .hamburger-line:nth-child(2) {
+        .hamburger-active .hamburger-line:nth-child(2),
+        .hamburger-active .hamburger-line-small:nth-child(2) {
           opacity: 0;
         }
-        .hamburger-active .hamburger-line:nth-child(3) {
+        .hamburger-active .hamburger-line:nth-child(3),
+        .hamburger-active .hamburger-line-small:nth-child(3) {
           transform: rotate(45deg) translate(-6px, -6px);
+        }
+        .navbar-spacer {
+          height: 80px;
+        }
+        .navbar-spacer-scrolled {
+          height: 56px;
         }
         @media (max-width: 768px) {
           .navbar-gradient, .navbar-scrolled {
             backdrop-filter: blur(8px);
           }
+          .navbar-spacer {
+            height: 72px;
+          }
+          .navbar-spacer-scrolled {
+            height: 48px;
+          }
         }
       `}</style>
 
-      {/* Navigation - Non-sticky initially */}
-      <nav className="navbar-gradient px-4 sm:px-6 py-3 sm:py-4 md:py-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between h-16 sm:h-18 md:h-20">
+      {/* Single Dynamic Navigation */}
+      <nav className={`${scrolled ? 'navbar-scrolled' : 'navbar-gradient'} px-4 sm:px-6 ${scrolled ? 'py-2 sm:py-3' : 'py-3 sm:py-4 md:py-6'}`}>
+        <div className={`max-w-7xl mx-auto flex items-center justify-between ${scrolled ? 'h-12 sm:h-14' : 'h-16 sm:h-18 md:h-20'}`}>
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3" onClick={closeDropdowns}>
             <img
               src="/logo.png"
               alt="BioZync Logo"
-              className="h-10 w-auto sm:h-12 md:h-14"
+              className={`w-auto ${scrolled ? 'h-8 sm:h-10' : 'h-10 sm:h-12 md:h-14'}`}
             />
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center space-x-6 lg:space-x-8 relative text-sm sm:text-base md:text-lg">
+          <div className={`hidden md:flex items-center relative ${scrolled ? 'space-x-4 lg:space-x-6 text-sm sm:text-base' : 'space-x-6 lg:space-x-8 text-sm sm:text-base md:text-lg'}`}>
             <Link
               to="/"
               className="nav-link font-medium hover:scale-105 transition-all duration-300"
@@ -153,7 +178,6 @@ function App() {
             >
               About
             </Link>
-
             <Link
               to="/products"
               className="nav-link font-medium hover:scale-105 transition-all duration-300"
@@ -161,7 +185,6 @@ function App() {
             >
               Products
             </Link>
-
             <Link
               to="/contact"
               className="nav-link font-medium hover:scale-105 transition-all duration-300"
@@ -173,45 +196,55 @@ function App() {
 
           {/* Mobile Hamburger Menu */}
           <button
-            className={`md:hidden flex flex-col justify-center items-center w-8 h-8 ${
-              mobileMenuOpen ? "hamburger-active" : ""
-            }`}
+            className={`md:hidden flex flex-col justify-center items-center ${
+              scrolled ? 'w-6 h-6' : 'w-8 h-8'
+            } ${mobileMenuOpen ? "hamburger-active" : ""}`}
             onClick={toggleMobileMenu}
           >
-            <div className="hamburger-line"></div>
-            <div className="hamburger-line"></div>
-            <div className="hamburger-line"></div>
+            {scrolled ? (
+              <>
+                <div className="hamburger-line-small"></div>
+                <div className="hamburger-line-small"></div>
+                <div className="hamburger-line-small"></div>
+              </>
+            ) : (
+              <>
+                <div className="hamburger-line"></div>
+                <div className="hamburger-line"></div>
+                <div className="hamburger-line"></div>
+              </>
+            )}
           </button>
         </div>
 
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 mobile-menu-gradient border-b border-gray-800 z-50">
-            <div className="flex flex-col space-y-4 px-4 py-6">
+            <div className={`flex flex-col px-4 ${scrolled ? 'space-y-3 py-4' : 'space-y-4 py-6'}`}>
               <Link
                 to="/"
-                className="nav-link font-medium text-lg py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
+                className={`nav-link font-medium py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300 ${scrolled ? 'text-base' : 'text-lg'}`}
                 onClick={closeDropdowns}
               >
                 Home
               </Link>
               <Link
                 to="/about"
-                className="nav-link font-medium text-lg py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
+                className={`nav-link font-medium py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300 ${scrolled ? 'text-base' : 'text-lg'}`}
                 onClick={closeDropdowns}
               >
                 About
               </Link>
               <Link
                 to="/products"
-                className="nav-link font-medium text-lg py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
+                className={`nav-link font-medium py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300 ${scrolled ? 'text-base' : 'text-lg'}`}
                 onClick={closeDropdowns}
               >
                 Products
               </Link>
               <Link
                 to="/contact"
-                className="nav-link font-medium text-lg py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
+                className={`nav-link font-medium py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300 ${scrolled ? 'text-base' : 'text-lg'}`}
                 onClick={closeDropdowns}
               >
                 Contact
@@ -221,101 +254,8 @@ function App() {
         )}
       </nav>
 
-      {/* Floating Navbar on Scroll */}
-      {scrolled && (
-        <nav className="navbar-scrolled fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-2 sm:py-3">
-          <div className="max-w-7xl mx-auto flex items-center justify-between h-12 sm:h-14">
-            {/* Logo - Smaller */}
-            <Link to="/" className="flex items-center space-x-2" onClick={closeDropdowns}>
-              <img
-                src="/logo.png"
-                alt="BioZync Logo"
-                className="h-8 w-auto sm:h-10"
-              />
-            </Link>
-
-            {/* Desktop Nav Links - Smaller */}
-            <div className="hidden md:flex items-center space-x-4 lg:space-x-6 text-sm sm:text-base">
-              <Link
-                to="/"
-                className="nav-link font-medium hover:scale-105 transition-all duration-300"
-                onClick={closeDropdowns}
-              >
-                Home
-              </Link>
-              <Link
-                to="/about"
-                className="nav-link font-medium hover:scale-105 transition-all duration-300"
-                onClick={closeDropdowns}
-              >
-                About
-              </Link>
-              <Link
-                to="/products"
-                className="nav-link font-medium hover:scale-105 transition-all duration-300"
-                onClick={closeDropdowns}
-              >
-                Products
-              </Link>
-              <Link
-                to="/contact"
-                className="nav-link font-medium hover:scale-105 transition-all duration-300"
-                onClick={closeDropdowns}
-              >
-                Contact
-              </Link>
-            </div>
-
-            {/* Mobile Hamburger Menu - Smaller */}
-            <button
-              className={`md:hidden flex flex-col justify-center items-center w-6 h-6 ${
-                mobileMenuOpen ? "hamburger-active" : ""
-              }`}
-              onClick={toggleMobileMenu}
-            >
-              <div className="hamburger-line" style={{width: '20px', height: '2px'}}></div>
-              <div className="hamburger-line" style={{width: '20px', height: '2px'}}></div>
-              <div className="hamburger-line" style={{width: '20px', height: '2px'}}></div>
-            </button>
-          </div>
-
-          {/* Mobile Menu Dropdown for Floating Navbar */}
-          {mobileMenuOpen && (
-            <div className="md:hidden absolute top-full left-0 right-0 mobile-menu-gradient border-b border-gray-800">
-              <div className="flex flex-col space-y-3 px-4 py-4">
-                <Link
-                  to="/"
-                  className="nav-link font-medium text-base py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
-                  onClick={closeDropdowns}
-                >
-                  Home
-                </Link>
-                <Link
-                  to="/about"
-                  className="nav-link font-medium text-base py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
-                  onClick={closeDropdowns}
-                >
-                  About
-                </Link>
-                <Link
-                  to="/products"
-                  className="nav-link font-medium text-base py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
-                  onClick={closeDropdowns}
-                >
-                  Products
-                </Link>
-                <Link
-                  to="/contact"
-                  className="nav-link font-medium text-base py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300"
-                  onClick={closeDropdowns}
-                >
-                  Contact
-                </Link>
-              </div>
-            </div>
-          )}
-        </nav>
-      )}
+      {/* Spacer to prevent content from jumping when navbar becomes fixed */}
+      {scrolled && <div className="navbar-spacer-scrolled"></div>}
 
       {/* Main Content */}
       <main className="flex-1">
