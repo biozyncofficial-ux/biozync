@@ -41,41 +41,41 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Background with gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-90"></div>
-      
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500 rounded-full opacity-5 blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-teal-400 rounded-full opacity-5 blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-teal-600 rounded-full opacity-5 blur-3xl animate-pulse delay-2000"></div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+      {/* Premium background with floating orbs */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-gradient-to-r from-violet-500/15 to-purple-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-16 lg:py-24">
-        {/* Header Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-teal-400 via-teal-300 to-teal-500 bg-clip-text text-transparent animate-pulse">
-            Get in Touch
-          </h1>
-          <p className="text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Have questions, ideas, or want to collaborate? We'd love to hear from you and explore the possibilities together.
+        {/* Premium Header */}
+        <div className="text-center mb-20">
+          <div className="inline-block p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl shadow-teal-500/10 mb-8">
+            <h1 className="text-6xl lg:text-8xl font-thin mb-4 bg-gradient-to-r from-white via-teal-200 to-cyan-300 bg-clip-text text-transparent tracking-tight">
+              Get in Touch
+            </h1>
+            <div className="w-24 h-1 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full mx-auto"></div>
+          </div>
+          <p className="text-xl lg:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed font-light">
+            Let's create something extraordinary together. Reach out and let's turn your vision into reality.
           </p>
         </div>
 
-        {/* Contact Information Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Premium Contact Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           {/* Email Card */}
-          <div className="group relative bg-black/40 backdrop-blur-sm border border-teal-500/20 rounded-2xl p-8 hover:border-teal-400/40 transition-all duration-500 hover:shadow-2xl hover:shadow-teal-500/10">
-            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative z-10">
-              <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <div className="group relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+            <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-teal-500/20">
+              <div className="w-16 h-16 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-teal-500/30 group-hover:scale-110 transition-transform duration-500">
                 <Mail className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-semibold text-teal-300 mb-3">Email</h3>
+              <h3 className="text-2xl font-light text-white mb-4">Email</h3>
               <a 
                 href="mailto:contact@biozync.org" 
-                className="text-lg text-gray-300 hover:text-teal-300 transition-colors duration-300 break-words"
+                className="text-lg text-slate-300 hover:text-teal-300 transition-colors duration-300 break-words font-light"
               >
                 contact@biozync.org
               </a>
@@ -83,16 +83,16 @@ export default function Contact() {
           </div>
 
           {/* Phone Card */}
-          <div className="group relative bg-black/40 backdrop-blur-sm border border-teal-500/20 rounded-2xl p-8 hover:border-teal-400/40 transition-all duration-500 hover:shadow-2xl hover:shadow-teal-500/10">
-            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative z-10">
-              <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <div className="group relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+            <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-violet-500/20">
+              <div className="w-16 h-16 bg-gradient-to-r from-violet-400 to-purple-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-violet-500/30 group-hover:scale-110 transition-transform duration-500">
                 <Phone className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-semibold text-teal-300 mb-3">Phone</h3>
+              <h3 className="text-2xl font-light text-white mb-4">Phone</h3>
               <a 
                 href="tel:+919876543210" 
-                className="text-lg text-gray-300 hover:text-teal-300 transition-colors duration-300"
+                className="text-lg text-slate-300 hover:text-violet-300 transition-colors duration-300 font-light"
               >
                 +91 98765 43210
               </a>
@@ -100,177 +100,211 @@ export default function Contact() {
           </div>
 
           {/* Address Card */}
-          <div className="group relative bg-black/40 backdrop-blur-sm border border-teal-500/20 rounded-2xl p-8 hover:border-teal-400/40 transition-all duration-500 hover:shadow-2xl hover:shadow-teal-500/10">
-            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="relative z-10">
-              <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-teal-600 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <div className="group relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+            <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/20">
+              <div className="w-16 h-16 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition-transform duration-500">
                 <MapPin className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-semibold text-teal-300 mb-3">Address</h3>
-              <span className="text-lg text-gray-300">Chennai, Tamil Nadu, India</span>
+              <h3 className="text-2xl font-light text-white mb-4">Address</h3>
+              <span className="text-lg text-slate-300 font-light">Chennai, Tamil Nadu, India</span>
             </div>
           </div>
         </div>
 
-        {/* Social Media Section */}
-        <div className="mb-16">
-          <div className="bg-black/40 backdrop-blur-sm border border-teal-500/20 rounded-2xl p-8">
-            <div className="flex items-center gap-4 mb-6">
-              <Globe className="w-8 h-8 text-teal-400" />
-              <h2 className="text-3xl font-bold text-teal-300">Connect with us</h2>
+        {/* Premium Social Media Section */}
+        <div className="mb-20">
+          <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-10 shadow-2xl">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-12 h-12 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg shadow-teal-500/30">
+                <Globe className="w-6 h-6 text-white" />
+              </div>
+              <h2 className="text-4xl font-light text-white">Connect with us</h2>
             </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <a 
                 href="https://linkedin.com/company/biozync" 
-                className="group flex items-center gap-3 p-4 rounded-xl bg-black/30 border border-teal-500/10 hover:border-teal-400/30 hover:bg-teal-500/5 transition-all duration-300"
+                className="group relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 shadow-lg hover:shadow-xl hover:shadow-blue-500/20"
               >
-                <Linkedin className="w-6 h-6 text-teal-400 group-hover:text-teal-300" />
-                <span className="text-gray-300 group-hover:text-teal-300">LinkedIn</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative flex items-center gap-4">
+                  <Linkedin className="w-8 h-8 text-blue-400 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-slate-300 group-hover:text-blue-300 font-light text-lg">LinkedIn</span>
+                </div>
               </a>
               <a 
                 href="https://instagram.com/biozync" 
-                className="group flex items-center gap-3 p-4 rounded-xl bg-black/30 border border-teal-500/10 hover:border-teal-400/30 hover:bg-teal-500/5 transition-all duration-300"
+                className="group relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 shadow-lg hover:shadow-xl hover:shadow-pink-500/20"
               >
-                <Instagram className="w-6 h-6 text-teal-400 group-hover:text-teal-300" />
-                <span className="text-gray-300 group-hover:text-teal-300">Instagram</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative flex items-center gap-4">
+                  <Instagram className="w-8 h-8 text-pink-400 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-slate-300 group-hover:text-pink-300 font-light text-lg">Instagram</span>
+                </div>
               </a>
               <a 
                 href="https://twitter.com/biozync" 
-                className="group flex items-center gap-3 p-4 rounded-xl bg-black/30 border border-teal-500/10 hover:border-teal-400/30 hover:bg-teal-500/5 transition-all duration-300"
+                className="group relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 shadow-lg hover:shadow-xl hover:shadow-sky-500/20"
               >
-                <Twitter className="w-6 h-6 text-teal-400 group-hover:text-teal-300" />
-                <span className="text-gray-300 group-hover:text-teal-300">Twitter</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative flex items-center gap-4">
+                  <Twitter className="w-8 h-8 text-sky-400 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-slate-300 group-hover:text-sky-300 font-light text-lg">Twitter</span>
+                </div>
               </a>
-              <a 
-                href="https://github.com/biozync" 
-                className="group flex items-center gap-3 p-4 rounded-xl bg-black/30 border border-teal-500/10 hover:border-teal-400/30 hover:bg-teal-500/5 transition-all duration-300"
-              >
-                <Github className="w-6 h-6 text-teal-400 group-hover:text-teal-300" />
-                <span className="text-gray-300 group-hover:text-teal-300">GitHub</span>
-              </a>
+              
             </div>
           </div>
         </div>
 
-        {/* Contact Form */}
-        <div className="mb-16">
-          <div className="bg-black/40 backdrop-blur-sm border border-teal-500/20 rounded-2xl p-8 lg:p-12">
-            <h2 className="text-4xl font-bold text-teal-300 mb-8 text-center">Send us a Message</h2>
+        {/* Premium Contact Form */}
+        <div className="mb-20">
+          <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-12 lg:p-16 shadow-2xl">
+            <div className="text-center mb-12">
+              <h2 className="text-5xl font-light text-white mb-4">Send us a Message</h2>
+              <div className="w-16 h-1 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full mx-auto"></div>
+            </div>
             
             {submitStatus === 'success' && (
-              <div className="mb-6 p-4 bg-teal-500/10 border border-teal-500/30 rounded-lg text-teal-300 text-center">
-                ✅ Message sent successfully! We'll get back to you soon.
+              <div className="mb-8 p-6 bg-emerald-500/10 backdrop-blur-xl border border-emerald-500/20 rounded-2xl text-emerald-300 text-center shadow-lg shadow-emerald-500/10">
+                <div className="flex items-center justify-center gap-3">
+                  <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <span className="font-light">Message sent successfully! We'll get back to you soon.</span>
+                </div>
               </div>
             )}
             
             {submitStatus === 'error' && (
-              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-300 text-center">
-                ❌ Failed to send message. Please try again later.
+              <div className="mb-8 p-6 bg-red-500/10 backdrop-blur-xl border border-red-500/20 rounded-2xl text-red-300 text-center shadow-lg shadow-red-500/10">
+                <div className="flex items-center justify-center gap-3">
+                  <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm">✕</span>
+                  </div>
+                  <span className="font-light">Failed to send message. Please try again later.</span>
+                </div>
               </div>
             )}
 
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="space-y-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div className="group">
-                  <label htmlFor="name" className="block text-lg font-medium text-teal-300 mb-2">
+                  <label htmlFor="name" className="block text-lg font-light text-slate-300 mb-3">
                     Name
                   </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 bg-black/60 border border-teal-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-400/20 transition-all duration-300"
-                    placeholder="Your full name"
-                  />
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      className="w-full px-6 py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-teal-400/50 focus:bg-white/10 transition-all duration-500 shadow-lg font-light"
+                      placeholder="Your full name"
+                    />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/10 to-cyan-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                  </div>
                 </div>
                 
                 <div className="group">
-                  <label htmlFor="email" className="block text-lg font-medium text-teal-300 mb-2">
+                  <label htmlFor="email" className="block text-lg font-light text-slate-300 mb-3">
                     Email
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 bg-black/60 border border-teal-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-400/20 transition-all duration-300"
-                    placeholder="your.email@example.com"
-                  />
+                  <div className="relative">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-6 py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-teal-400/50 focus:bg-white/10 transition-all duration-500 shadow-lg font-light"
+                      placeholder="your.email@example.com"
+                    />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/10 to-cyan-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                  </div>
                 </div>
               </div>
 
               <div className="group">
-                <label htmlFor="subject" className="block text-lg font-medium text-teal-300 mb-2">
+                <label htmlFor="subject" className="block text-lg font-light text-slate-300 mb-3">
                   Subject
                 </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  className="w-full px-4 py-3 bg-black/60 border border-teal-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-400/20 transition-all duration-300"
-                  placeholder="What's this about?"
-                />
+                <div className="relative">
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    required
+                    className="w-full px-6 py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-teal-400/50 focus:bg-white/10 transition-all duration-500 shadow-lg font-light"
+                    placeholder="What's this about?"
+                  />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/10 to-cyan-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                </div>
               </div>
 
               <div className="group">
-                <label htmlFor="message" className="block text-lg font-medium text-teal-300 mb-2">
+                <label htmlFor="message" className="block text-lg font-light text-slate-300 mb-3">
                   Message
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                  className="w-full px-4 py-3 bg-black/60 border border-teal-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-400/20 transition-all duration-300 resize-none"
-                  placeholder="Tell us more about your inquiry..."
-                ></textarea>
+                <div className="relative">
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    required
+                    className="w-full px-6 py-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-teal-400/50 focus:bg-white/10 transition-all duration-500 resize-none shadow-lg font-light"
+                    placeholder="Tell us more about your inquiry..."
+                  ></textarea>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/10 to-cyan-500/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                </div>
               </div>
 
-              <button
-                onClick={handleSubmit}
-                disabled={isSubmitting}
-                className="w-full group relative overflow-hidden bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 disabled:from-gray-600 disabled:to-gray-700 px-8 py-4 rounded-lg font-semibold text-white text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 disabled:cursor-not-allowed"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative flex items-center justify-center gap-3">
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-6 h-6" />
-                      <span>Send Message</span>
-                    </>
-                  )}
-                </div>
-              </button>
+              <div className="flex justify-center pt-4">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="group relative overflow-hidden bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 disabled:from-slate-600 disabled:to-slate-700 px-12 py-4 rounded-2xl font-light text-white text-lg transition-all duration-500 transform hover:scale-105 active:scale-95 disabled:scale-100 disabled:cursor-not-allowed shadow-2xl shadow-teal-500/25 hover:shadow-teal-400/40"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="relative flex items-center justify-center gap-4">
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                        <span>Send Message</span>
+                      </>
+                    )}
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Business Hours */}
-        <div className="bg-black/40 backdrop-blur-sm border border-teal-500/20 rounded-2xl p-8">
-          <div className="flex items-center gap-4 mb-6">
-            <Clock className="w-8 h-8 text-teal-400" />
-            <h2 className="text-3xl font-bold text-teal-300">Business Hours</h2>
+        {/* Premium Business Hours */}
+        <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-10 shadow-2xl">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-12 h-12 bg-gradient-to-r from-violet-400 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg shadow-violet-500/30">
+              <Clock className="w-6 h-6 text-white" />
+            </div>
+            <h2 className="text-4xl font-light text-white">Business Hours</h2>
           </div>
           
           <div className="space-y-4">
-            <div className="flex justify-between items-center py-3 px-4 bg-black/30 rounded-lg border border-teal-500/10">
-              <span className="text-lg text-gray-300 font-medium">Monday - Friday</span>
-              <span className="text-lg text-teal-300">9:00 AM - 6:00 PM IST</span>
+            <div className="flex justify-between items-center p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg">
+              <span className="text-lg text-slate-300 font-light">Monday - Friday</span>
+              <span className="text-lg text-teal-300 font-light">9:00 AM - 6:00 PM IST</span>
             </div>
-            <div className="flex justify-between items-center py-3 px-4 bg-black/30 rounded-lg border border-teal-500/10">
-              <span className="text-lg text-gray-300 font-medium">Saturday</span>
-              <span className="text-lg text-teal-300">10:00 AM - 4:00 PM IST</span>
+            <div className="flex justify-between items-center p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg">
+              <span className="text-lg text-slate-300 font-light">Saturday</span>
+              <span className="text-lg text-teal-300 font-light">10:00 AM - 4:00 PM IST</span>
             </div>
-            <div className="flex justify-between items-center py-3 px-4 bg-black/30 rounded-lg border border-teal-500/10">
-              <span className="text-lg text-gray-300 font-medium">Sunday</span>
-              <span className="text-lg text-red-400">Closed</span>
+            <div className="flex justify-between items-center p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg">
+              <span className="text-lg text-slate-300 font-light">Sunday</span>
+              <span className="text-lg text-rose-400 font-light">Closed</span>
             </div>
           </div>
         </div>
