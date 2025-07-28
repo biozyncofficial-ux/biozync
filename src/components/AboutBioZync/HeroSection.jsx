@@ -64,7 +64,7 @@ const HeroSection = ({ isVideoPlaying, setIsVideoPlaying }) => {
             ) : (
               <img
                 src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&h=400&fit=crop"
-                alt="BioZync Innovation"
+                alt="Biozync Innovation"
                 className="w-full h-auto"
               />
             )}

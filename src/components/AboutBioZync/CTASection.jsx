@@ -10,7 +10,7 @@ const CTASection = () => {
       <div className="relative max-w-5xl mx-auto text-center z-10">
         {/* Heading */}
         <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight bg-gradient-to-r from-green-300 to-emerald-500 bg-clip-text text-transparent">
-          Join the BioZync Revolution
+          Join the Biozync Revolution
         </h2>
         <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
           Partner with us to innovate, collaborate, and create sustainable solutions for a greener future.

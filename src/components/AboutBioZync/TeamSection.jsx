@@ -127,7 +127,7 @@ const TeamSection = () => {
           <p className="max-w-3xl mx-auto text-xl" style={{ color: "var(--text-secondary)" }}>
             The brilliant minds behind{" "}
             <span className="font-semibold" style={{ color: "var(--primary-teal)" }}>
-              BioZync
+              Biozync
             </span>
             – innovators shaping a sustainable future through biotechnology.
           </p>

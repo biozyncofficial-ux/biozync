@@ -6,7 +6,7 @@ const TestimonialsSection = () => {
     {
       name: "Dr. Sarah Chen",
       role: "CEO, EcoGenesis Labs",
-      text: "BioZync's innovative approach to bio‑engineering has transformed how we think about sustainable solutions.",
+      text: "Biozync's innovative approach to bio‑engineering has transformed how we think about sustainable solutions.",
       image:
         "https://images.unsplash.com/photo-1494790108755-2616b612b5c5?w=150&h=150&fit=crop&crop=face",
       rating: 5,
@@ -22,7 +22,7 @@ const TestimonialsSection = () => {
     {
       name: "Elena Vasquez",
       role: "Director, VerdeCorp",
-      text: "Collaboration with BioZync was pivotal in achieving our sustainability goals ahead of schedule.",
+      text: "Collaboration with Biozync was pivotal in achieving our sustainability goals ahead of schedule.",
       image:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       rating: 5,

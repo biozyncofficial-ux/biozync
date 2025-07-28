@@ -5,7 +5,7 @@ const JourneyTimeline = () => {
   const milestones = [
     {
       date: "March 2025",
-      title: "BioZync Was Born",
+      title: "Biozync Was Born",
       description:
         "Planted the first seed of our mission — to reengineer trees and restore ecosystems through climate biotech.",
       icon: Sparkles,

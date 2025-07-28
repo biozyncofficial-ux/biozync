@@ -265,7 +265,7 @@ export default function Products() {
             Ready to Build a Sustainable Future?
           </h3>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-            Join thousands of forward-thinking organizations already using BioZync solutions 
+            Join thousands of forward-thinking organizations already using Biozync solutions 
             to create positive environmental impact while achieving their sustainability goals.
           </p>
         </div>
