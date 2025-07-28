@@ -102,7 +102,7 @@ const C4SuperTrees = () => {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-teal-200 mb-4">
-              The Future of Trees – Powered by C4 Photosynthesis
+              The Future of Trees Powered by C4 Photosynthesis
             </p>
             <p className="text-lg text-teal-300 max-w-2xl mx-auto">
               Long-term R&D for maximum carbon removal efficiency
@@ -305,40 +305,40 @@ const C4SuperTrees = () => {
 
           {activeTab === 'roadmap' && (
             <div className="space-y-8">
-              <h2 className="text-3xl font-bold text-teal-100 mb-6">Development Roadmap – From Concept to Field Innovation</h2>
+              <h2 className="text-3xl font-bold text-teal-100 mb-6">Development Roadmap  From Concept to Field Innovation</h2>
               <div className="space-y-6">
                 <RoadmapItem
                   phase="1"
                   title="Problem Validation & Research"
-                  timeframe="Completed – Apr–Jul 2025"
+                  timeframe="Completed : Apr–Jul 2025"
                   status="completed"
                   description="Researched global C3 inefficiencies and validated potential of C4 gene conversion."
                 />
                 <RoadmapItem
                   phase="2"
                   title="Bienertia Gene Strategy & Feasibility"
-                  timeframe="In Progress – Aug–Oct 2025"
+                  timeframe="In Progress : Aug–Oct 2025"
                   status="in-progress"
                   description="Mapped key gene components for single-cell C4 function."
                 />
                 <RoadmapItem
                   phase="3"
                   title="GMO Regulatory Strategy"
-                  timeframe="In Progress – Nov 2025–Feb 2026"
+                  timeframe="In Progress : Nov 2025–Feb 2026"
                   status="in-progress"
                   description="Designing containment, biosafety protocols, and compliance models."
                 />
                 <RoadmapItem
                   phase="4"
                   title="Synthetic Pathway Engineering"
-                  timeframe="Future – Mar–Sep 2026"
+                  timeframe="Future : Mar–Sep 2026"
                   status="future"
                   description="Gene stacking and initial lab implementation in model plants."
                 />
                 <RoadmapItem
                   phase="5"
                   title="Greenhouse Trials & CO₂ Efficiency Tests"
-                  timeframe="Future – Late 2026–2027"
+                  timeframe="Future : Late 2026–2027"
                   status="future"
                   description="Growth trials in high-temperature controlled environments."
                 />
