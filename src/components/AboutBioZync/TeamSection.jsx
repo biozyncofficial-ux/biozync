@@ -12,25 +12,25 @@ const teamMembers = [
     name: "BALAJI S",
     role: "Co-Founder & CEO",
     img: balajiImg,
-    bio: "Visionary leader driving sustainable biotechnology innovation with 10+ years of experience in bioengineering."
+    bio: "Leads both scientific research and startup development, managing the team and building the company from the ground up."
   },
   {
     name: "JAYAKRISHNAA P",
     role: "Co-Founder & Head of Commercial",
     img: jkImg,
-    bio: "Strategic commercial expert focused on scaling biotechnology solutions for global impact."
+    bio: "Handles business growth, partnerships, and ensures Biozync’s solution reaches real users and projects."
   },
   {
     name: "RISHIKA SINGH MALVIYA",
     role: "Genetic Engineering Associate",
     img: rishikaImg,
-    bio: "Cutting-edge genetic engineering specialist pioneering breakthrough research in sustainable biology."
+    bio: "Works on plant research and development, focusing on creating trees that can absorb more carbon."
   },
   {
     name: "DR. D. REX ARUNRAJ",
     role: "Mentor & Scientific Advisor – Plant Biotechnology",
     img: rexImg,
-    bio: "Distinguished plant biotechnology expert guiding research direction with decades of scientific excellence."
+    bio: "Supports the research team with expert advice on plants, genetic techniques, and project planning."
   },
 ];
 
@@ -129,7 +129,7 @@ const TeamSection = () => {
             <span className="font-semibold" style={{ color: "var(--primary-teal)" }}>
               Biozync
             </span>
-            – innovators shaping a sustainable future through biotechnology.
+             innovators shaping a sustainable future through biotechnology.
           </p>
         </div>
 
