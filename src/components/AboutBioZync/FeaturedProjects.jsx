@@ -1,24 +1,24 @@
 import React from "react";
 
-const FeaturedProjects = () => {
-  const projects = [
-    {
-      title: "C3 SuperTree",
-      description:
-        "Smart trees that waste less and capture more — optimized for near-term deployment by recycling photorespiration byproducts into sugars.",
-      image: "/assets/projects/c3supertree.jpg",
-      progress: 60,
-      link: "/c3-supertree",
-    },
-    {
-      title: "C4 SuperTree",
-      description:
-        "A long-term R&D moonshot to bring C4 photosynthesis to trees for maximum carbon removal efficiency and resilience in harsh climates.",
-      image: "/assets/projects/c4supertree.jpg",
-      progress: 80,
-      link: "/c4-supertree",
-    },
-  ];
+const FeaturedProjects = () => {const projects = [
+  {
+    title: "C3 SuperTree",
+    description:
+      "Smart trees that waste less and capture more — optimized for near-term deployment by recycling photorespiration byproducts into sugars.",
+    image: "/assets/projects/c3supertree.jpg",
+    progress: 60,
+    link: "/products/c3superTree", // ✅ Corrected
+  },
+  {
+    title: "C4 SuperTree",
+    description:
+      "A long-term R&D moonshot to bring C4 photosynthesis to trees for maximum carbon removal efficiency and resilience in harsh climates.",
+    image: "/assets/projects/c4supertree.jpg",
+    progress: 80,
+    link: "/products/c4SuperTree", // ✅ Corrected
+  },
+];
+
 
   return (
     <section className="py-20 px-4 bg-gradient-to-b from-black via-gray-900 to-black text-white">

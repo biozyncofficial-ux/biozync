@@ -4,14 +4,18 @@ import HomePage from "./components/HomePage";
 import AboutPage from "./pages/AboutPage";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
-import C4SuperTreePage from "./pages/C4SuperTreePage";
 import C3SuperTreePage from "./pages/C3SuperTreePage";
+import C4SuperTreePage from "./pages/C4SuperTreePage";
+
 import Contact from "./pages/Contact";
 
 import GetTree from "./pages/GetTree";
 import Leaderboard from "./pages/Leaderboard";
 import YourDashboard from "./pages/YourDashboard";
 import CooperateDashboard from "./pages/CooperateDashboard";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,10 +27,18 @@ function App() {
       const scrollPosition = window.scrollY;
       setScrolled(scrollPosition > 100);
     };
-
+    
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  // Initialize AOS
+  useEffect(() => {
+  AOS.init({
+    duration: 1000, // animation duration in ms
+    once: true      // animate only once on scroll
+  });
+}, []);
 
   const closeDropdowns = () => {
     setMobileMenuOpen(false);
@@ -149,113 +161,70 @@ function App() {
           }
         }
       `}</style>
+<nav
+  className={`fixed top-0 w-full z-50 transition-all duration-300 ease-in-out 
+    ${scrolled ? 'bg-black/80 backdrop-blur-md shadow-md py-2' : 'bg-gradient-to-b from-black to-transparent py-4'} 
+    px-4 sm:px-6`}>
+  
+  <div className={`max-w-7xl mx-auto flex items-center justify-between 
+    ${scrolled ? 'h-14' : 'h-20'} transition-all duration-300`}>
+    
+    {/* Logo */}
+    <Link to="/" className="flex items-center space-x-2" onClick={closeDropdowns}>
+      <img
+        src="/logo.png"
+        alt="BioZync Logo"
+        className={`w-auto transition-all duration-300 ${scrolled ? 'h-8' : 'h-12'}`}
+      />
+    </Link>
 
-      {/* Single Dynamic Navigation */}
-      <nav className={`${scrolled ? 'navbar-scrolled' : 'navbar-gradient'} px-4 sm:px-6 ${scrolled ? 'py-2 sm:py-3' : 'py-3 sm:py-4 md:py-6'}`}>
-        <div className={`max-w-7xl mx-auto flex items-center justify-between ${scrolled ? 'h-12 sm:h-14' : 'h-16 sm:h-18 md:h-20'}`}>
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3" onClick={closeDropdowns}>
-            <img
-              src="/logo.png"
-              alt="BioZync Logo"
-              className={`w-auto ${scrolled ? 'h-8 sm:h-10' : 'h-10 sm:h-12 md:h-14'}`}
-            />
+    {/* Desktop Nav */}
+    <div className={`hidden md:flex items-center transition-all duration-300 
+      ${scrolled ? 'space-x-4 text-sm' : 'space-x-6 text-base md:text-lg'}`}>
+      {['Home', 'About', 'Products', 'Contact'].map((item) => (
+        <Link
+          key={item}
+          to={`/${item.toLowerCase()}`}
+          className="nav-link font-medium hover:scale-105 transition-transform duration-300"
+          onClick={closeDropdowns}>
+          {item}
+        </Link>
+      ))}
+    </div>
+
+    {/* Mobile Hamburger */}
+    <button
+      onClick={toggleMobileMenu}
+      className={`md:hidden flex flex-col justify-center items-center transition-all duration-300 
+        ${scrolled ? 'w-6 h-6' : 'w-8 h-8'} ${mobileMenuOpen ? 'hamburger-active' : ''}`}>
+      {[1, 2, 3].map((_, i) => (
+        <div
+          key={i}
+          className={`bg-white rounded h-0.5 my-0.5 transition-all 
+            ${scrolled ? 'w-4' : 'w-6'}`}></div>
+      ))}
+    </button>
+  </div>
+
+  {/* Mobile Menu */}
+  {mobileMenuOpen && (
+    <div className="md:hidden absolute top-full left-0 right-0 bg-black/90 border-b border-gray-800 z-50">
+      <div className={`flex flex-col px-4 ${scrolled ? 'space-y-3 py-4' : 'space-y-4 py-6'}`}>
+        {['Home', 'About', 'Products', 'Contact'].map((item) => (
+          <Link
+            key={item}
+            to={`/${item.toLowerCase()}`}
+            className="nav-link font-medium py-2 border-b border-gray-800 hover:scale-105 transition-transform duration-300"
+            onClick={closeDropdowns}>
+            {item}
           </Link>
+        ))}
+      </div>
+    </div>
+  )}
+</nav>
 
-          {/* Desktop Nav Links */}
-          <div className={`hidden md:flex items-center relative ${scrolled ? 'space-x-4 lg:space-x-6 text-sm sm:text-base' : 'space-x-6 lg:space-x-8 text-sm sm:text-base md:text-lg'}`}>
-            <Link
-              to="/"
-              className="nav-link font-medium hover:scale-105 transition-all duration-300"
-              onClick={closeDropdowns}
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className="nav-link font-medium hover:scale-105 transition-all duration-300"
-              onClick={closeDropdowns}
-            >
-              About
-            </Link>
-            <Link
-              to="/products"
-              className="nav-link font-medium hover:scale-105 transition-all duration-300"
-              onClick={closeDropdowns}
-            >
-              Products
-            </Link>
-            <Link
-              to="/contact"
-              className="nav-link font-medium hover:scale-105 transition-all duration-300"
-              onClick={closeDropdowns}
-            >
-              Contact
-            </Link>
-          </div>
-
-          {/* Mobile Hamburger Menu */}
-          <button
-            className={`md:hidden flex flex-col justify-center items-center ${
-              scrolled ? 'w-6 h-6' : 'w-8 h-8'
-            } ${mobileMenuOpen ? "hamburger-active" : ""}`}
-            onClick={toggleMobileMenu}
-          >
-            {scrolled ? (
-              <>
-                <div className="hamburger-line-small"></div>
-                <div className="hamburger-line-small"></div>
-                <div className="hamburger-line-small"></div>
-              </>
-            ) : (
-              <>
-                <div className="hamburger-line"></div>
-                <div className="hamburger-line"></div>
-                <div className="hamburger-line"></div>
-              </>
-            )}
-          </button>
-        </div>
-
-        {/* Mobile Menu Dropdown */}
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 mobile-menu-gradient border-b border-gray-800 z-50">
-            <div className={`flex flex-col px-4 ${scrolled ? 'space-y-3 py-4' : 'space-y-4 py-6'}`}>
-              <Link
-                to="/"
-                className={`nav-link font-medium py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300 ${scrolled ? 'text-base' : 'text-lg'}`}
-                onClick={closeDropdowns}
-              >
-                Home
-              </Link>
-              <Link
-                to="/about"
-                className={`nav-link font-medium py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300 ${scrolled ? 'text-base' : 'text-lg'}`}
-                onClick={closeDropdowns}
-              >
-                About
-              </Link>
-              <Link
-                to="/products"
-                className={`nav-link font-medium py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300 ${scrolled ? 'text-base' : 'text-lg'}`}
-                onClick={closeDropdowns}
-              >
-                Products
-              </Link>
-              <Link
-                to="/contact"
-                className={`nav-link font-medium py-2 border-b border-gray-800 hover:scale-105 transition-all duration-300 ${scrolled ? 'text-base' : 'text-lg'}`}
-                onClick={closeDropdowns}
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* Spacer to prevent content from jumping when navbar becomes fixed */}
-      {scrolled && <div className="navbar-spacer-scrolled"></div>}
+{scrolled && <div className="h-14" />} {/* Spacer */}
 
       {/* Main Content */}
       <main className="flex-1">
@@ -264,11 +233,10 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetails />} />
-          <Route
-            path="/products/c3superTree"
-            element={<C3SuperTreePage />}
-          />
+          <Route path="/products/c3superTree" element={<C3SuperTreePage />} />
           <Route path="/products/c4SuperTree" element={<C4SuperTreePage />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
+
           <Route path="/contact" element={<Contact />} />
           <Route path="/get-tree" element={<GetTree />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
