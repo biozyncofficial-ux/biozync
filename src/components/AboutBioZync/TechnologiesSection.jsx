@@ -6,7 +6,7 @@ const TechnologiesSection = () => {
     {
       title: "Genetically Enhanced Trees",
       description:
-        "We develop advanced tree species optimized for fast growth, high CO₂ absorption, and resilience to climate stress, accelerating reforestation and carbon capture.",
+      "We grow specially developed trees that capture more carbon, grow faster, and survive tough weather. These trees help us restore forests and fight climate change more effectively.",
       icon: TreePine,
       gradient: "from-green-500/20 to-emerald-500/20",
       border: "border-green-400/30",
@@ -15,7 +15,7 @@ const TechnologiesSection = () => {
     {
       title: "MRV System",
       description:
-        "Our system uses geotagged field data and manual verification to provide real-time monitoring, ensuring transparency and accountability in carbon offset projects.",
+      "Our system tracks trees using location-tagged data and manual checks. This ensures every project is monitored in real time and stays honest and transparent.",
       icon: Satellite,
       gradient: "from-blue-500/20 to-indigo-500/20",
       border: "border-blue-400/30",
@@ -24,7 +24,7 @@ const TechnologiesSection = () => {
     {
       title: "BioIntelligent Systems",
       description:
-        "By combining biotechnology with ecological modeling and field diagnostics, we enable predictive ecosystem restoration and smarter land management.",
+      "We combine biology, smart planning tools, and on-site data to understand what the land needs. This helps us restore ecosystems more effectively and make better decisions.",
       icon: Cpu,
       gradient: "from-purple-500/20 to-pink-500/20",
       border: "border-purple-400/30",
@@ -33,7 +33,7 @@ const TechnologiesSection = () => {
     {
       title: "Carbon Credit Registry",
       description:
-        "A centralized, secure platform for generating, managing, and verifying traceable carbon credits, streamlining access to green finance and carbon markets.",
+      "We provide a safe, easy-to-use platform to create and manage carbon credits. This makes it simple for businesses and partners to join the green economy and support climate-positive projects.",
       icon: Database,
       gradient: "from-yellow-500/20 to-orange-500/20",
       border: "border-yellow-400/30",
