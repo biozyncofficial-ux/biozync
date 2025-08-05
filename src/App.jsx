@@ -182,14 +182,15 @@ function App() {
     <div className={`hidden md:flex items-center transition-all duration-300 
       ${scrolled ? 'space-x-4 text-sm' : 'space-x-6 text-base md:text-lg'}`}>
       {['Home', 'About', 'Products', 'Contact'].map((item) => (
-        <Link
-          key={item}
-          to={`/${item.toLowerCase()}`}
-          className="nav-link font-medium hover:scale-105 transition-transform duration-300"
-          onClick={closeDropdowns}>
-          {item}
-        </Link>
-      ))}
+  <Link
+    key={item}
+    to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+    className="nav-link font-medium hover:scale-105 transition-transform duration-300"
+    onClick={closeDropdowns}>
+    {item}
+  </Link>
+))}
+
     </div>
 
     {/* Mobile Hamburger */}
