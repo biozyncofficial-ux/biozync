@@ -6,6 +6,7 @@ import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import C3SuperTreePage from "./pages/C3SuperTreePage";
 import C4SuperTreePage from "./pages/C4SuperTreePage";
+import ScrollToTop from "./components/ScrollToTop";
 
 import Contact from "./pages/Contact";
 
@@ -229,6 +230,7 @@ function App() {
 
       {/* Main Content */}
       <main className="flex-1">
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
