@@ -12,12 +12,6 @@ export default function Products() {
     setIsLoaded(true);
   }, []);
 
-  const stats = [
-    { icon: '🌱', value: '50%', label: 'Carbon Reduction' },
-    { icon: '🫁', value: '2×', label: 'Oxygen Production' },
-    { icon: '♻️', value: '100%', label: 'Recycled Materials' }
-  ];
-
   const products = [
     {
       id: 'c3SuperTree',
@@ -185,21 +179,6 @@ export default function Products() {
             At <strong className="glow-text" style={{ color: 'var(--primary-teal)' }}>BioZync</strong>, we're pioneering the future with groundbreaking eco-technologies. 
             Our innovative solutions tackle climate change head-on while promoting sustainable architecture and ecosystem regeneration.
           </p>
-        </div>
-
-        {/* Stats Section */}
-        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 ${isLoaded ? 'animate-slide-up' : 'opacity-0'}`} style={{ animationDelay: '0.2s' }}>
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center glass-card rounded-2xl p-8 hover:scale-105 transition-transform duration-300">
-              <div className="text-4xl mb-4">{stat.icon}</div>
-              <div className="text-4xl font-bold mb-2 glow-text" style={{ color: 'var(--primary-teal)' }}>
-                {stat.value}
-              </div>
-              <div className="text-lg font-medium" style={{ color: 'var(--text-secondary)' }}>
-                {stat.label}
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Products Grid */}
