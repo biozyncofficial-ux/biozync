@@ -283,31 +283,6 @@ export default function Contact() {
             </div>
           </div>
         </div>
-
-        {/* Premium Business Hours */}
-        <div className="relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-10 shadow-2xl">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-12 h-12 bg-gradient-to-r from-violet-400 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg shadow-violet-500/30">
-              <Clock className="w-6 h-6 text-white" />
-            </div>
-            <h2 className="text-4xl font-light text-white">Business Hours</h2>
-          </div>
-          
-          <div className="space-y-4">
-            <div className="flex justify-between items-center p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg">
-              <span className="text-lg text-slate-300 font-light">Monday - Friday</span>
-              <span className="text-lg text-teal-300 font-light">9:00 AM - 6:00 PM IST</span>
-            </div>
-            <div className="flex justify-between items-center p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg">
-              <span className="text-lg text-slate-300 font-light">Saturday</span>
-              <span className="text-lg text-teal-300 font-light">10:00 AM - 4:00 PM IST</span>
-            </div>
-            <div className="flex justify-between items-center p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-lg">
-              <span className="text-lg text-slate-300 font-light">Sunday</span>
-              <span className="text-lg text-rose-400 font-light">Closed</span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
