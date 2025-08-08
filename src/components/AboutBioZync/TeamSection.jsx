@@ -5,6 +5,10 @@ import balajiImg from "../../assets/images/team/balaji.jpg";
 import jkImg from "../../assets/images/team/jk.jpg";
 import rishikaImg from "../../assets/images/team/rishika.jpg";
 import rexImg from "../../assets/images/team/rex.jpg";
+import brind from "../../assets/images/team/brind.jpg";
+import srivarsh from "../../assets/images/team/srivar.jpg";
+import saba from "../../assets/images/team/saba.jpg";
+import Vaishnavi from "../../assets/images/team/vaishnavi.jpg";
 
 const teamMembers = [
   {
@@ -30,6 +34,30 @@ const teamMembers = [
     role: "Mentor & Scientific Advisor – Plant Biotechnology",
     img: rexImg,
     bio: "Supports the research team with expert advice on plants, genetic techniques, and project planning."
+  },
+  {
+    name: "Brindha T M ",
+    role: " Co-Founder & CTO",
+    img: brind,
+    bio: " Leads Biozync’s plant R&D, combining biotechnology and bioinformatics to engineer trees for higher carbon capture."
+  },
+  {
+    name: "L Shrivarshini",
+    role: "Research Associate",
+    img: srivarsh,
+    bio: "Works on plant genetic experiments to enhance growth and carbon fixation traits."
+  },
+  {
+    name: "Sabareeswar B",
+    role: "Founder’s Office",
+    img: saba,
+    bio: " Oversees operations, strategy, and partnerships to drive Biozync’s mission forward."
+  },
+  {
+    name: "Sri Vaishnavi Dabberu ",
+    role: " Bioinformatics Analyst",
+    img: Vaishnavi,
+    bio: " Using biotechnology and CRISPR insights to design trees that capture more carbon."
   },
 ];
 
