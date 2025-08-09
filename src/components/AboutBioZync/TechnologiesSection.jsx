@@ -6,7 +6,7 @@ const TechnologiesSection = () => {
     {
       title: "Genetically Enhanced Trees",
       description:
-      "We grow specially developed trees that capture more carbon, grow faster, and survive tough weather. These trees help us restore forests and fight climate change more effectively.",
+      "We develop advanced tree species optimized for fast growth, high CO₂ absorption, and resilience to climate stress, accelerating reforestation and carbon capture.",
       icon: TreePine,
       gradient: "from-green-500/20 to-emerald-500/20",
       border: "border-green-400/30",
