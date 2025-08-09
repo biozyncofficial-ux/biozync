@@ -15,7 +15,7 @@ const TechnologiesSection = () => {
     {
       title: "MRV System",
       description:
-      "Our system tracks trees using location-tagged data and manual checks. This ensures every project is monitored in real time and stays honest and transparent.",
+      "Our system uses geotagged field data and manual verification to provide real-time monitoring, ensuring transparency and accountability in carbon offset projects.",
       icon: Satellite,
       gradient: "from-blue-500/20 to-indigo-500/20",
       border: "border-blue-400/30",
@@ -24,7 +24,7 @@ const TechnologiesSection = () => {
     {
       title: "BioIntelligent Systems",
       description:
-      "We combine biology, smart planning tools, and on-site data to understand what the land needs. This helps us restore ecosystems more effectively and make better decisions.",
+      "By combining biotechnology with ecological modeling and field diagnostics, we enable predictive ecosystem restoration and smarter land management.",
       icon: Cpu,
       gradient: "from-purple-500/20 to-pink-500/20",
       border: "border-purple-400/30",
