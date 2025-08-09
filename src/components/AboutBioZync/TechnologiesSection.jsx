@@ -33,7 +33,7 @@ const TechnologiesSection = () => {
     {
       title: "Carbon Credit Registry",
       description:
-      "We provide a safe, easy-to-use platform to create and manage carbon credits. This makes it simple for businesses and partners to join the green economy and support climate-positive projects.",
+      "A centralized, secure platform for generating, managing, and verifying traceable carbon credits, streamlining access to green finance and carbon markets.",
       icon: Database,
       gradient: "from-yellow-500/20 to-orange-500/20",
       border: "border-yellow-400/30",
