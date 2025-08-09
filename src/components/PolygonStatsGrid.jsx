@@ -1,3 +1,5 @@
+// src/components/PolygonStatsGrid.jsx
+
 import React, { useState, useEffect } from "react";
 
 const PolygonStatsGrid = ({ collapseCountdown = "05:23:47:12" }) => {
@@ -78,69 +80,61 @@ const PolygonStatsGrid = ({ collapseCountdown = "05:23:47:12" }) => {
       glowColor: "shadow-[0_0_30px_rgba(0,230,176,0.3)]"
     }
   ];
-
-  const CountdownCard = () => (
-    <div 
-      className={`
-        relative group bg-gradient-to-br from-red-500/10 via-orange-500/5 to-red-600/10 
-        backdrop-blur-md border border-red-500/20 rounded-2xl overflow-hidden
-        transition-all duration-500 ease-out
-        hover:border-red-400/40 hover:shadow-[0_0_40px_rgba(239,68,68,0.25)]
-        hover:scale-[1.02] hover:-translate-y-1
-      `}
-      onMouseEnter={() => setHoveredCard('countdown')}
-      onMouseLeave={() => setHoveredCard(null)}
-    >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(239,68,68,0.3)_0%,transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(249,115,22,0.2)_0%,transparent_50%)]"></div>
+const CountdownCard = () => (
+  <div 
+    className={`
+      relative group bg-gradient-to-br from-[#00C095]/10 via-[#00E6B0]/5 to-[#00A085]/10 
+      backdrop-blur-md border border-[#00C095]/20 rounded-2xl overflow-hidden
+      transition-all duration-500 ease-out
+      hover:border-[#00E6B0]/40 hover:shadow-[0_0_40px_rgba(0,192,149,0.25)]
+      hover:scale-[1.02] hover:-translate-y-1
+    `}
+    onMouseEnter={() => setHoveredCard('countdown')}
+    onMouseLeave={() => setHoveredCard(null)}
+  >
+    {/* Background pattern */}
+    <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,192,149,0.3)_0%,transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,230,176,0.2)_0%,transparent_50%)]"></div>
+    </div>
+    
+    {/* Animated border */}
+    <div className="absolute inset-0 rounded-2xl border border-[#00E6B0]/20 animate-pulse"></div>
+    
+    <div className="relative p-8">
+      {/* Icon */}
+      <div className="mb-6 flex items-center gap-3">
+        <div className="text-3xl">⏰</div>
       </div>
+      {/* Countdown Card Header */}
+      {/* Title */}
+      <h3 className="text-lg md:text-xl font-bold text-[#E6FFFA] mb-6 leading-tight">
+        Time left to prevent irreversible climate collapse
+      </h3>
       
-      {/* Animated border */}
-      <div className="absolute inset-0 rounded-2xl border border-red-400/20 animate-pulse"></div>
-      
-      <div className="relative p-8">
-        {/* Icon */}
-        <div className="mb-6 flex items-center gap-3">
-          <div className="text-3xl">⏰</div>
-          <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
-        </div>
-        
-        {/* Title */}
-        <h3 className="text-lg md:text-xl font-bold text-[#E6FFFA] mb-6 leading-tight">
-          Time left to prevent irreversible climate collapse
-        </h3>
-        
-        {/* Countdown Display */}
-        <div className="relative">
-          <div className="bg-black/60 backdrop-blur-sm rounded-xl p-6 border border-red-500/20 shadow-inner">
-            <div className="text-center">
-              <div className="text-2xl md:text-3xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-orange-400 to-red-300 animate-pulse">
-                {collapseCountdown}
-              </div>
-              <div className="text-xs text-red-300/60 mt-2 tracking-wider uppercase">
-                Days : Hours : Minutes : Seconds
-              </div>
+      {/* Countdown Display */}
+      <div className="relative">
+        <div className="bg-black/60 backdrop-blur-sm rounded-xl p-6 border border-[#00C095]/20 shadow-inner">
+          <div className="text-center">
+            <div className="text-2xl md:text-3xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00C095] via-[#00E6B0] to-[#4DDBBA] animate-pulse">
+              {collapseCountdown}
+            </div>
+            <div className="text-xs text-[#80EDD1]/60 mt-2 tracking-wider uppercase">
+              Days : Hours : Minutes : Seconds
             </div>
           </div>
-          
-          {/* Pulsing dot indicator */}
-          <div className="absolute -top-2 -right-2">
-            <div className="w-4 h-4 bg-red-500 rounded-full animate-ping"></div>
-            <div className="absolute inset-0 w-4 h-4 bg-red-400 rounded-full"></div>
-          </div>
         </div>
-        
-        {/* Progress bar */}
-        <div className="mt-6">
-          <div className="w-full bg-red-900/20 rounded-full h-1.5 overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-red-500 to-orange-400 rounded-full animate-pulse w-3/4"></div>
-          </div>
+      </div>
+      
+      {/* Progress bar */}
+      <div className="mt-6">
+        <div className="w-full bg-[#00C095]/20 rounded-full h-1.5 overflow-hidden">
+          <div className="h-full bg-gradient-to-r from-[#00C095] to-[#00E6B0] rounded-full animate-pulse w-3/4"></div>
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 
   const StatCard = ({ card, index }) => (
     <div

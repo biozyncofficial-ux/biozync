@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { 
   Leaf, 
   Dna, 
@@ -9,210 +7,285 @@ import {
   Satellite, 
   Globe,
   ChevronRight,
-  Sparkles
+  Sparkles,
+  ArrowRight
 } from "lucide-react";
 
 const whyUsData = [
   {
     icon: Leaf,
     title: "Restore Degraded Land",
-    desc: "We convert barren, degraded lands into rich, biodiverse forests — creating new carbon sinks and reviving local ecosystems.",
-    color: "from-emerald-400 to-teal-400",
-    bgColor: "bg-emerald-500/10",
-    borderColor: "border-emerald-500/30",
-    hoverColor: "hover:border-emerald-400/50"
+    desc: "We convert barren, degraded lands into rich, biodiverse forests creating new carbon sinks and reviving local ecosystems.",
+    gradient: "from-[#00C095] to-[#00E6B0]",
+    bgGlow: "bg-[#00C095]/5",
+    borderColor: "border-[#00C095]/20",
+    hoverBorder: "hover:border-[#00C095]/40",
+    iconBg: "bg-gradient-to-br from-[#00C095] to-[#00E6B0]"
   },
   {
     icon: Dna,
     title: "Enhance Tree Genetics",
     desc: "Using advanced biotechnology, we engineer trees with faster growth and higher carbon capture making reforestation far more effective.",
-    color: "from-cyan-400 to-blue-400",
-    bgColor: "bg-cyan-500/10",
-    borderColor: "border-cyan-500/30",
-    hoverColor: "hover:border-cyan-400/50"
+    gradient: "from-[#00A085] to-[#4DDBBA]",
+    bgGlow: "bg-[#00A085]/5",
+    borderColor: "border-[#00A085]/20",
+    hoverBorder: "hover:border-[#00A085]/40",
+    iconBg: "bg-gradient-to-br from-[#00A085] to-[#4DDBBA]"
   },
   {
     icon: Users,
     title: "Empower SHGs and Communities",
     desc: "We partner with Self-Help Groups (SHGs), training and employing rural women and farmers creating livelihoods with dignity.",
-    color: "from-purple-400 to-pink-400",
-    bgColor: "bg-purple-500/10",
-    borderColor: "border-purple-500/30",
-    hoverColor: "hover:border-purple-400/50"
+    gradient: "from-[#CEB7FC] to-[#00E6B0]",
+    bgGlow: "bg-[#CEB7FC]/5",
+    borderColor: "border-[#CEB7FC]/20",
+    hoverBorder: "hover:border-[#CEB7FC]/40",
+    iconBg: "bg-gradient-to-br from-[#CEB7FC] to-[#00E6B0]"
   },
   {
     icon: Award,
     title: "Issue High-Integrity Carbon Credits",
     desc: "Our enhanced forests generate verifiable, transparent carbon credits aligned with Verra and future-ready for global markets.",
-    color: "from-amber-400 to-orange-400",
-    bgColor: "bg-amber-500/10",
-    borderColor: "border-amber-500/30",
-    hoverColor: "hover:border-amber-400/50"
+    gradient: "from-[#00C095] to-[#4DDBBA]",
+    bgGlow: "bg-[#4DDBBA]/5",
+    borderColor: "border-[#4DDBBA]/20",
+    hoverBorder: "hover:border-[#4DDBBA]/40",
+    iconBg: "bg-gradient-to-br from-[#00C095] to-[#4DDBBA]"
   },
   {
     icon: Satellite,
     title: "Provide Transparent Monitoring (MRV)",
     desc: "We use satellites, drones, and monitor our project health and carbon removal giving buyers full traceability.",
-    color: "from-indigo-400 to-purple-400",
-    bgColor: "bg-indigo-500/10",
-    borderColor: "border-indigo-500/30",
-    hoverColor: "hover:border-indigo-400/50"
+    gradient: "from-[#008B75] to-[#CEB7FC]",
+    bgGlow: "bg-[#008B75]/5",
+    borderColor: "border-[#008B75]/20",
+    hoverBorder: "hover:border-[#008B75]/40",
+    iconBg: "bg-gradient-to-br from-[#008B75] to-[#CEB7FC]"
   },
   {
     icon: Globe,
     title: "Scale Globally from India",
     desc: "Starting in India, our model is built to expand across continents combining tech and ecology to help the world reach net zero.",
-    color: "from-green-400 to-emerald-400",
-    bgColor: "bg-green-500/10",
-    borderColor: "border-green-500/30",
-    hoverColor: "hover:border-green-400/50"
+    gradient: "from-[#00E6B0] to-[#4DDBBA]",
+    bgGlow: "bg-[#00E6B0]/5",
+    borderColor: "border-[#00E6B0]/20",
+    hoverBorder: "hover:border-[#00E6B0]/40",
+    iconBg: "bg-gradient-to-br from-[#00E6B0] to-[#4DDBBA]"
   },
 ];
 
 const WhyUsSection = () => {
-  const { ref: headerRef, inView: headerInView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-hidden">
-      {/* Animated background elements */}
+    <section className="relative min-h-screen bg-gradient-to-br from-black via-[#0a0a0a] to-[#111111] text-[#E6FFFA] overflow-hidden">
+      {/* Enhanced background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
+        {/* Animated orbs */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#00C095]/3 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#CEB7FC]/3 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-[#00E6B0]/3 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-[#00C095] rounded-full animate-pulse opacity-20"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${3 + Math.random() * 4}s`
+              }}
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="relative z-10 py-20 px-6">
-        {/* Header Section */}
-        <motion.div
-          ref={headerRef}
-          initial={{ opacity: 0, y: 50 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 mb-4">
-            <Sparkles className="w-8 h-8 text-green-400 animate-pulse" />
-            <span className="text-green-400 font-semibold text-lg tracking-wide">OUR ADVANTAGES</span>
-            <Sparkles className="w-8 h-8 text-green-400 animate-pulse" />
+      <div className="relative z-10 py-24 px-6">
+        {/* Enhanced Header Section */}
+        <div className="text-center mb-20 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-3 mb-6 px-6 py-3 bg-gradient-to-r from-[#00C095]/10 to-[#CEB7FC]/10 rounded-full border border-[#00C095]/20 backdrop-blur-sm">
+            <Sparkles className="w-6 h-6 text-[#00C095] animate-pulse" />
+            <span className="text-[#00C095] font-bold text-lg tracking-wide uppercase">Our Advantages</span>
+            <Sparkles className="w-6 h-6 text-[#CEB7FC] animate-pulse" />
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-green-200 to-green-400 bg-clip-text text-transparent mb-6">
-            Why Choose <span className="text-green-400">Us</span>?
+          <h2 className="text-6xl md:text-7xl font-black bg-gradient-to-r from-[#E6FFFA] via-[#00E6B0] to-[#CEB7FC] bg-clip-text text-transparent mb-8 leading-tight">
+            Why Choose <span className="text-[#00C095]">Us</span>?
           </h2>
           
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-[#B3F5E6] max-w-3xl mx-auto leading-relaxed font-light">
             Discover how we're revolutionizing carbon removal through innovative technology, 
             community empowerment, and sustainable forest restoration.
           </p>
-        </motion.div>
 
-        {/* Cards Grid */}
+          {/* Decorative line */}
+          <div className="mt-12 flex items-center justify-center">
+            <div className="h-px bg-gradient-to-r from-transparent via-[#00C095]/50 to-transparent w-full max-w-md"></div>
+            <div className="mx-4 w-3 h-3 bg-[#00C095] rounded-full animate-pulse"></div>
+            <div className="h-px bg-gradient-to-r from-transparent via-[#00C095]/50 to-transparent w-full max-w-md"></div>
+          </div>
+        </div>
+
+        {/* Enhanced Cards Grid */}
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {whyUsData.map((item, index) => (
               <AnimatedCard 
                 key={index} 
                 {...item} 
                 index={index}
-                delay={index * 0.15} 
+                delay={index * 0.1}
+                isHovered={hoveredIndex === index}
+                onHover={() => setHoveredIndex(index)}
+                onLeave={() => setHoveredIndex(null)}
               />
             ))}
           </div>
         </div>
 
-        {/* Bottom CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-          className="text-center mt-20"
-        >
-          <div className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600/20 to-emerald-600/20 rounded-full border border-green-500/30 backdrop-blur-sm">
-            <span className="text-green-300 font-medium">Ready to make an impact?</span>
-            <ChevronRight className="w-5 h-5 text-green-400" />
+        {/* Enhanced Bottom CTA Section */}
+        <div className="text-center mt-24">
+          <div className="inline-flex flex-col items-center gap-6">
+            <div className="inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-[#00C095]/10 to-[#CEB7FC]/10 rounded-2xl border border-[#00C095]/30 backdrop-blur-sm hover:border-[#00C095]/50 transition-all duration-500 cursor-pointer group">
+              <span className="text-[#00E6B0] font-semibold text-lg">Ready to make an impact?</span>
+              <ArrowRight className="w-6 h-6 text-[#00C095] group-hover:translate-x-1 transition-transform duration-300" />
+            </div>
+            
+            <div className="flex items-center gap-2 opacity-60">
+              <div className="w-2 h-2 bg-[#00C095] rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-[#CEB7FC] rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+              <div className="w-2 h-2 bg-[#00E6B0] rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
-const AnimatedCard = ({ icon: Icon, title, desc, color, bgColor, borderColor, hoverColor, index, delay }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
-
+const AnimatedCard = ({ 
+  icon: Icon, 
+  title, 
+  desc, 
+  gradient, 
+  bgGlow, 
+  borderColor, 
+  hoverBorder, 
+  iconBg, 
+  index, 
+  delay,
+  isHovered,
+  onHover,
+  onLeave 
+}) => {
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 60, scale: 0.8 }}
-      animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{ 
-        duration: 0.7, 
-        delay,
-        ease: "easeOut",
-        type: "spring",
-        stiffness: 100
+    <div
+      className={`group relative overflow-hidden rounded-3xl backdrop-blur-md ${bgGlow} ${borderColor} ${hoverBorder} border-2 transition-all duration-700 hover:scale-[1.02] cursor-pointer h-full`}
+      style={{
+        boxShadow: isHovered ? '0 25px 50px rgba(0, 192, 149, 0.15)' : '0 8px 32px rgba(0, 0, 0, 0.3)',
+        transform: `translateY(${index * 2}px)`,
+        animation: `fadeInUp 0.8s ease-out ${delay}s both`
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`group relative overflow-hidden rounded-2xl backdrop-blur-sm ${bgColor} ${borderColor} ${hoverColor} border-2 transition-all duration-500 hover:scale-105 hover:shadow-2xl cursor-pointer`}
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
     >
-      {/* Animated background gradient */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+      {/* Enhanced animated background gradient */}
+      <div 
+        className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-700`}
+      />
       
       {/* Glowing border effect */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      <div 
+        className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+        style={{
+          background: `linear-gradient(135deg, rgba(0, 192, 149, 0.1) 0%, rgba(206, 183, 252, 0.1) 100%)`,
+          filter: 'blur(1px)'
+        }}
+      />
       
-      <div className="relative p-8 h-full flex flex-col">
-        {/* Icon Section */}
-        <div className="mb-6">
-          <motion.div
-            animate={isHovered ? { scale: 1.1, rotate: 5 } : { scale: 1, rotate: 0 }}
-            transition={{ duration: 0.3 }}
-            className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${color} shadow-lg`}
+      <div className="relative p-8 h-full flex flex-col min-h-[400px]">
+        {/* Enhanced Icon Section */}
+        <div className="mb-8 relative">
+          <div
+            className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl ${iconBg} shadow-lg relative overflow-hidden`}
+            style={{
+              transform: isHovered ? 'scale(1.1) rotate(5deg)' : 'scale(1) rotate(0deg)',
+              transition: 'transform 0.5s ease-out'
+            }}
           >
-            <Icon className="w-8 h-8 text-white" /> {/* ✅ Fixed icon usage */}
-          </motion.div>
+            {/* Icon glow effect */}
+            <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <Icon className="w-10 h-10 text-white relative z-10" />
+          </div>
+          
+          {/* Floating number indicator */}
+          <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-gradient-to-br from-[#00C095] to-[#CEB7FC] flex items-center justify-center shadow-lg">
+            <span className="text-xs font-black text-white">{index + 1}</span>
+          </div>
         </div>
 
-        {/* Content Section */}
-        <div className="flex-1">
-          <motion.h3 
-            animate={isHovered ? { x: 5 } : { x: 0 }}
-            transition={{ duration: 0.3 }}
-            className="text-2xl font-bold mb-4 text-white group-hover:text-green-300 transition-colors duration-300"
+        {/* Enhanced Content Section */}
+        <div className="flex-1 flex flex-col">
+          <h3 
+            className="text-2xl font-bold mb-6 text-[#E6FFFA] group-hover:text-[#00E6B0] transition-colors duration-500 leading-tight"
+            style={{
+              transform: isHovered ? 'translateX(8px)' : 'translateX(0px)',
+              transition: 'transform 0.4s ease-out'
+            }}
           >
             {title}
-          </motion.h3>
+          </h3>
           
-          <motion.p 
-            animate={isHovered ? { x: 5 } : { x: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            className="text-gray-300 leading-relaxed text-base group-hover:text-gray-200 transition-colors duration-300"
+          <p 
+            className="text-[#B3F5E6] leading-relaxed text-base group-hover:text-[#80EDD1] transition-colors duration-500 flex-1"
+            style={{
+              transform: isHovered ? 'translateX(8px)' : 'translateX(0px)',
+              transition: 'transform 0.4s ease-out 0.1s'
+            }}
           >
             {desc}
-          </motion.p>
+          </p>
+
+          {/* Enhanced hover indicator */}
+          <div 
+            className="flex items-center gap-3 mt-8 text-[#00C095] font-semibold"
+            style={{
+              opacity: isHovered ? 1 : 0,
+              transform: isHovered ? 'translateX(0px)' : 'translateX(-20px)',
+              transition: 'all 0.4s ease-out'
+            }}
+          >
+            <span className="text-sm tracking-wide">Learn more</span>
+            <ChevronRight className="w-5 h-5" />
+          </div>
         </div>
 
-        {/* Hover indicator */}
-        <motion.div
-          animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-          transition={{ duration: 0.3 }}
-          className="flex items-center gap-2 mt-6 text-green-400"
-        >
-          <span className="text-sm font-medium">Learn more</span>
-          <ChevronRight className="w-4 h-4" />
-        </motion.div>
-
-        {/* Card number indicator */}
-        <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/30 flex items-center justify-center">
-          <span className="text-xs font-bold text-green-400">{index + 1}</span>
-        </div>
+        {/* Subtle corner accent */}
+        <div 
+          className="absolute bottom-0 right-0 w-20 h-20 opacity-10 group-hover:opacity-20 transition-opacity duration-500"
+          style={{
+            background: `linear-gradient(135deg, transparent 50%, ${gradient.includes('#00C095') ? '#00C095' : '#CEB7FC'} 50%)`,
+            borderRadius: '0 0 24px 0'
+          }}
+        />
       </div>
-    </motion.div>
+
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </div>
   );
 };
 
