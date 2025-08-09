@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Users, Linkedin, Mail, ChevronLeft, ChevronRight } from "lucide-react";
+import { X } from "lucide-react";
 
 import balajiImg from "../../assets/images/team/balaji.jpg";
 import jkImg from "../../assets/images/team/jk.jpg";
@@ -11,73 +11,28 @@ import saba from "../../assets/images/team/saba.jpg";
 import Vaishnavi from "../../assets/images/team/vaishnavi.jpg";
 
 const teamMembers = [
-  {
-    name: "BALAJI S",
-    role: "Co-Founder & CEO",
-    img: balajiImg,
-    bio: "Leads both scientific research and startup development, managing the team and building the company from the ground up."
-  },
-  {
-    name: "JAYAKRISHNAA P",
-    role: "Co-Founder & Head of Commercial",
-    img: jkImg,
-    bio: "Handles business growth, partnerships, and ensures Biozync’s solution reaches real users and projects."
-  },
-  {
-    name: "RISHIKA SINGH MALVIYA",
-    role: "Genetic Engineering Associate",
-    img: rishikaImg,
-    bio: "Works on plant research and development, focusing on creating trees that can absorb more carbon."
-  },
-  {
-    name: "DR. D. REX ARUNRAJ",
-    role: "Mentor & Scientific Advisor – Plant Biotechnology",
-    img: rexImg,
-    bio: "Supports the research team with expert advice on plants, genetic techniques, and project planning."
-  },
-  {
-    name: "Brindha T M ",
-    role: " Co-Founder & CTO",
-    img: brind,
-    bio: " Leads Biozync’s plant R&D, combining biotechnology and bioinformatics to engineer trees for higher carbon capture."
-  },
-  {
-    name: "L Shrivarshini",
-    role: "Research Associate",
-    img: srivarsh,
-    bio: "Works on plant genetic experiments to enhance growth and carbon fixation traits."
-  },
-  {
-    name: "Sabareeswar B",
-    role: "Founder’s Office",
-    img: saba,
-    bio: " Oversees operations, strategy, and partnerships to drive Biozync’s mission forward."
-  },
-  {
-    name: "Sri Vaishnavi Dabberu ",
-    role: " Bioinformatics Analyst",
-    img: Vaishnavi,
-    bio: " Using biotechnology and CRISPR insights to design trees that capture more carbon."
-  },
+  { name: "BALAJI S", role: "Co-Founder & CEO", img: balajiImg, bio: "Leads both scientific research and startup development, managing the team and building the company from the ground up." },
+  { name: "JAYAKRISHNAA P", role: "Co-Founder & Head of Commercial", img: jkImg, bio: "Handles business growth, partnerships, and ensures Biozync’s solution reaches real users and projects." },
+  { name: "RISHIKA SINGH MALVIYA", role: "Genetic Engineering Associate", img: rishikaImg, bio: "Works on plant research and development, focusing on creating trees that can absorb more carbon." },
+  { name: "DR. D. REX ARUNRAJ", role: "Mentor & Scientific Advisor – Plant Biotechnology", img: rexImg, bio: "Supports the research team with expert advice on plants, genetic techniques, and project planning." },
+  { name: "Brindha T M", role: "Co-Founder & CTO", img: brind, bio: "Leads Biozync’s plant R&D, combining biotechnology and bioinformatics to engineer trees for higher carbon capture." },
+  { name: "L Shrivarshini", role: "Research Associate", img: srivarsh, bio: "Works on plant genetic experiments to enhance growth and carbon fixation traits." },
+  { name: "Sabareeswar B", role: "Founder’s Office", img: saba, bio: "Oversees operations, strategy, and partnerships to drive Biozync’s mission forward." },
+  { name: "Sri Vaishnavi Dabberu", role: "Bioinformatics Analyst", img: Vaishnavi, bio: "Using biotechnology and CRISPR insights to design trees that capture more carbon." },
 ];
 
-// ✅ Extracted reusable card
 const TeamCard = ({ member, onClick }) => (
   <article
-    className="team-card rounded-3xl overflow-hidden shadow-xl"
+    className="rounded-xl overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300 bg-gray-900"
     onClick={onClick}
-    role="button"
-    tabIndex={0}
-    onKeyDown={(e) => e.key === 'Enter' && onClick()}
-    aria-label={`View more about ${member.name}`}
   >
-    <figure className="team-image relative w-full h-72 lg:h-80">
+    <figure className="relative w-full h-40 sm:h-48 md:h-56 lg:h-60">
       <img src={member.img} alt={member.name} className="w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
     </figure>
-    <figcaption className="p-6 text-center">
-      <h3 className="text-xl font-bold mb-3">{member.name}</h3>
-      <p className="text-sm font-medium uppercase tracking-wider" style={{ color: "var(--primary-teal)" }}>
+    <figcaption className="p-3 text-center">
+      <h3 className="text-sm sm:text-base md:text-lg font-bold mb-1 text-white">{member.name}</h3>
+      <p className="text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-wider text-[var(--primary-teal)]">
         {member.role}
       </p>
     </figcaption>
@@ -86,125 +41,66 @@ const TeamCard = ({ member, onClick }) => (
 
 const TeamSection = () => {
   const [selectedMember, setSelectedMember] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
+  const [offset, setOffset] = useState(0);
 
-  // Fade-in on load
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
+  const loopedMembers = [...teamMembers, ...teamMembers];
 
-  // Mobile-only auto-scroll
   useEffect(() => {
-    if (window.innerWidth >= 1024) return;
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % teamMembers.length);
-    }, 3000);
+      setOffset((prev) => (prev + 0.3) % (100 * teamMembers.length)); // slower on mobile
+    }, 50); // ~60fps smooth
     return () => clearInterval(interval);
   }, []);
 
-  // Escape to close modal
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") setSelectedMember(null);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % teamMembers.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
-  };
-
   return (
-    <section className="team-section py-20 px-6 sm:px-10 lg:px-20 relative">
-      {/* Header */}
-      <div className={`text-center mb-16 transition-opacity duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-        <Users className="w-16 h-16 mx-auto mb-6" style={{ color: "var(--primary-teal)" }} />
-        <h2 className="text-5xl md:text-6xl font-black mb-6" style={{ background: "var(--gradient-primary)", WebkitBackgroundClip: "text", color: "transparent" }}>
-          Meet Our Team
-        </h2>
-        <p className="max-w-3xl mx-auto text-xl" style={{ color: "var(--text-secondary)" }}>
-          The brilliant minds behind <span className="font-semibold" style={{ color: "var(--primary-teal)" }}>Biozync</span> — innovators shaping a sustainable future through biotechnology.
+    <section className="py-12 px-4 sm:px-6 md:px-10 bg-black text-white">
+      <div className="text-center mb-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2">Meet Our Team</h2>
+        <p className="mt-1 sm:mt-2 text-gray-400 text-sm sm:text-base">
+          The people driving BioZync’s mission forward
         </p>
       </div>
 
-      {/* Desktop Grid */}
-      <div className={`hidden lg:grid lg:grid-cols-4 gap-8 max-w-7xl mx-auto transition-opacity duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-        {teamMembers.map((member, index) => (
-          <TeamCard key={index} member={member} onClick={() => setSelectedMember(member)} />
-        ))}
-      </div>
-
-      {/* Mobile Carousel */}
-      <div className={`lg:hidden relative max-w-md mx-auto mt-10 transition-opacity duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-        <div className="overflow-hidden">
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {teamMembers.map((member, index) => (
-              <div key={index} className="w-full flex-shrink-0 px-4">
-                <TeamCard member={member} onClick={() => setSelectedMember(member)} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Manual Carousel Buttons */}
-        <button onClick={prevSlide} className="carousel-button absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center">
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button onClick={nextSlide} className="carousel-button absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center">
-          <ChevronRight className="w-6 h-6" />
-        </button>
-      </div>
-
-      {/* Modal */}
-      {selectedMember && (
+      <div className="overflow-hidden relative">
         <div
-          className="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/70"
-          onClick={() => setSelectedMember(null)}
-          role="dialog"
-          aria-modal="true"
+          className="flex"
+          style={{
+            transform: `translateX(-${offset}%)`,
+            transition: "transform 0.02s linear",
+          }}
         >
-          <div
-            className="modal-content relative max-w-md w-full rounded-3xl p-8 text-center bg-white/5 backdrop-blur-md"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setSelectedMember(null)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center"
-              aria-label="Close"
+          {loopedMembers.map((member, idx) => (
+            <div
+              key={idx}
+              className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 p-2 flex-shrink-0"
             >
-              <span className="text-xl">×</span>
+              <TeamCard member={member} onClick={() => setSelectedMember(member)} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {selectedMember && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-4">
+          <div className="bg-gray-900 p-6 rounded-3xl max-w-lg w-full relative">
+            <button
+              className="absolute top-4 right-4 text-white hover:text-red-500"
+              onClick={() => setSelectedMember(null)}
+            >
+              <X />
             </button>
             <img
               src={selectedMember.img}
               alt={selectedMember.name}
-              className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4"
-              style={{ borderColor: "var(--primary-teal)" }}
+              className="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto object-cover border-4 border-[var(--primary-teal)]"
             />
-            <h3 className="text-2xl font-bold mb-2">{selectedMember.name}</h3>
-            <p className="text-sm font-medium mb-4 uppercase tracking-wider" style={{ color: "var(--primary-teal)" }}>
+            <h3 className="text-lg sm:text-xl font-bold mt-4 text-center">
+              {selectedMember.name}
+            </h3>
+            <p className="text-center text-[var(--primary-teal)] font-medium mb-3 text-sm sm:text-base">
               {selectedMember.role}
             </p>
-            <p className="text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-              {selectedMember.bio}
-            </p>
-            <div className="flex justify-center space-x-4 mt-6">
-              <a href="#" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href={`mailto:someone@example.com`} className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center">
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
+            <p className="text-gray-300 text-center text-xs sm:text-sm">{selectedMember.bio}</p>
           </div>
         </div>
       )}
