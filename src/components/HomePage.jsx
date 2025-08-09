@@ -3,7 +3,7 @@ import PolygonStatsGrid from './PolygonStatsGrid';
 import WhyUsSection from './WhyUsSection';
 import MissionVision from "../components/MissionVision";
 import ContactForm from './ContactForm';
-import SolutionsSlider from './SolutionsSlider'; // ✅ Import new component
+import SolutionsSlider1 from './SolutionsSlider1'; // ✅ Import new component
 
 const bgVideo = "https://res.cloudinary.com/dwk7tj6jb/video/upload/dbm3thp2dzkxptkoitit.mp4";
 
@@ -88,7 +88,7 @@ function HomePage() {
       <PolygonStatsGrid collapseCountdown={collapseCountdown} netZeroCountdown={netZeroCountdown} />
             
       {/* ✅ Solutions Slider */}
-      <SolutionsSlider />
+      <SolutionsSlider1 />
 
       {/* ✅ Why Us Section */}
       <WhyUsSection />
