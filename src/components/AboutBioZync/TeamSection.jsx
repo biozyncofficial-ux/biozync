@@ -8,7 +8,7 @@ import rexImg from "../../assets/images/team/rex.jpg";
 import brind from "../../assets/images/team/brind.jpg";
 import srivarsh from "../../assets/images/team/srivar.jpg";
 import saba from "../../assets/images/team/saba.jpg";
-import Vaishnavi from "../../assets/images/team/vaishnavi.jpg";
+import vaishnavi from "../../assets/images/team/vaishnavi.jpg";
 
 const teamMembers = [
   { name: "BALAJI S", role: "Co-Founder & CEO", img: balajiImg, bio: "Leads both scientific research and startup development, managing the team and building the company from the ground up." },
@@ -18,7 +18,7 @@ const teamMembers = [
   { name: "Brindha T M", role: "Co-Founder & CTO", img: brind, bio: "Leads Biozync’s plant R&D, combining biotechnology and bioinformatics to engineer trees for higher carbon capture." },
   { name: "L Shrivarshini", role: "Research Associate", img: srivarsh, bio: "Works on plant genetic experiments to enhance growth and carbon fixation traits." },
   { name: "Sabareeswar B", role: "Founder’s Office", img: saba, bio: "Oversees operations, strategy, and partnerships to drive Biozync’s mission forward." },
-  { name: "Sri Vaishnavi Dabberu", role: "Bioinformatics Analyst", img: Vaishnavi, bio: "Using biotechnology and CRISPR insights to design trees that capture more carbon." },
+  { name: "Sri Vaishnavi Dabberu", role: "Bioinformatics Analyst", img: vaishnavi, bio: "Using biotechnology and CRISPR insights to design trees that capture more carbon." },
 ];
 
 const TeamCard = ({ member, onClick }) => (

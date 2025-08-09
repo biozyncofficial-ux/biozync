@@ -2,63 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PolygonStatsGrid from './PolygonStatsGrid';
 import WhyUsSection from './WhyUsSection';
 import MissionVision from "../components/MissionVision";
-import  ContactForm from './ContactForm';
+import ContactForm from './ContactForm';
+import SolutionsSlider from './SolutionsSlider'; // ✅ Import new component
 
 const bgVideo = "https://res.cloudinary.com/dwk7tj6jb/video/upload/dbm3thp2dzkxptkoitit.mp4";
-
-// ✅ Solutions Slider Component
-const SolutionsSlider = () => {
-  const solutions = [
-    { title: "Bioengineered Carbon-Capturing Trees", description: "Genetically enhanced trees that absorb CO₂ faster and thrive in challenging environments." },
-    { title: "Verified Tree-Based Carbon Credits", description: "Scientifically validated carbon sequestration backed by transparent field data and standards." },
-    { title: "Regenerative Reforestation", description: "Restoring degraded ecosystems using native, fast-growing, high-impact species." },
-    { title: "Climate-Resilient Tree Design", description: "Engineered trees that grow faster, restore land, and support biodiversity and local livelihoods." }
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % solutions.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [solutions.length]);
-
-  return (
-    <section className="py-20 bg-gradient-to-br from-black via-gray-900 to-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">Solutions</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Innovative approaches to tackle climate change and build a sustainable future
-          </p>
-        </div>
-        
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-teal-500/10 to-emerald-500/10 backdrop-blur-sm border border-teal-500/20">
-          <div className="p-8 md:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {solutions.map((solution, index) => (
-                <div
-                  key={index}
-                  className={`p-6 rounded-xl transition-all duration-500 transform ${
-                    index === currentIndex
-                      ? 'bg-gradient-to-br from-teal-500/20 to-emerald-500/20 scale-105 shadow-lg shadow-teal-500/25'
-                      : 'bg-gray-800/50 hover:bg-gray-700/50'
-                  }`}
-                >
-                  <h3 className="text-xl font-semibold text-white mb-3">{solution.title}</h3>
-                  <p className="text-gray-300 text-sm">{solution.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 function HomePage() {
   const [collapseCountdown, setCollapseCountdown] = useState('');
@@ -115,30 +62,31 @@ function HomePage() {
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80 z-10"></div>
         {/* Content */}
-<div className="relative z-20 max-w-7xl w-full px-4 sm:px-8 lg:px-16">
-  <div className="max-w-3xl">
-    <h1 className="text-left text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-snug">
-      <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
-        Healing the past
-      </span>
-      <br />
-      <span className="text-white">crafting new paths</span>
-    </h1>
-    <p className="text-left text-lg md:text-xl text-gray-300 mb-6">
-      Mission Towards a Sustainable Earth
-    </p>
-    <button
-      onClick={scrollToContact}
-      className="px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold rounded-full text-base hover:from-teal-600 hover:to-emerald-600 transform hover:scale-105 transition-all duration-300 shadow-md shadow-teal-500/25 hover:shadow-lg hover:shadow-teal-500/40"
-    >
-      Get Update
-    </button>
-  </div>
-</div>
+        <div className="relative z-20 max-w-7xl w-full px-4 sm:px-8 lg:px-16">
+          <div className="max-w-3xl">
+            <h1 className="text-left text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-snug">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
+                Healing the past
+              </span>
+              <br />
+              <span className="text-white">crafting new paths</span>
+            </h1>
+            <p className="text-left text-lg md:text-xl text-gray-300 mb-6">
+              Mission Towards a Sustainable Earth
+            </p>
+            <button
+              onClick={scrollToContact}
+              className="px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold rounded-full text-base hover:from-teal-600 hover:to-emerald-600 transform hover:scale-105 transition-all duration-300 shadow-md shadow-teal-500/25 hover:shadow-lg hover:shadow-teal-500/40"
+            >
+              Get Update
+            </button>
+          </div>
+        </div>
       </section>
+
       {/* ✅ Stats Grid */}
       <PolygonStatsGrid collapseCountdown={collapseCountdown} netZeroCountdown={netZeroCountdown} />
-             
+            
       {/* ✅ Solutions Slider */}
       <SolutionsSlider />
 
@@ -147,9 +95,9 @@ function HomePage() {
       
       {/* ✅ Mission and Vision Section */}
       <MissionVision />
+      
       {/* ✅ Contact Form Section */}
-       <ContactForm />
-
+      <ContactForm />
     </div>
   );
 }
