@@ -9,10 +9,10 @@ const bgVideo = "https://res.cloudinary.com/dwk7tj6jb/video/upload/dbm3thp2dzkxp
 // ✅ Solutions Slider Component
 const SolutionsSlider = () => {
   const solutions = [
-    { title: "Renewable Energy", description: "Solar, wind, and hydroelectric power solutions" },
-    { title: "Carbon Capture", description: "Advanced technologies to remove CO2 from atmosphere" },
-    { title: "Ecosystem Restoration", description: "Healing damaged ecosystems and biodiversity" },
-    { title: "Sustainable Agriculture", description: "Regenerative farming practices for food security" }
+    { title: "Bioengineered Carbon-Capturing Trees", description: "Genetically enhanced trees that absorb CO₂ faster and thrive in challenging environments." },
+    { title: "Verified Tree-Based Carbon Credits", description: "Scientifically validated carbon sequestration backed by transparent field data and standards." },
+    { title: "Regenerative Reforestation", description: "Restoring degraded ecosystems using native, fast-growing, high-impact species." },
+    { title: "Climate-Resilient Tree Design", description: "Engineered trees that grow faster, restore land, and support biodiversity and local livelihoods." }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
