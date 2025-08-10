@@ -12,13 +12,14 @@ import vaishnavi from "../../assets/images/team/vaishnavi.jpg";
 
 const teamMembers = [
   { name: "BALAJI S", role: "Co-Founder & CEO", img: balajiImg, bio: "Leads both scientific research and startup development, managing the team and building the company from the ground up." },
+  { name: "Brindha T M", role: "Co-Founder & CTO", img: brind, bio: "Leads Biozync’s plant R&D, combining biotechnology and bioinformatics to engineer trees for higher carbon capture." },
   { name: "JAYAKRISHNAA P", role: "Co-Founder & Head of Commercial", img: jkImg, bio: "Handles business growth, partnerships, and ensures Biozync’s solution reaches real users and projects." },
   { name: "RISHIKA SINGH MALVIYA", role: "Genetic Engineering Associate", img: rishikaImg, bio: "Works on plant research and development, focusing on creating trees that can absorb more carbon." },
+  { name: "SHRIVARSHINI L", role: "Research Associate", img: srivarsh, bio: "Works on plant genetic experiments to enhance growth and carbon fixation traits." },
+  { name: "SRI VAISHNAVI DABBERU", role: "Bioinformatics Analyst", img: vaishnavi, bio: "Using biotechnology and CRISPR insights to design trees that capture more carbon." },
+  { name: "SABAREESWAR B", role: "Founder’s Office", img: saba, bio: "Oversees operations, strategy, and partnerships to drive Biozync’s mission forward." },
   { name: "DR. D. REX ARUNRAJ", role: "Mentor & Scientific Advisor – Plant Biotechnology", img: rexImg, bio: "Supports the research team with expert advice on plants, genetic techniques, and project planning." },
-  { name: "Brindha T M", role: "Co-Founder & CTO", img: brind, bio: "Leads Biozync’s plant R&D, combining biotechnology and bioinformatics to engineer trees for higher carbon capture." },
-  { name: "L Shrivarshini", role: "Research Associate", img: srivarsh, bio: "Works on plant genetic experiments to enhance growth and carbon fixation traits." },
-  { name: "Sabareeswar B", role: "Founder’s Office", img: saba, bio: "Oversees operations, strategy, and partnerships to drive Biozync’s mission forward." },
-  { name: "Sri Vaishnavi Dabberu", role: "Bioinformatics Analyst", img: vaishnavi, bio: "Using biotechnology and CRISPR insights to design trees that capture more carbon." },
+  
 ];
 
 const TeamCard = ({ member, onClick }) => (
@@ -42,20 +43,35 @@ const TeamCard = ({ member, onClick }) => (
 const TeamSection = () => {
   const [selectedMember, setSelectedMember] = useState(null);
   const [offset, setOffset] = useState(0);
+  const [showSlider, setShowSlider] = useState(false);
 
-  const loopedMembers = [...teamMembers, ...teamMembers];
+  const totalMembers = teamMembers.length;
+  const visibleCards = 5; // adjust for breakpoints
+  const maxOffset = (100 / visibleCards) * (totalMembers - visibleCards);
 
   useEffect(() => {
+    const step = 0.3; // speed
     const interval = setInterval(() => {
-      setOffset((prev) => (prev + 0.3) % (100 * teamMembers.length)); // slower on mobile
-    }, 50); // ~60fps smooth
+      setOffset((prev) => {
+        if (prev >= maxOffset) {
+          clearInterval(interval);
+          setOffset(maxOffset);
+          setShowSlider(true); // show slider after autoplay ends
+          return maxOffset;
+        }
+        return prev + step;
+      });
+    }, 50);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [maxOffset]);
 
   return (
     <section className="py-12 px-4 sm:px-6 md:px-10 bg-black text-white">
       <div className="text-center mb-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2">Meet Our Team</h2>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-2">
+          Meet Our Team
+        </h2>
         <p className="mt-1 sm:mt-2 text-gray-400 text-sm sm:text-base">
           The people driving BioZync’s mission forward
         </p>
@@ -69,16 +85,34 @@ const TeamSection = () => {
             transition: "transform 0.02s linear",
           }}
         >
-          {loopedMembers.map((member, idx) => (
+          {teamMembers.map((member, idx) => (
             <div
               key={idx}
               className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 p-2 flex-shrink-0"
             >
-              <TeamCard member={member} onClick={() => setSelectedMember(member)} />
+              <TeamCard
+                member={member}
+                onClick={() => setSelectedMember(member)}
+              />
             </div>
           ))}
         </div>
       </div>
+
+      {/* Slider for manual control after autoplay */}
+      {showSlider && (
+        <div className="mt-4">
+          <input
+            type="range"
+            min="0"
+            max={maxOffset}
+            step="0.1"
+            value={offset}
+            onChange={(e) => setOffset(parseFloat(e.target.value))}
+            className="w-full accent-[var(--primary-teal)]"
+          />
+        </div>
+      )}
 
       {selectedMember && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-4">
@@ -100,7 +134,9 @@ const TeamSection = () => {
             <p className="text-center text-[var(--primary-teal)] font-medium mb-3 text-sm sm:text-base">
               {selectedMember.role}
             </p>
-            <p className="text-gray-300 text-center text-xs sm:text-sm">{selectedMember.bio}</p>
+            <p className="text-gray-300 text-center text-xs sm:text-sm">
+              {selectedMember.bio}
+            </p>
           </div>
         </div>
       )}
