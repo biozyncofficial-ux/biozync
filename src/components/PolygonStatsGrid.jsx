@@ -1,8 +1,12 @@
 // src/components/PolygonStatsGrid.jsx
 
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 const PolygonStatsGrid = ({ collapseCountdown = "05:23:47:12" }) => {
+  const navigate = useNavigate();
   const [hoveredCard, setHoveredCard] = useState(null);
   const [animatedValues, setAnimatedValues] = useState({
     actions: 0,
@@ -53,7 +57,7 @@ const PolygonStatsGrid = ({ collapseCountdown = "05:23:47:12" }) => {
       gradient: "bg-gradient-to-br from-[#00C095]/20 via-[#00E6B0]/10 to-[#00A085]/20",
       border: "border-[#00C095]/30",
       textColor: "text-[#00E6B0]",
-      glowColor: "shadow-[0_0_30px_rgba(0,192,149,0.3)]"
+      glowColor: "shadow-[0_0_30px_rgba(0,192,149,0)]"
     },
     {
       id: 'actions',
@@ -65,7 +69,7 @@ const PolygonStatsGrid = ({ collapseCountdown = "05:23:47:12" }) => {
       gradient: "bg-gradient-to-br from-[#00A085]/20 via-[#00C095]/10 to-[#4DDBBA]/20",
       border: "border-[#00E6B0]/30",
       textColor: "text-[#4DDBBA]",
-      glowColor: "shadow-[0_0_30px_rgba(77,219,186,0.3)]"
+      glowColor: "shadow-[0_0_30px_rgba(77,219,186,0)]"
     },
     {
       id: 'savings',
@@ -77,7 +81,7 @@ const PolygonStatsGrid = ({ collapseCountdown = "05:23:47:12" }) => {
       gradient: "bg-gradient-to-br from-[#00E6B0]/20 via-[#4DDBBA]/10 to-[#00C095]/20",
       border: "border-[#4DDBBA]/30",
       textColor: "text-[#00E6B0]",
-      glowColor: "shadow-[0_0_30px_rgba(0,230,176,0.3)]"
+      glowColor: "shadow-[0_0_30px_rgba(0,230,176,0)]"
     }
   ];
 const CountdownCard = () => (
@@ -251,11 +255,14 @@ const CountdownCard = () => (
         
         {/* Call to action */}
         <div className="text-center mt-16">
-          <button className="group relative bg-gradient-to-r from-[#00C095] to-[#00E6B0] text-[#000000] font-bold py-4 px-8 rounded-xl hover:shadow-[0_0_30px_rgba(0,192,149,0.4)] transition-all duration-300 hover:scale-105">
-            <span className="relative z-10">Take Action Now</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00E6B0] to-[#4DDBBA] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
-        </div>
+      <button
+      onClick={() => navigate("/contact")}
+      className="group relative bg-gradient-to-r from-[#00C095] to-[#00E6B0] text-[#000000] font-bold py-4 px-8 rounded-xl hover:shadow-[0_0_30px_rgba(0,192,149,0.2)] transition-all duration-300 hover:scale-105"
+    >
+      <span className="relative z-10">Take Action Now</span>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#00E6B0] to-[#4DDBBA] rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    </button>
+  </div>
       </div>
       
       <style jsx>{`
