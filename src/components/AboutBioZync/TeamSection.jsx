@@ -39,32 +39,28 @@ const TeamCard = ({ member, onClick }) => (
     </figcaption>
   </article>
 );
-
 const TeamSection = () => {
   const [selectedMember, setSelectedMember] = useState(null);
   const [offset, setOffset] = useState(0);
-  const [showSlider, setShowSlider] = useState(false);
 
-  const totalMembers = teamMembers.length;
   const visibleCards = 5; // adjust for breakpoints
-  const maxOffset = (100 / visibleCards) * (totalMembers - visibleCards);
+  const totalMembers = teamMembers.length;
 
   useEffect(() => {
     const step = 0.3; // speed
     const interval = setInterval(() => {
       setOffset((prev) => {
-        if (prev >= maxOffset) {
-          clearInterval(interval);
-          setOffset(maxOffset);
-          setShowSlider(true); // show slider after autoplay ends
-          return maxOffset;
+        const next = prev + step;
+        // When we finish the first set, instantly reset
+        if (next >= (100 / visibleCards) * totalMembers) {
+          return 0;
         }
-        return prev + step;
+        return next;
       });
     }, 50);
 
     return () => clearInterval(interval);
-  }, [maxOffset]);
+  }, [visibleCards, totalMembers]);
 
   return (
     <section className="py-12 px-4 sm:px-6 md:px-10 bg-black text-white">
@@ -85,7 +81,7 @@ const TeamSection = () => {
             transition: "transform 0.02s linear",
           }}
         >
-          {teamMembers.map((member, idx) => (
+          {[...teamMembers, ...teamMembers].map((member, idx) => (
             <div
               key={idx}
               className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 p-2 flex-shrink-0"
@@ -98,21 +94,6 @@ const TeamSection = () => {
           ))}
         </div>
       </div>
-
-      {/* Slider for manual control after autoplay */}
-      {showSlider && (
-        <div className="mt-4">
-          <input
-            type="range"
-            min="0"
-            max={maxOffset}
-            step="0.1"
-            value={offset}
-            onChange={(e) => setOffset(parseFloat(e.target.value))}
-            className="w-full accent-[var(--primary-teal)]"
-          />
-        </div>
-      )}
 
       {selectedMember && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-4">
@@ -143,5 +124,6 @@ const TeamSection = () => {
     </section>
   );
 };
+
 
 export default TeamSection;
