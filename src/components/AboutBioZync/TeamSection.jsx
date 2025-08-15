@@ -41,6 +41,7 @@ const TeamCard = ({ member, onClick }) => (
     </figcaption>
   </article>
 );
+
 const TeamSection = () => {
   const [selectedMember, setSelectedMember] = useState(null);
   const [offset, setOffset] = useState(0);
