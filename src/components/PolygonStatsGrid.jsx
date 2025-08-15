@@ -112,7 +112,7 @@ const CountdownCard = () => (
       </div>
       {/* Countdown Card Header */}
       {/* Title */}
-      <h3 className="text-lg md:text-xl font-bold text-[#E6FFFA] mb-6 leading-tight">
+<h3 className="text-lg md:text-xl font-bold text-[#00C095] mb-6 leading-tight">
         Time left to prevent irreversible climate collapse
       </h3>
       
@@ -123,7 +123,7 @@ const CountdownCard = () => (
             <div className="text-2xl md:text-3xl font-mono font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00C095] via-[#00E6B0] to-[#4DDBBA] animate-pulse">
               {collapseCountdown}
             </div>
-            <div className="text-xs text-[#80EDD1]/60 mt-2 tracking-wider uppercase">
+           <div className="text-xs text-white/70 mt-2 tracking-wider uppercase">
               Days : Hours : Minutes : Seconds
             </div>
           </div>
@@ -176,26 +176,26 @@ const CountdownCard = () => (
         </div>
         
         {/* Title */}
-        <h3 className="text-lg md:text-xl font-bold text-[#E6FFFA] mb-4 group-hover:text-[#00E6B0] transition-colors duration-300">
+       <h3 className="text-lg md:text-xl font-bold text-[#00C095] mb-4 transition-colors duration-300">
           {card.title}
         </h3>
         
         {/* Main value */}
         <div className="mb-3">
-          <p className={`text-3xl md:text-4xl font-black ${card.textColor} transition-all duration-300 group-hover:scale-105`}>
+          <p className={`text-3xl md:text-4xl font-black white transition-all duration-300 group-hover:scale-105`}>
             {card.value}
           </p>
         </div>
         
         {/* Subtitle */}
         {card.subtitle && (
-          <p className="text-[#B3F5E6] text-sm mb-4 group-hover:text-[#80EDD1] transition-colors duration-300">
+          <p className="text-white/90 text-sm mb-4 transition-colors duration-300">
             {card.subtitle}
           </p>
         )}
         
         {/* Description */}
-        <p className="text-[#80EDD1]/60 text-xs leading-relaxed group-hover:text-[#80EDD1]/80 transition-colors duration-300">
+       <p className="text-white/80 text-xs leading-relaxed transition-colors duration-300">
           {card.description}
         </p>
         
@@ -234,10 +234,10 @@ const CountdownCard = () => (
             <div className="w-2 h-2 bg-[#00E6B0] rounded-full animate-pulse"></div>
             <span className="text-[#B3F5E6] text-sm font-medium uppercase tracking-wider">Real-time Impact</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#E6FFFA] mb-4">
+<h2 className="text-3xl md:text-4xl font-bold white mb-4">
             Global Climate Impact
           </h2>
-          <p className="text-[#B3F5E6] max-w-2xl mx-auto">
+<p className="text-white max-w-2xl mx-auto">
             Track real-time environmental data and collective action towards a sustainable future
           </p>
         </div>

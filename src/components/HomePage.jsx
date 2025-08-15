@@ -60,7 +60,7 @@ function HomePage() {
         </video>
         
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/80 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/20 to-black/90 z-10"></div>
         {/* Content */}
         <div className="relative z-20 max-w-7xl w-full px-4 sm:px-8 lg:px-16">
           <div className="max-w-3xl">

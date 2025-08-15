@@ -31,20 +31,26 @@ const SolutionsSlider = () => {
         
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-teal-500/10 to-emerald-500/10 backdrop-blur-sm border border-teal-500/20">
           <div className="p-8 md:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 aspect-1:1">
               {solutions.map((solution, index) => (
-                <div
-                  key={index}
-                  className={`p-6 rounded-xl transition-all duration-500 transform ${
-                    index === currentIndex
-                      ? 'bg-gradient-to-br from-teal-500/20 to-emerald-500/20 scale-105 shadow-lg shadow-teal-500/25'
-                      : 'bg-gray-800/50 hover:bg-gray-700/50'
-                  }`}
-                >
-                  <h3 className="text-xl font-semibold text-white mb-3">{solution.title}</h3>
-                  <p className="text-gray-300 text-sm">{solution.description}</p>
-                </div>
-              ))}
+  <div
+    key={index}
+    className={`p-6 rounded-xl transition-all duration-500 transform ${
+      index === currentIndex
+        ? 'bg-gradient-to-br from-teal-500/20 to-emerald-500/20 scale-105 shadow-lg shadow-teal-500/25'
+        : 'bg-gray-800/50 hover:bg-gray-700/50'
+    }`}
+  >
+    <h3
+      className="text-xl font-semibold mb-3"
+      style={{ color: '#00C095' }}
+    >
+      {solution.title}
+    </h3>
+    <p className="text-white text-sm">{solution.description}</p>
+  </div>
+))}
+
             </div>
           </div>
         </div>

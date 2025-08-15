@@ -5,11 +5,16 @@ const HeroSection = ({ isVideoPlaying, setIsVideoPlaying }) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
       {/* Animated background */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-72 h-72 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 left-1/2 w-56 h-56 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
-      </div>
+<div className="absolute inset-0 opacity-20">
+  {/* Soft Green Glow 1 */}
+  <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-green-400 to-green-600 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+  
+  {/* Soft Lime Glow */}
+  <div className="absolute top-3/4 right-1/4 w-72 h-72 bg-gradient-to-r from-lime-400 to-emerald-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
+  
+  {/* Soft Teal-Lime Glow */}
+  <div className="absolute bottom-1/4 left-1/2 w-56 h-56 bg-gradient-to-r from-teal-400 to-green-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+</div>
 
       <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div className="text-center lg:text-left">
@@ -29,7 +34,7 @@ const HeroSection = ({ isVideoPlaying, setIsVideoPlaying }) => {
 
           <p className="text-xl text-gray-300 mb-8 leading-relaxed">
             Biozync is a climate biotech company pioneering a radical approach to environmental restoration.
-            We're not just fighting climate change — we're solving it at the source by reimagining nature itself.
+            We're not just fighting climate change we're solving it at the source by reimagining nature itself.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">

@@ -32,7 +32,9 @@ const TeamCard = ({ member, onClick }) => (
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
     </figure>
     <figcaption className="p-3 text-center">
-      <h3 className="text-sm sm:text-base md:text-lg font-bold mb-1 text-white">{member.name}</h3>
+      <h3
+  className="text-sm sm:text-base md:text-lg font-bold mb-1"
+  style={{ color: "#00C095" }}>{member.name}</h3>
       <p className="text-[10px] sm:text-xs md:text-sm font-medium uppercase tracking-wider text-[var(--primary-teal)]">
         {member.role}
       </p>
@@ -109,9 +111,9 @@ const TeamSection = () => {
               alt={selectedMember.name}
               className="w-28 h-28 sm:w-32 sm:h-32 rounded-full mx-auto object-cover border-4 border-[var(--primary-teal)]"
             />
-            <h3 className="text-lg sm:text-xl font-bold mt-4 text-center">
-              {selectedMember.name}
-            </h3>
+            <h3 className="text-lg sm:text-xl font-bold mt-4 text-center" style={{ color: "#00C095" }}>
+  {selectedMember.name}
+</h3>
             <p className="text-center text-[var(--primary-teal)] font-medium mb-3 text-sm sm:text-base">
               {selectedMember.role}
             </p>
