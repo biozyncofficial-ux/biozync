@@ -286,9 +286,18 @@ function App() {
             </div>
 
             {/* Footer Socials */}
+            
             <div className="flex flex-col sm:flex-row justify-center md:justify-end space-y-2 sm:space-y-0 sm:space-x-4 md:space-x-6">
               <a
-                href="https://linkedin.com"
+                href="https://https://x.com/Biozync.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link hover:scale-110 transition-all duration-300 text-xs sm:text-sm md:text-base text-center sm:text-left"
+              >
+                x
+              </a>
+              <a
+                href="https://www.linkedin.com/company/biozync.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-link hover:scale-110 transition-all duration-300 text-xs sm:text-sm md:text-base text-center sm:text-left"
@@ -296,7 +305,7 @@ function App() {
                 LinkedIn
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/biozync/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="footer-link hover:scale-110 transition-all duration-300 text-xs sm:text-sm md:text-base text-center sm:text-left"

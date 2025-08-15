@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, Linkedin, Instagram, Twitter, Github, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, Linkedin, Instagram, X, Github, Globe} from 'lucide-react';
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -123,7 +123,7 @@ export default function Contact() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <a 
-                href="https://linkedin.com/company/biozync" 
+                href="https://www.linkedin.com/company/biozync.com/" 
                 className="group relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 shadow-lg hover:shadow-xl hover:shadow-blue-500/20"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -133,7 +133,7 @@ export default function Contact() {
                 </div>
               </a>
               <a 
-                href="https://instagram.com/biozync" 
+                href="https://www.instagram.com/biozync/" 
                 className="group relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 shadow-lg hover:shadow-xl hover:shadow-pink-500/20"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -143,13 +143,13 @@ export default function Contact() {
                 </div>
               </a>
               <a 
-                href="https://twitter.com/biozync" 
+                href="https://x.com/Biozync" 
                 className="group relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 shadow-lg hover:shadow-xl hover:shadow-sky-500/20"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative flex items-center gap-4">
-                  <Twitter className="w-8 h-8 text-sky-400 group-hover:scale-110 transition-transform duration-300" />
-                  <span className="text-slate-300 group-hover:text-sky-300 font-light text-lg">Twitter</span>
+                  <X className="w-8 h-8 text-sky-400 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="text-slate-300 group-hover:text-sky-300 font-light text-lg">X</span>
                 </div>
               </a>
               

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Send, Linkedin, Instagram, Twitter, Github } from "lucide-react";
+import { Send, Linkedin, Instagram, X, Github } from "lucide-react";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -164,22 +164,22 @@ export default function ContactForm() {
         </h3>
         <div className="flex justify-center gap-6">
           <a
-            href="https://linkedin.com/company/sample"
+            href="https://www.linkedin.com/company/biozync.com/"
             className="flex items-center gap-2 text-gray-300 hover:text-teal-300 transition-colors"
           >
             <Linkedin className="w-6 h-6" /> LinkedIn
           </a>
           <a
-            href="https://instagram.com/sample"
+            href="https://www.instagram.com/biozync/"
             className="flex items-center gap-2 text-gray-300 hover:text-teal-300 transition-colors"
           >
             <Instagram className="w-6 h-6" /> Instagram
           </a>
           <a
-            href="https://twitter.com/sample"
+            href="https://www.linkedin.com/company/biozync.com/"
             className="flex items-center gap-2 text-gray-300 hover:text-teal-300 transition-colors"
           >
-            <Twitter className="w-6 h-6" /> Twitter
+            <X className="w-6 h-6" /> X
           </a>
         </div>
       </div>
