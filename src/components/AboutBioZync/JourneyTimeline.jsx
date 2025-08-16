@@ -1,7 +1,17 @@
 import React from "react";
 import { Sparkles, Users, Lightbulb, Target, Shield } from "lucide-react";
 
+// Step 1: Static gradient map for Tailwind JIT
+const gradientMap = {
+  gp: "from-[#00C095] to-[#CEB7FC]",
+  pg: "from-[#CEB7FC] to-[#00E6B0]",
+  gt: "from-[#00E6B0] to-[#CEB7FC]",
+  tg: "from-[#CEB7FC] to-[#00C095]",
+  gg: "from-[#00C095] to-[#00E6B0]",
+};
+
 const JourneyTimeline = () => {
+  // Step 2: Changed color values to keys
   const milestones = [
     {
       date: "March 2025",
@@ -9,7 +19,7 @@ const JourneyTimeline = () => {
       description:
         "Planted the first seed of our mission — to reengineer trees and restore ecosystems through climate biotech.",
       icon: Sparkles,
-      color: "from-purple-400 to-pink-400",
+      color: "gp",
     },
     {
       date: "April 2025",
@@ -17,7 +27,7 @@ const JourneyTimeline = () => {
       description:
         "Built a passionate founding team and proposed our first solution to address land degradation and CO₂ capture.",
       icon: Users,
-      color: "from-teal-400 to-cyan-400",
+      color: "pg",
     },
     {
       date: "May 2025",
@@ -25,7 +35,7 @@ const JourneyTimeline = () => {
       description:
         "Studied global research on tree genetics, climate restoration, and carbon markets to refine our approach.",
       icon: Lightbulb,
-      color: "from-yellow-400 to-orange-400",
+      color: "gt",
     },
     {
       date: "June 2025",
@@ -33,7 +43,7 @@ const JourneyTimeline = () => {
       description:
         "Mapped our idea into a viable business model and began validating the market opportunity and impact potential.",
       icon: Target,
-      color: "from-green-400 to-emerald-400",
+      color: "tg",
     },
     {
       date: "July 2025",
@@ -41,19 +51,31 @@ const JourneyTimeline = () => {
       description:
         "Engaged with domain experts in biotechnology and sustainability to refine both our technical and business strategies.",
       icon: Shield,
-      color: "from-blue-400 to-indigo-400",
+      color: "gg",
     },
   ];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-black text-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-black text-[#E6FFFA] relative overflow-hidden">
+      {/* Background glow effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-[#0a0a0a] to-[#111111]"></div>
+      <div className="absolute top-20 left-10 w-96 h-96 bg-[#00C095] rounded-full opacity-5 blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#CEB7FC] rounded-full opacity-5 blur-3xl"></div>
+      {/* Step 4: Fixed invalid opacity-3 to opacity-5 */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#00E6B0] rounded-full opacity-5 blur-3xl"></div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Heading */}
-        <div className="text-center mb-8 sm:mb-10 lg:mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+          <div className="inline-block mb-4">
+            <span className="px-4 py-2 text-sm font-semibold bg-gradient-to-r from-[#00C095]/20 via-[#CEB7FC]/20 to-[#00E6B0]/20 border border-[#00C095]/30 rounded-full text-[#00E6B0] backdrop-blur-sm">
+              Our Story
+            </span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-[#00C095] via-[#CEB7FC] to-[#00E6B0] bg-clip-text text-transparent">
             Our Journey
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl lg:text-2xl text-[#B3F5E6] max-w-3xl mx-auto leading-relaxed">
             Key milestones in our mission to regenerate the planet
           </p>
         </div>
@@ -61,12 +83,12 @@ const JourneyTimeline = () => {
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line - Hidden on mobile, visible on larger screens */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></div>
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b from-[#00C095] via-[#CEB7FC] via-[#00E6B0] to-[#00C095] shadow-[0_0_20px_rgba(0,192,149,0.5)]"></div>
           
           {/* Mobile vertical line - Left aligned */}
-          <div className="block md:hidden absolute left-6 top-0 h-full w-0.5 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"></div>
+          <div className="block md:hidden absolute left-8 top-0 h-full w-px bg-gradient-to-b from-[#00C095] via-[#CEB7FC] via-[#00E6B0] to-[#00C095] shadow-[0_0_10px_rgba(0,192,149,0.5)]"></div>
 
-          <div className="space-y-8 sm:space-y-10 lg:space-y-12">
+          <div className="space-y-12 sm:space-y-16 lg:space-y-20">
             {milestones.map((milestone, index) => {
               const Icon = milestone.icon;
               return (
@@ -74,84 +96,100 @@ const JourneyTimeline = () => {
                   key={index}
                   className={`relative flex items-start md:items-center ${
                     index % 2 === 0 ? "md:justify-start" : "md:justify-end"
-                  }`}
+                  } group`}
                 >
                   {/* Mobile layout - all cards left aligned */}
-                  <div className="block md:hidden w-full pl-12">
-                    <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/20 hover:border-purple-400/50 transition-all duration-300">
-                      <div className="flex items-center mb-3">
-                        <div
-                          className={`inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r ${milestone.color} mr-3`}
-                        >
-                          <Icon className="text-white" size={16} />
+                  <div className="block md:hidden w-full pl-16">
+                    <div className="relative bg-gradient-to-br from-[#00C095]/10 via-[#CEB7FC]/5 via-[#00E6B0]/5 to-transparent backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-[#00C095]/20 hover:border-[#CEB7FC]/40 transition-all duration-500 hover:shadow-[0_12px_48px_rgba(206,183,252,0.25)] group-hover:transform group-hover:scale-[1.02]">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#00C095]/5 via-[#CEB7FC]/5 to-[#00E6B0]/5 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      <div className="relative z-10">
+                        <div className="flex items-center mb-4">
+                          {/* Step 3: Fixed mobile icon chip gradient */}
+                          <div
+                            className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-r ${gradientMap[milestone.color]} mr-4 shadow-[0_0_20px_rgba(206,183,252,0.4)] group-hover:shadow-[0_0_30px_rgba(206,183,252,0.6)] transition-all duration-300`}
+                          >
+                            <Icon className="text-white" size={20} />
+                          </div>
+                          <span className="text-sm sm:text-base font-bold text-[#CEB7FC] tracking-wide">
+                            {milestone.date}
+                          </span>
                         </div>
-                        <span className="text-xs sm:text-sm font-semibold text-purple-300">
-                          {milestone.date}
-                        </span>
+                        <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#E6FFFA] group-hover:text-[#CEB7FC] transition-colors duration-300">
+                          {milestone.title}
+                        </h3>
+                        <p className="text-sm sm:text-base text-[#B3F5E6] leading-relaxed">
+                          {milestone.description}
+                        </p>
                       </div>
-                      <h3 className="text-lg sm:text-xl font-semibold mb-2 text-white">
-                        {milestone.title}
-                      </h3>
-                      <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                        {milestone.description}
-                      </p>
                     </div>
 
                     {/* Mobile dot */}
-                    <div className="absolute left-5 top-6 w-3 h-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-2 border-black"></div>
+                    <div className="absolute left-6 top-8 w-4 h-4 bg-gradient-to-r from-[#00C095] via-[#CEB7FC] to-[#00E6B0] rounded-full border-2 border-black shadow-[0_0_15px_rgba(206,183,252,0.6)] group-hover:shadow-[0_0_25px_rgba(206,183,252,0.8)] transition-all duration-300"></div>
                   </div>
 
                   {/* Desktop layout - alternating sides */}
                   <div
-                    className={`hidden md:block w-full max-w-md lg:max-w-lg ${
+                    className={`hidden md:block w-full max-w-lg lg:max-w-xl ${
                       index % 2 === 0 
-                        ? "pr-6 lg:pr-8 text-right" 
-                        : "pl-6 lg:pl-8 text-left"
+                        ? "pr-8 lg:pr-12 text-right" 
+                        : "pl-8 lg:pl-12 text-left"
                     }`}
                   >
-                    <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/20 hover:border-purple-400/50 transition-all duration-300">
-                      <div className={`flex items-center mb-3 ${
-                        index % 2 === 0 ? "justify-end" : "justify-start"
-                      }`}>
-                        {index % 2 === 0 ? (
-                          <>
-                            <span className="text-sm font-semibold text-purple-300 mr-3">
-                              {milestone.date}
-                            </span>
-                            <div
-                              className={`inline-flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-r ${milestone.color}`}
-                            >
-                              <Icon className="text-white" size={20} />
-                            </div>
-                          </>
-                        ) : (
-                          <>
-                            <div
-                              className={`inline-flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-r ${milestone.color} mr-3`}
-                            >
-                              <Icon className="text-white" size={20} />
-                            </div>
-                            <span className="text-sm font-semibold text-purple-300">
-                              {milestone.date}
-                            </span>
-                          </>
-                        )}
+                    <div className="relative bg-gradient-to-br from-[#00C095]/10 via-[#CEB7FC]/5 via-[#00E6B0]/5 to-transparent backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-[#00C095]/20 hover:border-[#CEB7FC]/40 transition-all duration-500 hover:shadow-[0_12px_48px_rgba(206,183,252,0.25)] group-hover:transform group-hover:scale-[1.02]">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#00C095]/5 via-[#CEB7FC]/5 to-[#00E6B0]/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      <div className="relative z-10">
+                        <div className={`flex items-center mb-4 ${
+                          index % 2 === 0 ? "justify-end" : "justify-start"
+                        }`}>
+                          {index % 2 === 0 ? (
+                            <>
+                              <span className="text-base font-bold text-[#CEB7FC] mr-4 tracking-wide">
+                                {milestone.date}
+                              </span>
+                              {/* Step 3: Fixed desktop icon chip gradient */}
+                              <div
+                                className={`inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-gradient-to-r ${gradientMap[milestone.color]} shadow-[0_0_20px_rgba(206,183,252,0.4)] group-hover:shadow-[0_0_30px_rgba(206,183,252,0.6)] transition-all duration-300`}
+                              >
+                                <Icon className="text-white" size={24} />
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              {/* Step 3: Fixed desktop icon chip gradient */}
+                              <div
+                                className={`inline-flex items-center justify-center w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-gradient-to-r ${gradientMap[milestone.color]} mr-4 shadow-[0_0_20px_rgba(206,183,252,0.4)] group-hover:shadow-[0_0_30px_rgba(206,183,252,0.6)] transition-all duration-300`}
+                              >
+                                <Icon className="text-white" size={24} />
+                              </div>
+                              <span className="text-base font-bold text-[#CEB7FC] tracking-wide">
+                                {milestone.date}
+                              </span>
+                            </>
+                          )}
+                        </div>
+                        <h3 className="text-2xl lg:text-3xl font-bold mb-4 text-[#E6FFFA] group-hover:text-[#CEB7FC] transition-colors duration-300">
+                          {milestone.title}
+                        </h3>
+                        <p className="text-[#B3F5E6] leading-relaxed text-lg">
+                          {milestone.description}
+                        </p>
                       </div>
-                      <h3 className="text-xl lg:text-2xl font-semibold mb-3 text-white">
-                        {milestone.title}
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed">
-                        {milestone.description}
-                      </p>
                     </div>
                   </div>
 
                   {/* Desktop dot on line */}
-                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 lg:w-5 lg:h-5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-black"></div>
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-5 h-5 lg:w-6 lg:h-6 bg-gradient-to-r from-[#00C095] via-[#CEB7FC] to-[#00E6B0] rounded-full border-4 border-black shadow-[0_0_20px_rgba(206,183,252,0.6)] group-hover:shadow-[0_0_30px_rgba(206,183,252,0.8)] transition-all duration-300 group-hover:scale-125"></div>
                 </div>
               );
             })}
           </div>
+        </div>
+
+        {/* Bottom accent */}
+        <div className="mt-16 text-center">
+          <div className="inline-block w-24 h-px bg-gradient-to-r from-transparent via-[#CEB7FC] to-transparent"></div>
         </div>
       </div>
     </section>
