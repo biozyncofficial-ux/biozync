@@ -20,19 +20,19 @@ const PerformanceComparison = () => {
           <table className="w-full min-w-[600px]">
             <thead>
               <tr className="border-b border-teal-500/20">
-                <th className="text-left py-4 px-6 text-teal-300">Metric</th>
-                <th className="text-center py-4 px-6 text-teal-300">C3 Tree</th>
-                <th className="text-center py-4 px-6 text-teal-300">C3 Super Tree</th>
-                <th className="text-center py-4 px-6 text-teal-300">Improvement</th>
+                <th className="text-left py-4 px-6 text-teal-400">Metric</th>
+                <th className="text-center py-4 px-6 text-teal-400">C3 Tree</th>
+                <th className="text-center py-4 px-6 text-teal-400">C3 Super Tree</th>
+                <th className="text-center py-4 px-6 text-teal-400">Improvement</th>
               </tr>
             </thead>
             <tbody>
               {performanceData.map((row, index) => (
                 <tr key={index} className="border-b border-teal-500/10 hover:bg-teal-500/5 transition-colors">
-                  <td className="py-4 px-6 font-medium text-teal-100">{row.metric}</td>
-                  <td className="py-4 px-6 text-center text-gray-300">{row.c3}</td>
-                  <td className="py-4 px-6 text-center text-teal-300 font-semibold">{row.superTree}</td>
-                  <td className="py-4 px-6 text-center text-emerald-400 font-semibold">{row.improvement}</td>
+                  <td className="py-4 px-6 font-medium  text-teal-500">{row.metric}</td>
+                  <td className="py-4 px-6 text-center text-white-300">{row.c3}</td>
+                  <td className="py-4 px-6 text-center text-white-300 font-semibold">{row.superTree}</td>
+                  <td className="py-4 px-6 text-center text-white-400 font-semibold">{row.improvement}</td>
                 </tr>
               ))}
             </tbody>

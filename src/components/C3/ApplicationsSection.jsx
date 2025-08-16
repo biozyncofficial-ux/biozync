@@ -116,14 +116,16 @@ const ApplicationsSection = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-2xl font-bold mb-4 text-text-primary group-hover:text-white transition-colors duration-300">
-                    {app.title}
-                  </h3>
+<h3 className="text-2xl font-bold mb-4 transition-colors duration-300"
+    style={{ color: "#00C095" }}>
+  {app.title}
+</h3>
 
                   {/* Description */}
-                  <p className="text-text-secondary group-hover:text-text-primary transition-colors duration-300 leading-relaxed">
-                    {app.description}
-                  </p>
+<p className="transition-colors duration-300 leading-relaxed"
+   style={{ color: "#FFFFFF" }}>
+  {app.description}
+</p>
 
                   {/* Bottom Accent Line */}
                   <div className="mt-6 h-1 bg-gradient-to-r from-primary-teal/0 via-primary-teal/40 to-primary-teal/0 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>

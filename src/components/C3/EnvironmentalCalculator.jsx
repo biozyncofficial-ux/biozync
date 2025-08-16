@@ -207,18 +207,18 @@ const EnvironmentalCalculator = () => {
               <TreePine size={32} style={{ color: 'var(--text-primary)' }} />
             </div>
             <h2 className="text-4xl sm:text-6xl font-bold mb-6 tracking-tight" 
-                style={{ 
-                  color: 'var(--text-primary)',
-                  textShadow: '0 4px 16px rgba(0, 192, 149, 0.4)',
-                  lineHeight: '1.1'
-                }}>
-              Environmental Impact
-              <span className="block gradient-text mt-2">Calculator</span>
-            </h2>
+    style={{ 
+      color: '#00C095', // Changed title color
+      textShadow: '0 4px 16px rgba(0, 192, 149, 0.4)',
+      lineHeight: '1.1'
+    }}>
+  Environmental Impact
+  <span className="block gradient-text mt-2">Calculator</span>
+</h2>
             <p className="text-xl max-w-2xl mx-auto leading-relaxed" 
-               style={{ color: 'var(--text-secondary)' }}>
-              Calculate the environmental benefits of tree planting initiatives
-            </p>
+   style={{ color: '#ffffff' }}> {/* Changed description color */}
+  Calculate the environmental benefits of tree planting initiatives
+</p>
           </div>
 
           {/* Main Calculator Card */}
