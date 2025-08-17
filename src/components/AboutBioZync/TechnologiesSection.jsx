@@ -41,11 +41,11 @@ const TechnologiesSection = () => {
       description:
         "A centralized, secure platform for generating, managing, and verifying traceable carbon credits, streamlining access to green finance and carbon markets.",
       icon: Database,
-      gradient: "from-emerald-500/10 via-teal-600/5 to-transparent",
-      border: "border-emerald-400/20 hover:border-emerald-400/40",
-      iconColor: "text-emerald-400 group-hover:text-emerald-300",
-      glowColor: "group-hover:drop-shadow-[0_0_20px_rgba(52,211,153,0.4)]",
-      bgOverlay: "bg-gradient-to-br from-emerald-500/5 to-transparent",
+      gradient: "from-purple-500/10 via-teal-600/5 to-transparent",
+      border: "border-purple-400/20 hover:border-purple-400/40",
+      iconColor: "text-purple-400 group-hover:text-purple-300",
+      glowColor: "group-hover:drop-shadow-[0_0_20px_rgba(52,21,153,0.9)]",
+      bgOverlay: "bg-gradient-to-br from-purple-500/5 to-transparent",
     },
   ];
 
@@ -116,7 +116,7 @@ const TechnologiesSection = () => {
                   </div>
 
                   {/* Title with enhanced typography */}
-                  <h3 className="text-2xl font-bold mb-4 leading-tight text-green-500 group-hover:text-green-600 transition-colors duration-300">
+                  <h3 className="text-2xl font-bold mb-4 leading-tight text-teal-500 group-hover:text-teal-400 transition-colors duration-300">
   {tech.title}
 </h3>
 

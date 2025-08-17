@@ -373,7 +373,7 @@ export default function Products() {
             style={{ color: "white" }}
           >
             Join thousands of forward-thinking organizations already using
-            BioZync solutions to create positive environmental impact while
+            Biozync solutions to create positive environmental impact while
             achieving their sustainability goals.
           </p>
         </div>
