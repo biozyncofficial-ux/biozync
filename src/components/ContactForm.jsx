@@ -162,26 +162,7 @@ export default function ContactForm() {
         <h3 className="text-2xl font-semibold text-teal-300 mb-4">
           Connect with us
         </h3>
-        <div className="flex justify-center gap-6">
-          <a
-            href="https://www.linkedin.com/company/biozync.com/"
-            className="flex items-center gap-2 text-gray-300 hover:text-teal-300 transition-colors"
-          >
-            <Linkedin className="w-6 h-6" /> LinkedIn
-          </a>
-          <a
-            href="https://www.instagram.com/biozync/"
-            className="flex items-center gap-2 text-gray-300 hover:text-teal-300 transition-colors"
-          >
-            <Instagram className="w-6 h-6" /> Instagram
-          </a>
-          <a
-            href="https://www.linkedin.com/company/biozync.com/"
-            className="flex items-center gap-2 text-gray-300 hover:text-teal-300 transition-colors"
-          >
-            <X className="w-6 h-6" /> X
-          </a>
-        </div>
+        
       </div>
     </div>
   );

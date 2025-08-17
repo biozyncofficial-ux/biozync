@@ -318,7 +318,7 @@ function App() {
           {/* Copyright */}
           <div className="text-center mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-800">
             <p className="text-gray-400 text-xs sm:text-sm">
-              © 2025 BioZync. All rights reserved.
+              © 2025 Biozync. All rights reserved.
             </p>
           </div>
         </div>

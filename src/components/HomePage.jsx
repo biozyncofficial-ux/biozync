@@ -40,7 +40,7 @@ function HomePage() {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToContact = () => {
+  const scrollToContactForm = () => {
     document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -71,11 +71,11 @@ function HomePage() {
               <br />
               <span className="text-white">crafting new paths</span>
             </h1>
-            <p className="text-left text-lg md:text-xl text-gray-300 mb-6">
+            <p className="text-left text-lg md:text-xl text-white-300 mb-6 italic">
               Mission Towards a Sustainable Earth
             </p>
             <button
-              onClick={scrollToContact}
+              onClick={scrollToContactForm}
               className="px-6 py-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold rounded-full text-base hover:from-teal-600 hover:to-emerald-600 transform hover:scale-105 transition-all duration-300 shadow-md shadow-teal-500/25 hover:shadow-lg hover:shadow-teal-500/40"
             >
               Get Update
@@ -97,7 +97,9 @@ function HomePage() {
       <MissionVision />
       
       {/* ✅ Contact Form Section */}
-      <ContactForm />
+      <div id="contact-form">
+  <ContactForm />
+</div>
     </div>
   );
 }
