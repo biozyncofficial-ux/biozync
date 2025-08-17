@@ -10,7 +10,7 @@ const HeroSection = () => {
       <div className="relative max-w-7xl mx-auto px-6 py-16">
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-teal-400 to-teal-200 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-teal-500 to-teal-100 bg-clip-text text-transparent">
               C4 SUPER TREES
             </span>
           </h1>
