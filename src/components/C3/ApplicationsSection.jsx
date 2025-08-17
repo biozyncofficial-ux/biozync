@@ -65,12 +65,12 @@ const ApplicationsSection = () => {
         {/* Header Section */}
         <div className="text-center mb-20">
           <div className="inline-block relative mb-6">
-            <h2 className="text-5xl md:text-6xl font-bold text-transparent bg-gradient-to-r from-primary-teal via-secondary-teal to-light-teal bg-clip-text leading-tight">
-              Applications
-            </h2>
+<h2 className="text-5xl md:text-6xl font-bold leading-tight" style={{ color: "#00C095" }}>
+  Applications
+</h2>              
             <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary-teal to-transparent opacity-60"></div>
           </div>
-          <p className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl">
             Diverse deployment opportunities for maximum climate impact
           </p>
           
@@ -106,10 +106,14 @@ const ApplicationsSection = () => {
                 {/* Content */}
                 <div className="relative z-10">
                   {/* Icon Container */}
-                  <div className="mb-6 relative">
-                    <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-primary-teal/20 to-secondary-teal/20 backdrop-blur-sm border border-primary-teal/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                      <app.icon className="w-8 h-8 text-secondary-teal group-hover:text-white transition-colors duration-300" />
-                    </div>
+<div className="mb-6 relative">
+  <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-primary-teal/20 to-secondary-teal/20 backdrop-blur-sm border border-primary-teal/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+    {(() => {
+      const Icon = app.icon;
+      return <Icon className="w-8 h-8 text-secondary-teal group-hover:text-white transition-colors duration-300" />;
+    })()}
+  </div>
+
                     
                     {/* Icon Glow */}
                     <div className="absolute inset-0 bg-primary-teal/30 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-150"></div>

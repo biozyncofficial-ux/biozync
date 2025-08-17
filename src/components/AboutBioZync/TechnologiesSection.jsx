@@ -116,10 +116,9 @@ const TechnologiesSection = () => {
                   </div>
 
                   {/* Title with enhanced typography */}
-                  <h3 className="text-2xl font-bold mb-4 leading-tight group-hover:text-teal-300 transition-colors duration-300" 
-                      style={{ color: 'var(--primary-teal)' }}>
-                    {tech.title}
-                  </h3>
+                  <h3 className="text-2xl font-bold mb-4 leading-tight text-green-500 group-hover:text-green-600 transition-colors duration-300">
+  {tech.title}
+</h3>
 
                   {/* Description with improved readability */}
                   <p className="text-base leading-relaxed font-medium group-hover:text-white/90 transition-colors duration-300" 

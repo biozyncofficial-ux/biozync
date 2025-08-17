@@ -29,7 +29,7 @@ const BenefitsSection = () => {
     <section className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg">Key Benefits</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-teal-500 drop-shadow-lg">Key Benefits</h2>
           <p className="text-xl text-white-100 max-w-3xl mx-auto">
             C3 Super Trees enhance existing metabolic processes without modifying the entire photosynthetic system, keeping them biologically safe and ecologically compatible.
           </p>

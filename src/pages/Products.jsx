@@ -234,6 +234,14 @@ export default function Products() {
             isLoaded ? "animate-fade-in" : "opacity-0"
           }`}
         >
+          <br></br>
+          
+          <br></br>
+          
+          
+          
+          <br></br>
+          
           <div className="inline-flex items-center px-4 py-2 mb-6 glass-card rounded-full badge-purple">
             <span className="text-2xl mr-2">🌍</span>
             <span
@@ -246,14 +254,14 @@ export default function Products() {
 
           <h1
             className="text-5xl md:text-6xl font-bold mb-6 glow-text"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--primary-teal)" }}
           >
             Sustainable Solutions for Tomorrow
           </h1>
 
           <p
             className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed"
-            style={{ color: "var(--text-secondary)" }}
+            style={{ color: "white" }}
           >
             At{" "}
             <strong
@@ -298,25 +306,27 @@ export default function Products() {
                 <div className="text-6xl mb-6 text-center">{product.icon}</div>
 
                 <h2
-                  className={`text-3xl font-bold mb-4 ${index === 1 ? 'glow-purple' : 'glow-text'}`}
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  {product.title}
-                </h2>
+  className="text-3xl font-bold mb-4 glow-text"
+  style={{ color: "var(--primary-teal)" }}
+>
+  {product.title}
+</h2>
+
 
                 <p
-                  className="text-lg mb-8 leading-relaxed"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  {product.description}
-                </p>
+  className="text-lg mb-8 leading-relaxed"
+  style={{ color: "white" }}
+>
+  {product.description}
+</p>
+
 
                 <div className="space-y-3 mb-8">
                   {product.features.map((feature, idx) => (
                     <div
                       key={idx}
                       className="flex items-center text-base"
-                      style={{ color: "var(--text-accent)" }}
+                      style={{ color: "white" }}
                     >
                       <span className="feature-check">✓</span>
                       {feature}
@@ -354,13 +364,13 @@ export default function Products() {
         >
           <h3
             className="text-3xl md:text-4xl font-bold mb-6 glow-text"
-            style={{ color: "var(--text-primary)" }}
+            style={{ color: "var(--primary-teal)" }}
           >
             Ready to Build a Sustainable Future?
           </h3>
           <p
             className="text-xl max-w-3xl mx-auto leading-relaxed"
-            style={{ color: "var(--text-secondary)" }}
+            style={{ color: "white" }}
           >
             Join thousands of forward-thinking organizations already using
             BioZync solutions to create positive environmental impact while
