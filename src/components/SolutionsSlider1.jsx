@@ -9,7 +9,7 @@ const SolutionsSlider = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [, setHoveredIndex] = useState(null);
 
   const cardStyles = `
     /* CSS Variables */
@@ -188,6 +188,27 @@ const SolutionsSlider = () => {
     .solution-card.active {
       animation: pulse-glow 2s ease-in-out infinite;
     }
+
+    @keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 192, 149, 0.2); }
+  50% { box-shadow: 0 0 15px rgba(0, 192, 149, 0.35); }
+}
+
+/* Remove animation from active */
+.solution-card.active {
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: var(--shadow-intense);
+  border-color: var(--primary-teal);
+}
+
+/* Glow only on hover */
+.solution-card:hover {
+  transform: scale(1.03) translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--secondary-teal);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
   `;
 
   return (
