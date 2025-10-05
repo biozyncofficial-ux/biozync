@@ -1,20 +1,22 @@
 import React from "react";
+import c3Image from "../../assets/projects/c3supertree.jpg";
+import c4Image from "../../assets/projects/c4supertree.jpg";
 
 const FeaturedProjects = () => {const projects = [
   {
     title: "C3 SuperTree",
     description:
       "Smart trees that waste less and capture more — optimized for near-term deployment by recycling photorespiration byproducts into sugars.",
-    image: "/assets/projects/c3supertree.jpg",
-    progress: 60,
+    image: c3Image,
+    progress: 40,
     link: "/products/c3superTree", // ✅ Corrected
   },
   {
     title: "C4 SuperTree",
     description:
       "A long-term R&D moonshot to bring C4 photosynthesis to trees for maximum carbon removal efficiency and resilience in harsh climates.",
-    image: "/assets/projects/c4supertree.jpg",
-    progress: 80,
+    image: c4Image,
+    progress: 20,
     link: "/products/c4SuperTree", // ✅ Corrected
   },
 ];
